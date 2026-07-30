@@ -3,7 +3,7 @@
 // Arquitectura: CSV índice + CSVs detalle por dataset
 // =============================================================================
 
-const API = 'http://127.0.0.1:8001';
+const API = 'https://sicar-web-api.onrender.com';
 
 // ── 1. MAPA ───────────────────────────────────────────────────────────────────
 var mapa = L.map('mapa', { zoomControl: false }).setView([-9.52, -77.52], 8);
