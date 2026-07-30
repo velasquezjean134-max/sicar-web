@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor Ambiental Áncash - SICAR</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header id="encabezado">
+        <div class="logo-box">
+            <img src="logo_izquierdo.png" alt="Logo 1" onerror="this.style.display='none'; this.parentNode.innerHTML='Logo Izquierdo';">
+        </div>
+        <h2>Sistema de Información Ambiental Regional - SICAR</h2>
+        <div class="logo-box">
+            <img src="logo_derecho.png" alt="Logo 2" onerror="this.style.display='none'; this.parentNode.innerHTML='Logo Derecho';">
+        </div>
+    </header>
+
+    <div id="contenedor-principal">
+        
+        <button id="btn-abrir-panel" style="display: none;">☰ Filtros</button>
+        <div id="aviso-limite" style="display: none;">⚠️ Se requieren filtros para visualizar la data.</div>
+
+        <!-- PANEL FILTROS SICAR -->
+        <aside id="panel-filtros">
+            <div class="panel-cabecera">
+                <h3 style="text-transform: uppercase;">FILTROS DE BÚSQUEDA</h3>
+                <button id="btn-cerrar-panel">✖</button>
+            </div>
+            <div class="panel-contenido">
+                <label class="titulo-filtro" style="margin-top: 5px;">1. Tipo de información:</label>
+                <div class="dropdown-check-list" id="dd-tipo">
+                    <span class="anchor">Cargando...</span>
+                    <ul class="items" id="filtro-tipo"></ul>
+                </div>
+
+                <div id="contenedor-filtros-secundarios" style="margin-top: 10px; margin-bottom: 10px; display: none; padding: 10px 10px 4px 10px; background: #f8fafc; border-radius: 6px; border: 1px dashed #cbd5e1;">
+                    </div>
+
+                <div class="filtro-header">
+                    <label class="titulo-filtro">2. Cuenca(s):</label>
+                    <input type="range" id="slider-cuenca" class="slider-mini" min="0" max="0.8" step="0.05" value="0.15" title="Ajustar transparencia cuencas">
+                </div>
+                <div class="dropdown-check-list" id="dd-cuenca">
+                    <span class="anchor">Cargando...</span>
+                    <ul class="items" id="filtro-cuenca"></ul>
+                </div>
+
+                <div id="contenedor-filtro-subcuenca" style="display:none;">
+                    <div class="filtro-header subcuenca-header">
+                        <label class="titulo-filtro subcuenca-titulo">
+                            <i class="fa-solid fa-water-ladder"></i> Subcuenca(s):
+                        </label>
+                        <input type="range" id="slider-subcuenca" class="slider-mini slider-subcuenca" min="0" max="0.8" step="0.05" value="0.20" title="Ajustar transparencia subcuencas">
+                    </div>
+                    <div class="dropdown-check-list" id="dd-subcuenca">
+                        <span class="anchor">Seleccione opciones...</span>
+                        <ul class="items" id="filtro-subcuenca"></ul>
+                    </div>
+                </div>
+
+                <div class="filtro-header">
+                    <label class="titulo-filtro">3. Provincia(s):</label>
+                    <input type="range" id="slider-provincia" class="slider-mini" min="0" max="0.8" step="0.05" value="0.15" title="Ajustar transparencia">
+                </div>
+                <div class="dropdown-check-list" id="dd-provincia">
+                    <span class="anchor">Cargando...</span>
+                    <ul class="items" id="filtro-provincia"></ul>
+                </div>
+
+                <div class="filtro-header">
+                    <label class="titulo-filtro">4. Distrito(s):</label>
+                    <input type="range" id="slider-distrito" class="slider-mini" min="0" max="0.8" step="0.05" value="0.25" title="Ajustar transparencia">
+                </div>
+                <div class="dropdown-check-list" id="dd-distrito">
+                    <span class="anchor">Cargando...</span>
+                    <ul class="items" id="filtro-distrito"></ul>
+                </div>
+
+                <hr style="margin-top: 20px;">
+                
+                <div class="filtro-header" style="margin-top: 10px; margin-bottom: 15px;">
+                    <label class="titulo-filtro" for="toggle-cluster" style="cursor: pointer;">Agrupar puntos cercanos:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-cluster" checked>
+                        <span class="slider-toggle"></span>
+                    </label>
+                </div>
+
+                <p><strong id="contador-resultados">Resultados: 0 puntos encontrados.</strong></p>
+                <button id="btn-descargar-csv" style="display: none;">
+                    <i class="fa-solid fa-download"></i> Descargar CSV
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAPA -->
+        <div id="mapa"></div>
+
+        <!-- LEYENDA -->
+        <div id="leyenda-mapa" style="display: none;">
+            <h4 style="margin: 0 0 5px 0; font-size: 14px;"><b>Leyenda</b></h4>
+            <div id="leyenda-contenido"></div>
+        </div>
+
+        <!-- PANEL DETALLES SICAR -->
+        <aside id="panel-detalles" style="display: none;">
+            <!-- Cabecera compacta: tipo + botón cerrar -->
+            <div id="det-top-bar">
+                <div id="det-top-left">
+                    <span id="det-top-icono"><i class="fa-solid fa-location-dot"></i></span>
+                    <div>
+                        <p id="det-top-label">DETALLE DE PUNTO</p>
+                        <p id="det-top-tipo"></p>
+                    </div>
+                </div>
+                <button id="btn-cerrar-detalles">✕</button>
+            </div>
+            <!-- Banda entidad (color dinámico) -->
+            <div id="det-entidad-bar" id="cabecera-detalles">
+                <div id="det-entidad-info">
+                    <span id="det-entidad-label">ENTIDAD RESPONSABLE</span>
+                    <span id="det-entidad-nombre">—</span>
+                </div>
+                <img id="det-entidad-logo" src="" alt="" style="display:none;">
+            </div>
+            <div id="contenido-detalles"></div>
+        </aside>
+
+        <!-- TOAST BIENVENIDA -->
+        <div id="toast-bienvenida" style="position: absolute; bottom: 80px; right: 20px; background: white; padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; transition: opacity 0.5s ease; border-left: 4px solid #0182c7; font-family: sans-serif; font-size: 12px; color: #333; width: 220px; text-align: left; line-height: 1.4;">
+            👋 <strong>Bienvenido</strong>. Active algunos filtros para iniciar a visualizar la información.
+        </div>
+
+
+        <!-- CONTROLES FLOTANTES DERECHOS -->
+        <div id="controles-flotantes">
+            <button class="ctrl-btn" id="ctrl-mapas" title="Cambiar mapa base">
+                <i class="fa-solid fa-earth-americas"></i>
+            </button>
+            <button class="ctrl-btn" id="ctrl-capas" title="Capas de información">
+                <i class="fa-solid fa-layer-group"></i>
+            </button>
+            <button class="ctrl-btn ctrl-btn-verde" id="ctrl-iniciativas" title="Iniciativas forestales">
+                <i class="fa-solid fa-seedling"></i>
+            </button>
+
+            <!-- Menú mapas -->
+            <div class="ctrl-menu" id="menu-mapas">
+                <div class="ctrl-menu-titulo">Mapa base</div>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Claro" checked> Calles</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Topográfico"> Topográfico</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Relieve"> Relieve</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Google Maps"> Google Maps</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Satélite"> Satélite</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Oscuro"> Oscuro</label>
+            </div>
+
+            <!-- Menú capas -->
+            <div class="ctrl-menu" id="menu-capas">
+                <div class="ctrl-menu-titulo">Capas</div>
+                <div id="lista-capas-externas">
+                    <p style="color:#aaa;font-size:11px;padding:4px;"><i class="fa-solid fa-spinner fa-spin"></i> Cargando...</p>
+                </div>
+                <hr style="margin:6px 0; border-color:var(--borde);">
+                <div class="capa-item">
+                    <div class="capa-label">
+                        <i class="fa-solid fa-seedling" style="color:#27ae60;"></i>
+                        <span class="capa-nombre">Iniciativas forestales</span>
+                    </div>
+                    <label class="switch"><input type="checkbox" id="toggle-iniciativas" checked><span class="slider-toggle"></span></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             PANEL LATERAL INICIATIVAS
+        ═══════════════════════════════════════════ -->
+        <aside id="panel-iniciativas">
+            <div class="panel-cabecera iniciativas-cabecera" id="panel-iniciativas-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-seedling" style="font-size:16px;"></i>
+                    <h3 style="text-transform:uppercase; margin:0; font-size:14px;">INICIATIVAS</h3>
+                </div>
+                <button id="btn-colapsar-iniciativas" title="Colapsar">▲</button>
+                <button id="btn-cerrar-iniciativas">✖</button>
+            </div>
+            <div id="panel-iniciativas-body" class="panel-contenido" style="padding:12px; overflow-y:auto; max-height:calc(85vh - 55px);">
+
+                <!-- Buscador -->
+                <div style="position:relative; margin-bottom:10px;">
+                    <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:9px; top:50%; transform:translateY(-50%); color:#aaa; font-size:11px;"></i>
+                    <input type="text" id="buscar-iniciativa" placeholder="Buscar proyecto..."
+                           style="width:100%; padding:7px 10px 7px 28px; border:1px solid #ddd; border-radius:20px; font-size:12px; box-sizing:border-box; outline:none; color:#444;">
+                </div>
+
+                <!-- Toggle ACR -->
+                <div class="filtro-header" style="margin-bottom:12px; padding:8px 10px; background:#f0faf4; border-radius:6px; border:1px solid #b2dfca;">
+                    <label style="margin:0; font-size:12px; color:#2d7a4f; display:flex; align-items:center; gap:6px; cursor:pointer;" for="toggle-acr">
+                        <i class="fa-solid fa-shield-halved" style="color:#2d7a4f;"></i>
+                        Área de Conservación Regional
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-acr">
+                        <span class="slider-toggle"></span>
+                    </label>
+                </div>
+
+                <!-- Lista proyectos -->
+                <div id="lista-iniciativas">
+                    <p style="color:#aaa; font-size:12px; text-align:center; padding:20px 0;">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Cargando...
+                    </p>
+                </div>
+
+                <!-- Limpiar -->
+                <button id="btn-limpiar-iniciativas" style="display:none; width:100%; padding:8px; margin-top:8px; background:#fef2f2; border:1px solid #fca5a5; border-radius:4px; cursor:pointer; font-size:12px; color:#b91c1c; transition:0.2s;">
+                    <i class="fa-solid fa-xmark"></i> Limpiar selección
+                </button>
+            </div>
+        </aside>
+
+        <!-- ═══════════════════════════════════════════
+             PANEL INFO INICIATIVA (click círculo)
+        ═══════════════════════════════════════════ -->
+        <aside id="panel-info-iniciativa">
+            <div class="panel-cabecera" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); cursor:grab;" id="panel-info-ini-header">
+                <div style="flex:1; padding-right:10px;">
+                    <p style="margin:0; font-size:10px; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:1px;">Iniciativa Forestal</p>
+                    <h3 id="ini-titulo" style="margin:3px 0 0 0; font-size:13px; text-transform:uppercase; line-height:1.3;"></h3>
+                </div>
+                <button id="btn-cerrar-info-iniciativa">✖</button>
+            </div>
+            <div id="contenido-info-iniciativa" style="padding:15px; overflow-y:auto; max-height:calc(85vh - 70px); font-size:13px; color:#444;">
+            </div>
+        </aside>
+
+    </div><!-- fin contenedor-principal -->
+
+    <!-- ═══════════════════════════════════════════
+         MODAL GALERÍA DE FOTOS
+    ═══════════════════════════════════════════ -->
+    <div id="modal-galeria-ini">
+        <div class="modal-galeria-box">
+            <button id="cerrar-galeria-ini">&times;</button>
+            <div id="galeria-titulo-ini"></div>
+            <img id="imagen-actual-ini" src="" alt="Foto del proyecto">
+            <div class="modal-galeria-nav">
+                <button id="btn-prev-ini">❮</button>
+                <span id="contador-fotos-ini"></span>
+                <button id="btn-next-ini">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT -->
+    <div id="chatbot-container">
+        <div id="chatbot-header">
+            <span><i class="fa-solid fa-robot"></i> Asistente SICAR</span>
+            <div style="display: flex; gap: 5px;">
+                <button id="btn-reset-chat" style="background: #ff7f0e; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: bold;">RESET</button>
+                <button id="btn-toggle-chat">▲</button>
+            </div>
+        </div>
+        <div id="chatbot-body">
+            <div id="chat-mensajes">
+                <div class="msj-bot">¡Hola! Soy el asistente de datos del SICAR. Selecciona una categoría para ver preguntas sugeridas.</div>
+            </div>
+            <div id="chat-categorias"></div>
+            <div id="chat-preguntas"></div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="O escribe tu pregunta...">
+                <button id="btn-enviar-chat"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿ID_registro;N°;PROVINCIA;DISTRITO;CENTRO POBLADO;VIVIENDAS  DATASS;POBLACION DATASS;CODIGO SAP;ESTADO;¿CUENTA CON SISTEMA DE CLORACION?;FECHA DE CARACTERIZACION;RESPONSABLE;PUNTO DE MUESTRA;ZONA;ESTE;NORTE;RESULTADOS FUERA DEL RANGO;ACCIONES (DRVCS)
+35245;1;HUARMEY;HUAYAN;0211040018 - IRMAN;40;150;S021104001801 - HUALLY;REGULAR;NO;2025-06-30 00:00:00;DRVCS;RESERVORIO;18;198931.0;8908954.0;"NO CUMPLE: Coliformes Totales:
+>23 NMP/100 mL                                                                  (LMP: 0 NMP/100 mL).
+Excede el límite permitido. La presencia de coliformes totales indica contaminación microbiológica del agua, por lo que no es apta para consumo humano sin tratamiento.
+Bacterias Heterotróficas:
+15 × 10³ UFC/mL (LMP: 500 UFC/mL).
+Excede ampliamente el límite permitido. Este valor evidencia alta carga bacteriana, asociada a deficiencias en protección de la fuente, conducción o desinfección.";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35246;2;HUARMEY;MALVAS;0211050015 - MOLINOPAMPA;52;130;S021105001501 - MANANTIAL CHIUCH;REGULAR;NO;2025-06-30 00:00:00;DRVCS;RESERVORIO;18;196661.0;8898081.0;"Coliformes Totales:
+Resultado: 12 NMP/100 mL
+LMP: 0 NMP/100 mL
+Excede el límite permitido (agua no apta para consumo humano sin desinfección).
+
+Bacterias Heterotróficas:
+Resultado: 18 × 10³ UFC/mL
+LMP: ≤ 500 UFC/mL
+Excede significativamente el límite permitido.";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35247;3;HUARMEY;MALVAS;0211050018 - SAN MIGUEL;120;130;S021105001801 - MANANTIAL UTCU URAN;REGULAR;NO;2025-06-30 00:00:00;DRVCS;RESERVORIO;18;198947.0;8899238.0;"Arsénico (As): 0.0548 mg/L
+LMP: 0.010 mg/L
+ Excede significativamente el límite permitido.
+
+Coliformes Totales: >23 NMP/100 mL
+LMP: 0 NMP/100 mLNo cumple el límite permitido para agua de consumo humano.
+
+Escherichia coli: 2.2 NMP/100 mL
+LMP: 0 NMP/100 mLNo cumple el límite permitido; indica contaminación fecal.";Se realizará una contramuestra para el caso del arsénico y se evaluará un cambio de fuente de agua. Asimismo, se requiere priorizar la instalación del sistema de cloración en el establecimiento. Para dar curso a estas acciones, se remitirá un oficio a la Municipalidad Distrital de Malvas solicitando su intervención y coordinación correspondiente.
+35248;4;SANTA;MORO;0218050049 - PAREDONES;83;332;S021805004901 - MONTECOMUN;REGULAR;NO;2025-07-01 00:00:00;DRVCS;RESERVORIO;17;807842;8987124;"1. Nitratos (NO₃⁻)
+Resultado: 46.785 mg/L
+Límite máximo: 45 mg/L
+Observación: Excede el valor permitido; riesgo para la salud, especialmente en niños.
+
+2. Sólidos Disueltos Totales (SDT)
+Resultado: 650 mg/L
+Límite recomendado: 500 mg/L
+Observación: Agua con alta mineralización.
+
+3. Dureza Total
+Resultado: 447.6 mg/L CaCO₃
+Límite recomendado: ≤ 300 mg/L
+Observación: Agua muy dura; genera incrustaciones.                                                               NO CUMPLE por:
+Presencia de coliformes totales
+Presencia de coliformes fecales
+Presencia de Escherichia coli
+Presencia de bacterias heterotróficas";Se requiere priorizar la instalación del sistema de cloración en el establecimiento. Asimismo, se debe realizar una contramuestra para verificar los parámetros de calidad del agua y, en función de los resultados obtenidos, implementar las correcciones correspondientes. Adicionalmente, se recomienda solicitar la intervención de la Asistencia Técnica Municipal de la Municipalidad Distrital de Moro para que efectúe las coordinaciones necesarias mediante Proyecto de Inversión.
+35249;5;SANTA;NEPEÑA;0218060001 - NEPEÑA;520;1829;S021806000101 - agua de subsuelo;REGULAR;NO;2025-07-01 00:00:00;2025-07-01 00:00:00;RESERVORIO;17;790300.0;8984960.0;"Microbiológicos
+Coliformes Totales: > 23 NMP/100 mL
+Coliformes Fecales: > 23 NMP/100 mL
+Escherichia coli: > 23 NMP/100 mL
+Bacterias heterotróficas: 22 × 10³ UFC/mL
+Físico-químicos
+Sólidos disueltos totales: 662.5 mg/L
+Dureza total: 533.3 mg/L CaCO₃";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35250;6;SANTA;NEPEÑA;0218060003 - MOTOCACHY;91;208;S021806000301 - galeria filtrante;REGULAR;NO;2025-07-01 00:00:00;DRVCS;RESERVORIO;17;806695.0;8989245.0;"Microbiológicos
+Coliformes Totales: > 23 NMP/100 mL
+Coliformes Fecales: > 23 NMP/100 mL
+Escherichia coli: > 23 NMP/100 mL
+Bacterias heterotróficas: 18 × 10³ UFC/mL
+Indica cntaminación microbiológica.";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35251;11;HUARI;HUACHIS;0210070060 - PAMPAS DE HUAMANIN;26;52;S021007006001 - HILLA PUQUIO;REGULAR;NO;2025-06-11 00:00:00;DRVCS;RESERVORIO;18;281661.0;8944267.0;"NO CUMPLE por:
+Cloro residual libre < 0.10 mg/L
+Coliformes totales";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35252;12;HUARI;UCO;0210160007 - QUETZAMARCA;24;69;S021016000801 - POLLAPAQUIO;BUENO;SI;2025-03-18 00:00:00;PI;RESERVORIO;18;285995.0;8984822.0;Cloro residual libre < 0.10 mg/L;Se cursará un oficio a la Asistencia Técnica Municipal de la Municipalidad Distrital de Uco, solicitando la implementación de un programa de capacitación dirigido al operador del sistema sobre el manejo adecuado del cloro para la desinfección del agua, así como acciones de sensibilización dirigidas a la población usuaria respecto a la importancia de la cloración como medida sanitaria fundamental para garantizar la calidad del agua de consumo humano.
+35253;13;HUARI;UCO;0210160018 - PARIACANCHA;107;127;S021016001801 - CABRACANCHA;REGULAR;SI;2025-06-10 00:00:00;DRVCS;RESERVORIO;18;286255.0;8981461.0;"Coliformes Totales: > 23 NMP/100 mL
+No cumple (debe ser 0).
+Bacterias heterotróficas: 24 × 10² UFC/mL
+Excede el valor recomendado.";Se cursará un oficio a la Asistencia Técnica Municipal de la Municipalidad Distrital de Uco, solicitando la implementación de un programa de capacitación dirigido al operador del sistema sobre el manejo adecuado del cloro para la desinfección del agua, así como acciones de sensibilización dirigidas a la población usuaria respecto a la importancia de la cloración como medida sanitaria fundamental para garantizar la calidad del agua de consumo humano.
+35254;14;HUARAZ;HUARAZ;0201070050 - WINCHUZ (2 SISTEMAS DE AGUA);36;98;S020107005001 - manatial winchuz;REGULAR;NO;2025-06-01 00:00:00;DRVCS;RESERVORIO;18;195969.0;8932842.0;"Parámetros que NO cumplen:
+
+Cloro residual libre: 0.31 mg/L (LMP ≥ 0.5 mg/L)";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35255;15;HUARAZ;INDEPENDENCIA;0201050031 - MIRAFLORES;400;800;S020105003101 - potero coral;REGULAR;SI;2026-06-11 00:00:00;DRVCS;RESERVORIO;18;220333.0;8948072.0;"Parámetros que NO cumplen:
+Cloro residual libre: < 0.10 mg/L
+(LMP: ≥ 0.5 mg/L – D.S. 031-2010-SA)
+Coliformes Totales: > 23 NMP/100 mL
+Coliformes Fecales: 23 NMP/100 mL
+Escherichia coli: 23 NMP/100 mL
+Bacterias heterotróficas: 25 × 10² UFC/Ml";Se cursará un oficio a la Asistencia Técnica Municipal de la Municipalidad Distrital de Independencia, solicitando la implementación de un programa de capacitación dirigido al operador del sistema sobre el manejo adecuado del cloro para la desinfección del agua, así como acciones de sensibilización dirigidas a la población usuaria respecto a la importancia de la cloración como medida sanitaria fundamental para garantizar la calidad del agua de consumo humano.
+35256;16;HUARAZ;INDEPENDENCIA;0201050062 - YACURACA;61;172;S020105006201 - CHURUP PAMPA;REGULAR;NO;2025-06-11 00:00:00;DRVCS;RESERVORIO;18;231151.0;8948101.0;"Parámetros que NO cumplen:
+Cloro residual libre: < 0.10 mg/L
+(LMP: ≥ 0.5 mg/L – D.S. 031-2010-SA)";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35257;19;PALLASCA;HUANDOVAL;0215050001 - HUANDOVAL;278;620;S021505000101 - RIO CUSHIDA;REGULAR;NO;2025-07-04 00:00:00;DRVCS;RESERVORIO;18;172344.0;9077505.0;"Parámetros que NO cumplen:
+Cloro residual libre: 0.42 mg/L
+(LMP: ≥ 0.5 mg/L – D.S. 031-2010-SA)";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35258;20;PALLASCA;TAUCA;0215110031 - SAHUACHUCO (3SISTEMAS DE AGUA);37;166;S021511003101 - HUAYLLAPUC;BUENO;SI;2023-07-16 00:00:00;PI;RESERVORIO;17;824423.0;9061795.0;"Turbiedad
+Resultado: 24.45 NTU
+LMP: ≤ 5 NTU                                              Hierro (Fe)
+Resultado: 2.348 mg/L
+LMP: 0.3 mg/L";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.
+35259;20;PALLASCA;TAUCA;0215110031 - SAHUACHUCO (3SISTEMAS DE AGUA);37;166;S021511003103 - PUMARAM;REGULAR;NO;2025-07-03 00:00:00;DRVCS;RESERVORIO;17;824789.0;9060987.0;"Parámetros que NO cumplen:
+Cloro residual libre: < 0.10 mg/L
+(LMP: ≥ 0.5 mg/L – D.S. 031-2010-SA)
+Turbiedad: 24.45 NTU
+(LMP: ≤ 5 NTU – D.S. 031-2010-SA)
+Coliformes Totales: > 23 NMP/100 mL
+(Debe ser 0)
+Bacterias heterotróficas: 15 × 10² UFC/mL
+(Excede valor recomendado)
+Hierro (Fe): 2.348 mg/L
+(LMP: 0.3 mg/L)";La instalación del sistema de cloración requiere priorización. El proyecto se encuentra actualmente en evaluación, pendiente de aprobación por parte del PNSR para su ejecución.

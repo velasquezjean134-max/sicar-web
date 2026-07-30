@@ -1,0 +1,873 @@
+﻿ID_registro;FID;Shape;Prob_DAR;Cordillera;Cuenca;Zona UTM;Departamen;Provincia;Distrito;UNIDAD_geo;TIPO_UNIDA;LITOLOGIA_;Este_m;Norte_m
+34373;0;Point;0.777805;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;PAMPAS;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;186912.93;9105897.24
+34374;1;Point;0.756889;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;PAMPAS;DepÃ³sito fluvial;Sedimento;Grava, limoarena;194810.81;9104790.8
+34375;2;Point;0.789837;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;PAMPAS;FormaciÃ³n Inca;Sedimentaria;Arenisca, lutita;195192.94;9099610.75
+34376;3;Point;0.805636;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;PAMPAS;FormaciÃ³n ChÃºlec;Sedimentaria;Caliza;194894.23;9099344.4
+34377;4;Point;0.794238;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;PAMPAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, arenisca;186314.72;9098997.31
+34378;5;Point;0.765081;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CONCHUCOS;FormaciÃ³n ChÃºlec;Sedimentaria;Caliza;189728.63;9091361.65
+34379;6;Point;0.759455;Blanca;Cuenca Santa;17;ANCASH;PALLASCA;PALLASCA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;828653.57;9084434.16
+34380;7;Point;0.792745;Blanca;Intercuenca Alto Marañón V;18;ANCASH;PALLASCA;CONCHUCOS;FormaciÃ³n ChÃºlec;Sedimentaria;Caliza mudstone, caliza wackestone,lutita;206121.02;9080232.68
+34381;8;Point;0.771963;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CONCHUCOS;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;185565.17;9076338.14
+34382;9;Point;0.779747;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;HUANDOVAL;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;182479.63;9074621.1
+34383;10;Point;0.80928;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CONCHUCOS;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;192760.65;9073399.25
+34384;11;Point;0.762918;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CONCHUCOS;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;192593.17;9073278.74
+34385;12;Point;0.78147;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;195365.66;9073283.43
+34386;13;Point;0.831057;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;193192.96;9072013.61
+34387;14;Point;0.780967;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;193068.06;9071939.8
+34388;15;Point;0.775131;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;193297.17;9071747.54
+34389;16;Point;0.799374;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;192992.53;9071720.52
+34390;17;Point;0.805439;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;193202.81;9071419.63
+34391;18;Point;0.77811;Blanca;Cuenca Santa;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;193271.4;9071192.21
+34392;19;Point;0.757425;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;189295.07;9069934.13
+34393;20;Point;0.76767;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;179276.08;9069706.67
+34394;21;Point;0.765069;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;189425.07;9069756.08
+34395;22;Point;0.78321;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;179497.61;9069378.92
+34396;23;Point;0.805321;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;196576.44;9069364.53
+34397;24;Point;0.808481;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;181336.29;9069183.31
+34398;25;Point;0.804795;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;DepÃ³sito aluvial;Sedimento;Grava, limoarena;183441.25;9069135.84
+34399;26;Point;0.761941;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;DepÃ³sito aluvial;Sedimento;Grava, limoarena;183366.77;9068876.75
+34400;27;Point;0.769584;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;179608.65;9067596.02
+34401;28;Point;0.783022;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180692.74;9066947.77
+34402;29;Point;0.75162;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180109.55;9066814.16
+34403;30;Point;0.778149;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;175319.75;9066395.95
+34404;31;Point;0.76075;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;176652.08;9066395.5
+34405;32;Point;0.79064;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;DepÃ³sito aluvial;Sedimento;Grava, limoarena;183220.87;9066406.77
+34406;33;Point;0.78159;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;175999.27;9066302.74
+34407;34;Point;0.77819;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;177884.14;9065827.98
+34408;35;Point;0.757708;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;175601.97;9065810.8
+34409;36;Point;0.752371;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;175409.32;9065317.1
+34410;37;Point;0.758875;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;179142.6;9065298.43
+34411;38;Point;0.761514;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;178761.8;9065244.86
+34412;39;Point;0.795176;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;178403.69;9065203.73
+34413;40;Point;0.755082;Blanca;Cuenca Santa;18;ANCASH;PALLASCA;CABANA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;178449.87;9064986.96
+34414;41;Point;0.761464;Blanca;Cuenca Santa;18;ANCASH;CORONGO;ACO;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180653.37;9064918.89
+34415;42;Point;0.759275;Blanca;Cuenca Santa;18;ANCASH;CORONGO;ACO;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180852.04;9064830.87
+34416;43;Point;0.763458;Blanca;Cuenca Santa;18;ANCASH;CORONGO;ACO;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180908.79;9064689.59
+34417;44;Point;0.753959;Blanca;Cuenca Santa;18;ANCASH;CORONGO;ACO;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca;180996.91;9064560.62
+34418;45;Point;0.77636;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CORONGO;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;176968.67;9064128.08
+34419;46;Point;0.807723;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;200081.91;9063495.27
+34420;47;Point;0.781121;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;RAGASH;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;199780.33;9063282.85
+34421;48;Point;0.774454;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;RAGASH;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca;199774.01;9061344.38
+34422;49;Point;0.807087;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CORONGO;DepÃ³sito glaciar, fluvial;Sedimento;Arena, gravas, limoarena;175458.33;9060429.75
+34423;50;Point;0.776712;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Lutita, caliza mudstone, caliza bounstone;200497.62;9056129.62
+34424;51;Point;0.754765;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;199806.24;9053548.61
+34425;52;Point;0.772284;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;196362.72;9043842.18
+34426;53;Point;0.823892;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195717.92;9042898.09
+34427;54;Point;0.789943;Blanca;Cuenca Santa;18;ANCASH;CORONGO;LA PAMPA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193550.47;9042772.72
+34428;55;Point;0.782514;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;199448.19;9042834.83
+34429;56;Point;0.761966;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;SAN JUAN;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, limolita;201827.24;9042306.32
+34430;57;Point;0.782373;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;194987.2;9041820.22
+34431;58;Point;0.765104;Blanca;Cuenca Santa;18;ANCASH;CORONGO;CUSCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195066.61;9040428.11
+34432;59;Point;0.783576;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;198858.58;9039958.06
+34433;60;Point;0.756152;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;197429.63;9039974.66
+34434;61;Point;0.814983;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;197756.72;9039892.51
+34435;62;Point;0.805109;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;199952.08;9039837.28
+34436;63;Point;0.807816;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;200557.59;9039692.29
+34437;64;Point;0.764262;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;192638.53;9039626.47
+34438;65;Point;0.768136;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;197375.8;9039620.3
+34439;66;Point;0.764957;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193375.13;9039359.27
+34440;67;Point;0.765475;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;192571.1;9039377.39
+34441;68;Point;0.795433;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193586.07;9039265.53
+34442;69;Point;0.756184;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;198903.94;9039269.43
+34443;70;Point;0.824849;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195487.78;9039205.71
+34444;71;Point;0.765473;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193613.24;9039082.89
+34445;72;Point;0.769755;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193720.03;9038941.38
+34446;73;Point;0.788874;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195217.74;9038700.78
+34447;74;Point;0.790886;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195274.76;9038570.28
+34448;75;Point;0.76805;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195489.4;9038467.69
+34449;76;Point;0.803687;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;SAN JUAN;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa;206471.77;9038031.17
+34450;77;Point;0.766834;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193016.85;9037963.76
+34451;78;Point;0.768559;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195769.8;9037956.6
+34452;79;Point;0.777816;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193425.12;9037941.91
+34453;80;Point;0.784132;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;192500.48;9037817.77
+34454;81;Point;0.775909;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195463.74;9037831.46
+34455;82;Point;0.77813;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193522.86;9037768.62
+34456;83;Point;0.77104;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193452.31;9037609.01
+34457;84;Point;0.763876;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195493.03;9037584.2
+34458;85;Point;0.776389;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195734.07;9037429.36
+34459;86;Point;0.768794;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;195892.34;9037275.57
+34460;87;Point;0.784435;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;194300.9;9037241.55
+34461;88;Point;0.759809;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193799.49;9037014.97
+34462;89;Point;0.78312;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;194487.87;9036854.86
+34463;90;Point;0.802361;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;194810.42;9036903.08
+34464;91;Point;0.759105;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;SAN JUAN;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa;208466.85;9036987.68
+34465;92;Point;0.766074;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193529.55;9036858.87
+34466;93;Point;0.797711;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;SAN JUAN;FormaciÃ³n OyÃ³n - Miembro superior;Sedimentaria;Areniscas, lutitas.;208051.54;9036794.41
+34467;94;Point;0.77049;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Punta Moreno;Sedimentaria;Arenisca, caliza;193510.95;9036698.65
+34468;95;Point;0.830106;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;193195.06;9036475.96
+34469;96;Point;0.83213;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;205340.48;9036365.2
+34470;97;Point;0.771456;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;192688.41;9035992.58
+34471;98;Point;0.808863;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;196192.89;9035733.7
+34472;99;Point;0.842588;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;195811.26;9035673.72
+34473;100;Point;0.833975;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;195995.55;9035605.9
+34474;101;Point;0.830109;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;195273.69;9035506.64
+34475;102;Point;0.753887;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;205741.91;9035530.2
+34476;103;Point;0.778378;Blanca;Intercuenca Alto Marañón V;18;ANCASH;SIHUAS;SAN JUAN;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Lutita, caliza mudstone, caliza bounstone;208566.96;9035405.94
+34477;104;Point;0.804005;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;207180.41;9034941.34
+34478;105;Point;0.787383;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;199953.29;9034834.26
+34479;106;Point;0.836698;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;198783.88;9034708.92
+34480;107;Point;0.793514;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;206934.73;9034572.24
+34481;108;Point;0.770457;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;208581.72;9034242.82
+34482;109;Point;0.763304;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;208129.65;9033588.43
+34483;110;Point;0.770813;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;204516.82;9032764.16
+34484;111;Point;0.762497;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, arenisca;180340.34;9032220.15
+34485;112;Point;0.787372;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;206042.35;9028327.49
+34486;113;Point;0.783293;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;206510.25;9026920.68
+34487;114;Point;0.76484;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;DepÃ³sito aluvial;Sedimento;Grava, arena;194627.57;9026483.83
+34488;115;Point;0.787541;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;207915.36;9026508.12
+34489;116;Point;0.764415;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;196323.31;9026220.44
+34490;117;Point;0.761019;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;197720.15;9026136.27
+34491;118;Point;0.771129;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;197877.25;9026067.82
+34492;119;Point;0.767247;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;199399.38;9025798.57
+34493;120;Point;0.765734;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;204343.9;9025600.25
+34494;121;Point;0.757128;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;198392.94;9024530.45
+34495;122;Point;0.852711;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;205173.6;9024514.08
+34496;123;Point;0.772053;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;197679.89;9024437.39
+34497;124;Point;0.799894;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;205321.24;9023892.2
+34498;125;Point;0.782435;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;215236.33;9021955
+34499;126;Point;0.783432;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;215742.34;9022022.64
+34500;127;Point;0.820841;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;215533.99;9022013.16
+34501;128;Point;0.752869;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;215371.95;9021852.97
+34502;129;Point;0.774462;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;215055.29;9021784.73
+34503;130;Point;0.78515;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;216411.36;9021033.95
+34504;131;Point;0.788199;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Arenisca, lutita;213294.36;9020590.8
+34505;132;Point;0.789052;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;215571.57;9020161.3
+34506;133;Point;0.774632;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;214262.66;9019702.81
+34507;134;Point;0.763867;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;213834.52;9019467.84
+34508;135;Point;0.788713;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;213498.5;9019327.13
+34509;136;Point;0.822337;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;199546.61;9018934.48
+34510;137;Point;0.771415;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;215018.93;9019014.16
+34511;138;Point;0.791782;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;211537.7;9018704.4
+34512;139;Point;0.776315;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;YURACMARCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;210992.6;9018185.22
+34513;140;Point;0.762301;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa;218576.83;9017376.61
+34514;141;Point;0.755797;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;POMABAMBA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;217806.86;9017202.29
+34515;142;Point;0.753656;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;HUAYLLAN;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;220138.06;9016785.9
+34516;143;Point;0.767109;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;204349.83;9016106.08
+34517;144;Point;0.769751;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;205433.71;9015258.88
+34518;145;Point;0.784445;Blanca;Intercuenca Alto Marañón V;18;ANCASH;POMABAMBA;HUAYLLAN;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;223473.84;9014010.24
+34519;146;Point;0.776273;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;Batolito Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;196808.43;9013482.03
+34520;147;Point;0.766719;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;215058.68;9012908.25
+34521;148;Point;0.780551;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;208148.71;9012143.33
+34522;149;Point;0.778017;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;SANTA CRUZ;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;214679.63;9011280.11
+34523;150;Point;0.781567;Blanca;Intercuenca Alto Marañón V;18;ANCASH;MARISCAL LUZURIAGA;LLUMPA;DepÃ³sito glaciar;Sedimento;Grava, arena, limo;220972.99;9010139.25
+34524;151;Point;0.813868;Blanca;Intercuenca Alto Marañón V;18;ANCASH;MARISCAL LUZURIAGA;LLUMPA;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;222558.8;9009446.18
+34525;152;Point;0.779099;Blanca;Intercuenca Alto Marañón V;18;ANCASH;MARISCAL LUZURIAGA;LLUMPA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;220232.43;9008830.49
+34526;153;Point;0.774863;Blanca;Intercuenca Alto Marañón V;18;ANCASH;MARISCAL LUZURIAGA;LLUMPA;FormaciÃ³n OyÃ³n - Miembro inferior;Sedimentaria;Arenisca, lutita;221579.31;9007979.54
+34527;154;Point;0.792529;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;CARAZ;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;200843.88;9005938.04
+34528;155;Point;0.772513;Blanca;Cuenca Santa;18;ANCASH;HUAYLAS;CARAZ;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;200372.36;9005315.6
+34529;156;Point;0.780601;Blanca;Cuenca Santa;18;ANCASH;YUNGAY;YUNGAY;Sin denominaciÃ³n;Sin denominaciÃ³n; ;216260.63;9003876.39
+34530;157;Point;0.758818;Blanca;Cuenca Santa;18;ANCASH;YUNGAY;YUNGAY;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;215504.96;9003581.09
+34531;158;Point;0.786105;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;216494.62;9002536.17
+34532;159;Point;0.762295;Blanca;Cuenca Santa;18;ANCASH;YUNGAY;YUNGAY;Sin denominaciÃ³n;Sin denominaciÃ³n; ;216010.23;9002479.48
+34533;160;Point;0.779347;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;216583.43;9002368.37
+34534;161;Point;0.766477;Blanca;Cuenca Santa;18;ANCASH;YUNGAY;YUNGAY;Sin denominaciÃ³n;Sin denominaciÃ³n; ;215760.18;9002232.24
+34535;162;Point;0.769979;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;216009.73;9002083.46
+34536;163;Point;0.816684;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;DepÃ³sito aluvial;Sedimento;Limo, arena, bloques;217726.78;8999649.94
+34537;164;Point;0.76971;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;DepÃ³sito aluvial;Sedimento;Limo, arena, bloques;218216.89;8999519.18
+34538;165;Point;0.753114;Blanca;Intercuenca Alto Marañón V;18;ANCASH;CARLOS FERMIN FITZCARRALD;SAN LUIS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;246654.15;8998252.98
+34539;166;Point;0.762585;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;226157.06;8996666.51
+34540;167;Point;0.774544;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;226700.9;8995928.58
+34541;168;Point;0.774317;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;228144.48;8995750.61
+34542;169;Point;0.7797;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;226092.87;8995332.44
+34543;170;Point;0.777414;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;225182.9;8995225.59
+34544;171;Point;0.787524;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;226238.06;8995422.78
+34545;172;Point;0.78074;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;224858.05;8994970.64
+34546;173;Point;0.756516;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;225320.83;8994697.4
+34547;174;Point;0.788424;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;223947.16;8993671.02
+34548;175;Point;0.808563;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;ACOCHACA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;233822.74;8993792.28
+34549;176;Point;0.787496;Blanca;Intercuenca Alto Marañón V;18;ANCASH;YUNGAY;YANAMA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;224098.91;8993362.81
+34550;177;Point;0.753489;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;ACOCHACA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;233541.55;8993207.46
+34551;178;Point;0.768257;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SHILLA;DepÃ³sito coluvial;Sedimento;Bloques;222965.11;8992794.74
+34552;179;Point;0.793905;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;ACOCHACA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;231020.05;8992787.89
+34553;180;Point;0.77175;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;228967.94;8991630.77
+34554;181;Point;0.834025;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234108.53;8988395.07
+34555;182;Point;0.776745;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234558.43;8987043.7
+34556;183;Point;0.78104;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;245831.92;8983419.33
+34557;184;Point;0.842274;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CAJAY;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Areniscas, microconglomerados;268326.82;8981886.7
+34558;185;Point;0.771758;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;249551.17;8981493.34
+34559;186;Point;0.771523;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;250867.61;8980249.33
+34560;187;Point;0.765639;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;242511.59;8978908.21
+34561;188;Point;0.76446;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;251786.03;8978427.95
+34562;189;Point;0.778969;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;225741.17;8977970.67
+34563;190;Point;0.773436;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;227485.05;8978093.15
+34564;191;Point;0.785394;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;DepÃ³sito glaciar, fluvial;Sedimento;Cantos, arenas, limos;230044.22;8978004.27
+34565;192;Point;0.777081;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;227432.93;8977855.31
+34566;193;Point;0.766746;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;226544.25;8977825.92
+34567;194;Point;0.786182;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ANTONIO RAYMONDI;SAN JUAN DE RONTOY;FormaciÃ³n Jumasha;Sedimentaria;Calizas, margas, areniscas calcÃ¡reas;276836.5;8978012.79
+34568;195;Point;0.768758;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ANTONIO RAYMONDI;SAN JUAN DE RONTOY;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;272195.8;8977680.6
+34569;196;Point;0.767007;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;248651.9;8976955.14
+34570;197;Point;0.788747;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;248756.46;8976819.14
+34571;198;Point;0.762497;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;245931.67;8976753.69
+34572;199;Point;0.789899;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234821.79;8976187.95
+34573;200;Point;0.773381;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;235604.26;8975846.98
+34574;201;Point;0.762561;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;235728.25;8975766.64
+34575;202;Point;0.77446;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;235920.47;8975719.89
+34576;203;Point;0.800741;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;252660.37;8975671.98
+34577;204;Point;0.795904;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234331.06;8975448.02
+34578;205;Point;0.766388;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;250552.5;8975066.36
+34579;206;Point;0.770062;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234793.01;8974607.2
+34580;207;Point;0.77679;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234187.79;8974465.07
+34581;208;Point;0.792107;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234074.86;8974204.7
+34582;209;Point;0.756647;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;234233.02;8974180.92
+34583;210;Point;0.766578;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;235961.18;8974177.74
+34584;211;Point;0.766578;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244354.41;8973809.34
+34585;212;Point;0.775804;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244997.36;8974048.94
+34586;213;Point;0.786746;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244915.38;8973485.05
+34587;214;Point;0.778432;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;235614.17;8973653.51
+34588;215;Point;0.778321;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246799.3;8973611.2
+34589;216;Point;0.76927;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;245102.71;8973604.82
+34590;217;Point;0.767379;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245369.12;8973618.08
+34591;218;Point;0.765425;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CAJAY;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Areniscas, lutitas;268774.95;8973719.97
+34592;219;Point;0.766562;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;245280.68;8973304.31
+34593;220;Point;0.818941;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;234655.95;8973150.57
+34594;221;Point;0.773374;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243064.65;8973143.33
+34595;222;Point;0.7551;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;247372.63;8973209.57
+34596;223;Point;0.772281;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;240945.48;8972569.35
+34597;224;Point;0.780166;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;DepÃ³sito Coluvial;Sedimento;Bloques, gravas, arenas;234893.57;8972402.74
+34598;225;Point;0.767054;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;239209.81;8972239.68
+34599;226;Point;0.808417;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;241777.59;8971985.99
+34600;227;Point;0.785172;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243039.35;8971988.46
+34601;228;Point;0.755552;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249488.38;8972015.55
+34602;229;Point;0.835056;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;238193.45;8971891.58
+34603;230;Point;0.787975;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;246986.01;8971924.83
+34604;231;Point;0.779955;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243112.77;8971834.87
+34605;232;Point;0.760122;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;242188.74;8971709.49
+34606;233;Point;0.79129;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243174.8;8971661.33
+34607;234;Point;0.78345;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243090.54;8971485.92
+34608;235;Point;0.761695;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;242268.06;8971362.11
+34609;236;Point;0.765228;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;253693.03;8971460.91
+34610;237;Point;0.802211;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249945.39;8971319.41
+34611;238;Point;0.776433;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;250461.23;8971196.81
+34612;239;Point;0.767238;Blanca;Intercuenca Alto Marañón V;18;ANCASH;ASUNCION;CHACAS;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;242459.64;8971058.55
+34613;240;Point;0.766036;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246166.86;8970921.8
+34614;241;Point;0.764234;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246297.97;8970687.82
+34615;242;Point;0.781913;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243363.08;8969884.02
+34616;243;Point;0.773586;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249374.75;8969730.37
+34617;244;Point;0.756692;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;248940.72;8969671.24
+34618;245;Point;0.861639;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;DepÃ³sito glaciar, fluvial;Sedimento;Gravas, arenas, limos;240799.7;8969486.45
+34619;246;Point;0.774656;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245919.11;8969485.94
+34620;247;Point;0.841061;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;242735.95;8969506.42
+34621;248;Point;0.790856;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243862.39;8969455.64
+34622;249;Point;0.796697;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243691.14;8969373.57
+34623;250;Point;0.788504;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249968.17;8969394.91
+34624;251;Point;0.780216;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245963.53;8969173.54
+34625;252;Point;0.76136;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;250364.76;8969307.68
+34626;253;Point;0.796382;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;243427.98;8969040.64
+34627;254;Point;0.768095;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246081.32;8968900.97
+34628;255;Point;0.774953;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244024.12;8968749.09
+34629;256;Point;0.757405;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;252541.1;8968884.27
+34630;257;Point;0.79971;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;DepÃ³sito glaciar, fluvial;Sedimento;Gravas, arenas, limos;241137;8968449.24
+34631;258;Point;0.766849;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;253561.36;8968480.76
+34632;259;Point;0.780729;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;250268.69;8968362.8
+34633;260;Point;0.779849;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249007.3;8967770.22
+34634;261;Point;0.763024;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244473.92;8967674.02
+34635;262;Point;0.759834;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;246361.73;8967727.83
+34636;263;Point;0.753976;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;254739.07;8967630.95
+34637;264;Point;0.75423;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;244413.82;8967430.1
+34638;265;Point;0.76365;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;237217.1;8967332.3
+34639;266;Point;0.765752;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245024.87;8967341.35
+34640;267;Point;0.757691;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;MARCARA;DepÃ³sito glaciar, fluvial;Sedimento;Gravas, arenas, limos;242815.69;8967240.61
+34641;268;Point;0.767397;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Sin denominaciÃ³n;Sin denominaciÃ³n; ;237379.17;8966968.92
+34642;269;Point;0.820075;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;245434.42;8966865.27
+34643;270;Point;0.811547;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;245306.36;8966727.75
+34644;271;Point;0.798595;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;250228.35;8966724.93
+34645;272;Point;0.80305;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;245517.49;8966392.67
+34646;273;Point;0.771247;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Coluvial;Sedimento;Bloques, gravas, arenas;246207.88;8966093.37
+34647;274;Point;0.786914;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Coluvial;Sedimento;Bloques, gravas, arenas;246403.01;8965945.56
+34648;275;Point;0.77883;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;239596.41;8965796.56
+34649;276;Point;0.78329;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Sin denominaciÃ³n;Sin denominaciÃ³n; ;239185.37;8965342.62
+34650;277;Point;0.764036;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;242659.24;8965278.07
+34651;278;Point;0.77225;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;248013.56;8965085.88
+34652;279;Point;0.770066;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;248849.83;8965106.36
+34653;280;Point;0.783032;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;240637.08;8965029.32
+34654;281;Point;0.765354;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249127.18;8965075.36
+34655;282;Point;0.755368;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;248403.09;8965035.86
+34656;283;Point;0.776844;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;240717.1;8964874.12
+34657;284;Point;0.75717;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;249642.45;8964814.3
+34658;285;Point;0.784638;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;240919.81;8964518.05
+34659;286;Point;0.760395;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;250022.72;8964425.14
+34660;287;Point;0.769082;Blanca;Cuenca Santa;18;ANCASH;CARHUAZ;SAN MIGUEL DE ACO;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241938.51;8961591.9
+34661;288;Point;0.783898;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242485.64;8961165.61
+34662;289;Point;0.777439;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242223.49;8960937.59
+34663;290;Point;0.775046;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;TARICA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;234567.06;8960965.51
+34664;291;Point;0.802739;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242923.61;8960377.38
+34665;292;Point;0.773988;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242661.72;8960269.69
+34666;293;Point;0.757511;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;251312.29;8960134.6
+34667;294;Point;0.774966;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;DepÃ³sito Glaciar;Sedimento;Cantos, bloques, gravas;235741.75;8960011
+34668;295;Point;0.815781;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;239371.64;8959687.84
+34669;296;Point;0.794604;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242545.09;8959699.25
+34670;297;Point;0.770271;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245011.58;8959632.84
+34671;298;Point;0.776087;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242763.69;8959412.21
+34672;299;Point;0.78719;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242963.17;8959515.1
+34673;300;Point;0.780948;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241974.13;8959467.8
+34674;301;Point;0.771555;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;DepÃ³sito Coluvial;Sedimento;Bloques, gravas, arenas;240415.39;8959338.7
+34675;302;Point;0.780629;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242009.75;8959308
+34676;303;Point;0.821768;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241796;8959201.58
+34677;304;Point;0.766922;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243414.5;8959178.69
+34678;305;Point;0.752244;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241077.83;8959177.49
+34679;306;Point;0.779234;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243686.88;8958331.17
+34680;307;Point;0.778391;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243854.1;8957603.68
+34681;308;Point;0.757634;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245636.59;8957415.4
+34682;309;Point;0.775239;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;244235.5;8957315.86
+34683;310;Point;0.779839;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245684.71;8957228.52
+34684;311;Point;0.773958;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;244224.17;8956924.32
+34685;312;Point;0.779672;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUARI;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;252893.5;8956760.39
+34686;313;Point;0.758179;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246682.09;8956528.55
+34687;314;Point;0.774396;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246345.2;8956514.61
+34688;315;Point;0.772874;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246840.31;8956482.38
+34689;316;Point;0.777888;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245135.29;8956335.25
+34690;317;Point;0.767061;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246747.53;8956332.67
+34691;318;Point;0.758742;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245463.48;8955984.56
+34692;319;Point;0.761251;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Andesita;VolcÃ¡nica;Andesita;229043.4;8955641.76
+34693;320;Point;0.761595;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;244176.2;8955734.83
+34694;321;Point;0.816218;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245147.75;8955722.37
+34695;322;Point;0.798557;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245803.46;8955567.68
+34696;323;Point;0.851545;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245063.83;8955539.99
+34697;324;Point;0.755434;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245913.01;8955419.31
+34698;325;Point;0.792092;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Andesita;VolcÃ¡nica;Andesita;228676.75;8955263.06
+34699;326;Point;0.788731;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245096.45;8955273.07
+34700;327;Point;0.767799;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;Andesita;VolcÃ¡nica;Andesita;228671.57;8954978.25
+34701;328;Point;0.849335;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;245124.12;8954946.48
+34702;329;Point;0.81681;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;243590.56;8954831.18
+34703;330;Point;0.752939;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;242720.34;8954904.32
+34704;331;Point;0.803672;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;243000.7;8954796.44
+34705;332;Point;0.780887;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246480.26;8954213.71
+34706;333;Point;0.762124;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;246243.48;8954202.2
+34707;334;Point;0.776038;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;239941.34;8953913.47
+34708;335;Point;0.757596;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;239745.79;8953764.28
+34709;336;Point;0.810646;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;239888.42;8953629.65
+34710;337;Point;0.803608;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242973.4;8953595.16
+34711;338;Point;0.783864;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243337.67;8953066.56
+34712;339;Point;0.767038;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;244102.61;8952874.62
+34713;340;Point;0.766057;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;244689.05;8952972.56
+34714;341;Point;0.762178;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243380.5;8952861.09
+34715;342;Point;0.763404;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242112.68;8952807.82
+34716;343;Point;0.778852;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243825.58;8952716.78
+34717;344;Point;0.761878;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;245184.71;8952763.81
+34718;345;Point;0.767035;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243331.89;8952633.73
+34719;346;Point;0.772688;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241293.77;8952575.02
+34720;347;Point;0.776048;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241639.55;8952538.73
+34721;348;Point;0.767507;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242915.44;8952553.13
+34722;349;Point;0.785541;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;241902.06;8952366.9
+34723;350;Point;0.772076;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243753.57;8952416.28
+34724;351;Point;0.772408;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242915.22;8952341.07
+34725;352;Point;0.785452;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;INDEPENDENCIA;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;238347.71;8952064.87
+34726;353;Point;0.767627;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242611.74;8951830.09
+34727;354;Point;0.760701;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;237865.66;8951601
+34728;355;Point;0.778249;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242836.49;8951575.15
+34729;356;Point;0.754985;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242787.98;8951450.57
+34730;357;Point;0.761691;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243593.62;8951252.22
+34731;358;Point;0.777513;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Aluvial;Sedimento;Gravas, arenas, limos;237340.42;8951060.6
+34732;359;Point;0.76311;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;242735.85;8951132.14
+34733;360;Point;0.793021;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito Glaciar;Sedimento;Cantos, bloques, gravas;241573.64;8949968.24
+34734;361;Point;0.760609;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutitas, areniscas;243068.42;8949374.97
+34735;362;Point;0.776868;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Areniscas, lutitas;251823.01;8949104.99
+34736;363;Point;0.772983;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;242998.77;8948971.93
+34737;364;Point;0.757991;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;242416.52;8948734.4
+34738;365;Point;0.796623;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;HUANTAR;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;257125.44;8948533.62
+34739;366;Point;0.755507;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;252730.02;8947709.42
+34740;367;Point;0.831363;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;252882.35;8947549.72
+34741;368;Point;0.768406;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Sin denominaciÃ³n;Sin denominaciÃ³n; ;240992.98;8947414.28
+34742;369;Point;0.785426;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;241081.94;8946619
+34743;370;Point;0.760034;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, monzogranito;236592.96;8946070.25
+34744;371;Point;0.810514;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244084.8;8945713.92
+34745;372;Point;0.778784;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Sin denominaciÃ³n;Sin denominaciÃ³n; ;244954.76;8945596.89
+34746;373;Point;0.778532;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;DepÃ³sito aluvial;Sedimento;Limo, arena, bloques;241370.08;8945584.05
+34747;374;Point;0.764133;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244231.36;8945636.38
+34748;375;Point;0.758644;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247573.71;8945578.24
+34749;376;Point;0.761421;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;253432.63;8945366.6
+34750;377;Point;0.773297;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244015.18;8945031.89
+34751;378;Point;0.785162;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247482.72;8945060.05
+34752;379;Point;0.774637;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Sin denominaciÃ³n;Sin denominaciÃ³n; ;244628.22;8944993.5
+34753;380;Point;0.78589;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;HUARAZ;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244295.99;8945123.91
+34754;381;Point;0.797101;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;249201.56;8944834.73
+34755;382;Point;0.773847;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247316.35;8944713.41
+34756;383;Point;0.75992;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247152.75;8944586.42
+34757;384;Point;0.765502;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;247808.22;8944439.69
+34758;385;Point;0.769431;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;249466.27;8944368.18
+34759;386;Point;0.7797;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247109.13;8944224.08
+34760;387;Point;0.761373;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;249655.17;8944150.05
+34761;388;Point;0.760799;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244975.95;8944151.88
+34762;389;Point;0.760475;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244120.06;8944143.62
+34763;390;Point;0.784592;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245259.42;8944083.04
+34764;391;Point;0.786554;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;250120.73;8943901.99
+34765;392;Point;0.779031;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245320.92;8943838.6
+34766;393;Point;0.778742;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247023.45;8943755.57
+34767;394;Point;0.792914;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244969.81;8943648.75
+34768;395;Point;0.816686;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247382.65;8943683.42
+34769;396;Point;0.774607;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245629.25;8943655.54
+34770;397;Point;0.781429;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;250592.11;8943706.33
+34771;398;Point;0.763954;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247593.71;8943396.57
+34772;399;Point;0.751191;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247286.99;8943444.22
+34773;400;Point;0.773401;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245500.55;8943128.54
+34774;401;Point;0.758775;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245363.99;8943056.94
+34775;402;Point;0.780701;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;251219.72;8942929.25
+34776;403;Point;0.758314;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247626.67;8942810.33
+34777;404;Point;0.76177;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;252251.8;8942870.7
+34778;405;Point;0.755052;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;253604.95;8942889.47
+34779;406;Point;0.766603;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246752.15;8942768.05
+34780;407;Point;0.761092;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246198.14;8942353.49
+34781;408;Point;0.755345;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245937.65;8942356.71
+34782;409;Point;0.773444;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;246153.67;8942144.45
+34783;410;Point;0.763252;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;244786.43;8941894.21
+34784;411;Point;0.761588;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245185.94;8941904.35
+34785;412;Point;0.768712;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245918.67;8941755.21
+34786;413;Point;0.786993;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245927.04;8941418.73
+34787;414;Point;0.798438;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247522.81;8941372.09
+34788;415;Point;0.76456;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245414.6;8941157.08
+34789;416;Point;0.753954;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245991.76;8941155.99
+34790;417;Point;0.758818;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247124.65;8941161.93
+34791;418;Point;0.786483;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247539.32;8941115
+34792;419;Point;0.770573;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247009.77;8940801.11
+34793;420;Point;0.773136;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245331.49;8940801.99
+34794;421;Point;0.770978;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245390.93;8940661.1
+34795;422;Point;0.762997;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246673.4;8940629.11
+34796;423;Point;0.76368;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247515.37;8940516.79
+34797;424;Point;0.779532;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245355.34;8940357.36
+34798;425;Point;0.771575;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246893.83;8940488.85
+34799;426;Point;0.754651;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244895.66;8940326.9
+34800;427;Point;0.790085;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247585.53;8940351.59
+34801;428;Point;0.798129;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244733.26;8940271.13
+34802;429;Point;0.77295;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245528.07;8940178.75
+34803;430;Point;0.779544;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247864.63;8940167.91
+34804;431;Point;0.776036;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244760.16;8939939.97
+34805;432;Point;0.757095;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244304.16;8939776.19
+34806;433;Point;0.774154;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;248068.09;8939789.57
+34807;434;Point;0.786982;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;248281.2;8939787.01
+34808;435;Point;0.779461;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246889.33;8939563.13
+34809;436;Point;0.761283;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;244991.8;8939604.41
+34810;437;Point;0.769831;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244855.22;8939498.28
+34811;438;Point;0.768579;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;244587.48;8939458.37
+34812;439;Point;0.7971;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245217.23;8939157.46
+34813;440;Point;0.785664;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;248053.36;8939378.24
+34814;441;Point;0.778037;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;248202.46;8939315.34
+34815;442;Point;0.775132;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246992.56;8939197.91
+34816;443;Point;0.761271;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;248024.78;8939085.54
+34817;444;Point;0.784963;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246394.75;8938916.23
+34818;445;Point;0.777433;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245761.08;8938752.07
+34819;446;Point;0.762271;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;248057.64;8938842.23
+34820;447;Point;0.783817;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;238607.58;8938693.43
+34821;448;Point;0.778674;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245068.55;8938588.55
+34822;449;Point;0.784108;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246737.9;8938515.31
+34823;450;Point;0.760401;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247289.06;8938462.68
+34824;451;Point;0.757211;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;246739.04;8938346.34
+34825;452;Point;0.799862;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247300.9;8938045.28
+34826;453;Point;0.77556;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;244370.36;8937869.13
+34827;454;Point;0.829482;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247438.38;8937643.13
+34828;455;Point;0.785606;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245757.22;8937481.45
+34829;456;Point;0.831243;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247548.01;8937318.81
+34830;457;Point;0.784452;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;247123.05;8937425.5
+34831;458;Point;0.763173;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Sin denominaciÃ³n;Sin denominaciÃ³n; ;245912.97;8937228.49
+34832;459;Point;0.795428;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;240005.47;8936988.37
+34833;460;Point;0.769407;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;243716.03;8936796.78
+34834;461;Point;0.765351;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245171.01;8936809.97
+34835;462;Point;0.82031;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;243714.68;8936525.63
+34836;463;Point;0.77941;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;248674.27;8936614.85
+34837;464;Point;0.854148;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;247502.23;8936512.04
+34838;465;Point;0.762551;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;246079.37;8936447
+34839;466;Point;0.755148;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240880.27;8936020.25
+34840;467;Point;0.773203;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240845.92;8935891.49
+34841;468;Point;0.777082;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;243613.84;8935869.99
+34842;469;Point;0.759811;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240775.71;8935732.25
+34843;470;Point;0.770072;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246703.42;8935575.61
+34844;471;Point;0.76032;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240701.49;8935242.01
+34845;472;Point;0.767487;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245894.11;8935315.02
+34846;473;Point;0.752303;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246020.51;8935180.58
+34847;474;Point;0.762077;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245148.34;8935060.36
+34848;475;Point;0.788967;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;249998.31;8934799.72
+34849;476;Point;0.786037;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245223.73;8934125.51
+34850;477;Point;0.763639;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251631.47;8933950.76
+34851;478;Point;0.755567;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238563.02;8933747.71
+34852;479;Point;0.754544;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238435.69;8933617.6
+34853;480;Point;0.809016;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;250420.21;8933654.48
+34854;481;Point;0.759829;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;250093.72;8933556.22
+34855;482;Point;0.783771;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;250751.98;8933452.92
+34856;483;Point;0.784957;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;250746.47;8933292.19
+34857;484;Point;0.7965;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246269.77;8933247.82
+34858;485;Point;0.761028;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;242847.7;8933225.63
+34859;486;Point;0.772873;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;242054.04;8933138.22
+34860;487;Point;0.758922;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;237887.09;8933072.01
+34861;488;Point;0.757145;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246020.16;8933045.95
+34862;489;Point;0.779052;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;241329.03;8932930.23
+34863;490;Point;0.766321;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;251061.16;8932938.11
+34864;491;Point;0.762682;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240942.49;8932720.47
+34865;492;Point;0.757973;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;250614.83;8932717.46
+34866;493;Point;0.763028;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240761.07;8932501.89
+34867;494;Point;0.755441;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251774.45;8932465.73
+34868;495;Point;0.754833;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;243407.03;8932210.59
+34869;496;Point;0.758724;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;250274.12;8932139.35
+34870;497;Point;0.766264;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251332.48;8931970.78
+34871;498;Point;0.759415;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;239010.04;8931882.01
+34872;499;Point;0.781985;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240082.67;8931773.5
+34873;500;Point;0.765704;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;239869.05;8931758.76
+34874;501;Point;0.759829;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238437.23;8931700.08
+34875;502;Point;0.777967;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238277.01;8931620.1
+34876;503;Point;0.761751;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;252591.66;8931687.56
+34877;504;Point;0.775435;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238080.83;8931462.99
+34878;505;Point;0.780076;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;250268.68;8931476.66
+34879;506;Point;0.770893;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;240320.76;8931339.43
+34880;507;Point;0.766096;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245204.71;8931117.01
+34881;508;Point;0.7887;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246571.33;8931034.34
+34882;509;Point;0.781947;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246208.42;8930978.87
+34883;510;Point;0.755029;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245091.38;8930861.94
+34884;511;Point;0.763489;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251839.33;8930860.9
+34885;512;Point;0.765304;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246978.33;8930649.44
+34886;513;Point;0.78357;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251964.36;8930598.33
+34887;514;Point;0.782045;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito aluvial;Sedimento;Limo, arena, bloques;229518.47;8930408.02
+34888;515;Point;0.795931;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito glaciar;Sedimento;Bloques, arena, limo;237845.93;8930497.11
+34889;516;Point;0.773049;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251369.01;8930501.37
+34890;517;Point;0.760301;Blanca;Cuenca Santa;18;ANCASH;HUARAZ;OLLEROS;DepÃ³sito aluvial;Sedimento;Limo, arena, bloques;229226.7;8930243.87
+34891;518;Point;0.798721;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251255.33;8930434.59
+34892;519;Point;0.77396;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;252142.34;8930364.82
+34893;520;Point;0.789099;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;251298.61;8930254.3
+34894;521;Point;0.813099;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;254303.55;8930289.9
+34895;522;Point;0.762233;Blanca;Cuenca Santa;18;ANCASH;RECUAY;RECUAY;DepÃ³sito glaciar;Sedimento;Bloques, arena, limo;237628.43;8929864.36
+34896;523;Point;0.774788;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;256808.54;8929836.63
+34897;524;Point;0.767041;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Pariahuanca;Sedimentaria;Areniscas, lutitas, calizas;251112.35;8929688.15
+34898;525;Point;0.799;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Pariahuanca;Sedimentaria;Areniscas, lutitas, calizas;249943.86;8929513.81
+34899;526;Point;0.761653;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Pariahuanca;Sedimentaria;Areniscas, lutitas, calizas;251078.71;8929556.23
+34900;527;Point;0.77532;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;252277.16;8929531.89
+34901;528;Point;0.783439;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Pariahuanca;Sedimentaria;Areniscas, lutitas, calizas;250917.48;8929437.3
+34902;529;Point;0.765396;Blanca;Cuenca Santa;18;ANCASH;RECUAY;RECUAY;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;237976.19;8929221.66
+34903;530;Point;0.75537;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245376.24;8929102.83
+34904;531;Point;0.766419;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Pariahuanca;Sedimentaria;Areniscas, lutitas, calizas;250425.99;8929087.19
+34905;532;Point;0.791094;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245247.91;8928888.24
+34906;533;Point;0.795954;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;253376.97;8928263.58
+34907;534;Point;0.769123;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Grupo Chicama - FormaciÃ³n Sapotal;Sedimentaria;Lutita, limolita;245269.3;8928152.82
+34908;535;Point;0.799022;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;245435.68;8927992.33
+34909;536;Point;0.819149;Blanca;Cuenca Santa;18;ANCASH;RECUAY;RECUAY;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;238925.98;8927876.11
+34910;537;Point;0.768078;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;243443.97;8927543.9
+34911;538;Point;0.756372;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;Batolito de la Cordillera Blanca;PlutÃ³nica;Granodiorita, tonalita;244923.59;8926641.54
+34912;539;Point;0.790205;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;262730.79;8926680.46
+34913;540;Point;0.758413;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;244682.76;8926381.45
+34914;541;Point;0.768042;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;262560.83;8926478.86
+34915;542;Point;0.75716;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;244343.68;8926261.17
+34916;543;Point;0.777459;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;258564.73;8926293.89
+34917;544;Point;0.754615;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;245004.42;8926262.38
+34918;545;Point;0.76009;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;244617.04;8926186.83
+34919;546;Point;0.753774;Blanca;Cuenca Santa;18;ANCASH;RECUAY;TICAPAMPA;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;243136.06;8925712.78
+34920;547;Point;0.817186;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;254472.84;8923495.18
+34921;548;Point;0.761333;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;253554.94;8922731.7
+34922;549;Point;0.790263;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;257998.65;8921179.66
+34923;550;Point;0.791117;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;257852.04;8920707.94
+34924;551;Point;0.776428;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;258847.25;8919357.26
+34925;552;Point;0.758697;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256950.38;8918445.34
+34926;553;Point;0.791577;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;256705.63;8918333.4
+34927;554;Point;0.782296;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256206.89;8917752.13
+34928;555;Point;0.786393;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253912.77;8917283.62
+34929;556;Point;0.776453;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254356.84;8917292.33
+34930;557;Point;0.772524;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;253560.44;8917087.68
+34931;558;Point;0.7607;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;263603.42;8917181.46
+34932;559;Point;0.772154;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254083.64;8916864.21
+34933;560;Point;0.754735;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;253382.66;8916766.77
+34934;561;Point;0.766778;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254089.1;8916537.9
+34935;562;Point;0.77098;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254779.08;8916557.4
+34936;563;Point;0.767438;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;252983.97;8916063.36
+34937;564;Point;0.769876;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253924.54;8916081.71
+34938;565;Point;0.784382;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254126.61;8916085.89
+34939;566;Point;0.758666;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253779.74;8915914.61
+34940;567;Point;0.764342;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254141.39;8915952.26
+34941;568;Point;0.780487;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;252737.18;8915883.5
+34942;569;Point;0.782845;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;252907.11;8915885.58
+34943;570;Point;0.778309;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253879.34;8915345.78
+34944;571;Point;0.763683;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253304.36;8915450.9
+34945;572;Point;0.777392;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250069.39;8915402.61
+34946;573;Point;0.797143;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251696.98;8915269.48
+34947;574;Point;0.769375;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;253178.69;8915202.39
+34948;575;Point;0.752679;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254152.16;8915211.38
+34949;576;Point;0.759474;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;255505.3;8915076.25
+34950;577;Point;0.762203;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;252837.57;8914983.92
+34951;578;Point;0.790695;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;PlutÃ³nica;Tonalita;248525.68;8914795.72
+34952;579;Point;0.750601;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;252696.89;8914645.02
+34953;580;Point;0.77049;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254963.54;8914444.33
+34954;581;Point;0.761633;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253357.51;8914384.39
+34955;582;Point;0.770187;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;262713.03;8914346.43
+34956;583;Point;0.760879;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253804.97;8914056.06
+34957;584;Point;0.792181;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;247596.99;8913861.48
+34958;585;Point;0.774132;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;247686.75;8913636.95
+34959;586;Point;0.776876;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;248395.47;8913651.73
+34960;587;Point;0.831603;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;248281.01;8913558.35
+34961;588;Point;0.797612;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;253637.73;8913582.1
+34962;589;Point;0.755636;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;249068.27;8913537.05
+34963;590;Point;0.777496;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;253153.02;8913514.96
+34964;591;Point;0.760028;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;252535.57;8913466.08
+34965;592;Point;0.768101;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246812.36;8913412.26
+34966;593;Point;0.764126;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;257165.41;8913486.97
+34967;594;Point;0.764577;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;252375;8913400.39
+34968;595;Point;0.7645;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;256032.56;8913365.17
+34969;596;Point;0.782404;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;261195.68;8913091.28
+34970;597;Point;0.773786;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;260214.14;8913074.59
+34971;598;Point;0.759251;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;251672.89;8912993.1
+34972;599;Point;0.769175;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Sin denominaciÃ³n;Sin denominaciÃ³n; ;261800.51;8912962.78
+34973;600;Point;0.773949;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;260663.74;8912908.55
+34974;601;Point;0.764859;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;261954.2;8912851.07
+34975;602;Point;0.788493;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;253725.58;8912598.33
+34976;603;Point;0.763136;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;246571.32;8912625.33
+34977;604;Point;0.770013;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;260659.39;8912650.1
+34978;605;Point;0.78459;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;260473.82;8912554.47
+34979;606;Point;0.785953;Blanca;Intercuenca Alto Marañón V;18;ANCASH;HUARI;CHAVIN DE HUANTAR;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;260647.81;8912217.67
+34980;607;Point;0.792448;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;253463.87;8912241.44
+34981;608;Point;0.76109;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;249370.29;8912134.26
+34982;609;Point;0.75276;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;253008.84;8911986.59
+34983;610;Point;0.781733;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;260986.65;8911672.48
+34984;611;Point;0.790742;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;252479.56;8911743.53
+34985;612;Point;0.778673;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;261733.26;8911540.9
+34986;613;Point;0.777717;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251807.3;8911066.22
+34987;614;Point;0.771949;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;260233.37;8911133.24
+34988;615;Point;0.777611;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;259638.01;8911107.82
+34989;616;Point;0.752699;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;260870.96;8911107.58
+34990;617;Point;0.76652;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251454.97;8910958.94
+34991;618;Point;0.782348;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;264233.26;8911037.21
+34992;619;Point;0.760813;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Caliza, arenisca, limolita;268891.68;8911008.17
+34993;620;Point;0.766058;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;262652.13;8910914.63
+34994;621;Point;0.797902;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;260886.31;8910731.17
+34995;622;Point;0.759675;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;261325.76;8910768.46
+34996;623;Point;0.760694;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251042.76;8910692.74
+34997;624;Point;0.756803;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;259749;8910715.94
+34998;625;Point;0.80456;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;261125.91;8910690.52
+34999;626;Point;0.761737;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;248324.31;8910366.07
+35000;627;Point;0.78406;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;254123.37;8909332.07
+35001;628;Point;0.767123;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito coluvial;Sedimento;Bloques, ceniza;267389.95;8909428.36
+35002;629;Point;0.784189;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;276486.28;8909330.87
+35003;630;Point;0.771881;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;271022.05;8909207.71
+35004;631;Point;0.759804;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;271476.24;8909075.38
+35005;632;Point;0.756877;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;271682.29;8908921.24
+35006;633;Point;0.756912;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;242309.27;8908748.79
+35007;634;Point;0.759846;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;272430.91;8908695.95
+35008;635;Point;0.770935;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;272635.16;8908141.07
+35009;636;Point;0.756164;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;272744.72;8907956.23
+35010;637;Point;0.78136;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251000.44;8907569.68
+35011;638;Point;0.806803;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251734.54;8907521.66
+35012;639;Point;0.775712;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;252268.76;8907455.69
+35013;640;Point;0.780927;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;259003.81;8907490.71
+35014;641;Point;0.800403;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Caliza, arenisca, limolita;270045.85;8907514.51
+35015;642;Point;0.784634;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;249494.6;8907162.09
+35016;643;Point;0.768558;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;262918.26;8907242.93
+35017;644;Point;0.78778;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;261400.39;8907144.33
+35018;645;Point;0.809356;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;249008.28;8906975.26
+35019;646;Point;0.766082;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Caliza, arenisca, limolita;270379.37;8907062.62
+35020;647;Point;0.802044;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;272593.75;8907100.58
+35021;648;Point;0.815372;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;272401.48;8907036.07
+35022;649;Point;0.813257;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;261104.5;8906853.81
+35023;650;Point;0.809878;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;272658.89;8906832.64
+35024;651;Point;0.760194;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Caliza, arenisca, limolita;270353.08;8906914.32
+35025;652;Point;0.769824;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;264121.96;8906276.68
+35026;653;Point;0.764025;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito aluvial;Sedimento;Arena, limo;246783;8906119.32
+35027;654;Point;0.793941;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito coluvial;Sedimento;Bloques;250743.55;8906133.28
+35028;655;Point;0.761214;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;261511.32;8906110.66
+35029;656;Point;0.792114;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;252107.1;8904506.7
+35030;657;Point;0.779592;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;259698.69;8904488.62
+35031;658;Point;0.763463;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;261251.44;8904404.39
+35032;659;Point;0.77414;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;261008.79;8904372.27
+35033;660;Point;0.835654;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;258772.32;8904247.12
+35034;661;Point;0.762334;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;263326.3;8904348.32
+35035;662;Point;0.815815;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;259051.9;8904213.72
+35036;663;Point;0.776321;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Jumasha - Miembro 1;Sedimentaria;Caliza wackstone, caliza bioclÃ¡stica;274818.34;8904107.95
+35037;664;Point;0.776041;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;260535.21;8903915.98
+35038;665;Point;0.766446;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;260576.49;8903632.98
+35039;666;Point;0.770042;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;260794.22;8903493.05
+35040;667;Point;0.761944;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;259915.32;8903580.6
+35041;668;Point;0.797567;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;282585.44;8903752.56
+35042;669;Point;0.757978;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;259492.87;8903567.88
+35043;670;Point;0.794465;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito aluvial;Sedimento;Arena, limo, grava;263754.31;8903555.06
+35044;671;Point;0.771066;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;282648.99;8903560.8
+35045;672;Point;0.765959;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;252463.08;8903328.15
+35046;673;Point;0.762634;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;261302.51;8903376.01
+35047;674;Point;0.784374;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;259980.64;8903230.86
+35048;675;Point;0.761541;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;261019.01;8903215.12
+35049;676;Point;0.758651;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;268457.54;8903291.27
+35050;677;Point;0.756688;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;262525.82;8903175.27
+35051;678;Point;0.774715;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;268541.85;8903093.97
+35052;679;Point;0.767212;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;261897.91;8902747.1
+35053;680;Point;0.774144;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;257690.18;8902706.12
+35054;681;Point;0.759171;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;260846.28;8902316.97
+35055;682;Point;0.782185;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;257924.49;8902135.15
+35056;683;Point;0.764649;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;259784.09;8901996.89
+35057;684;Point;0.787235;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250014.12;8901904.92
+35058;685;Point;0.779899;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;251776.81;8901786.66
+35059;686;Point;0.824564;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito aluvial;Sedimento;Arena, limo, grava;263443.89;8901860.79
+35060;687;Point;0.826236;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;263162.38;8901791.54
+35061;688;Point;0.780539;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;257355.14;8901716.02
+35062;689;Point;0.75085;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;275483.01;8901786.46
+35063;690;Point;0.798946;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;257486.82;8901574.65
+35064;691;Point;0.774013;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256566.44;8901272.31
+35065;692;Point;0.78658;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, arenisca;260690.95;8901210.2
+35066;693;Point;0.773509;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256734.79;8900946.8
+35067;694;Point;0.809859;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256380.56;8900964.36
+35068;695;Point;0.760698;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito coluvial;Sedimento;Bloques, ceniza;260805.84;8900972.41
+35069;696;Point;0.797073;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256207.41;8900928.65
+35070;697;Point;0.783315;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;257790.8;8900571.71
+35071;698;Point;0.781701;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;277877.18;8900749.33
+35072;699;Point;0.792952;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;255519.41;8900550.93
+35073;700;Point;0.792463;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;258282.17;8900481.48
+35074;701;Point;0.776092;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248877.34;8900179.69
+35075;702;Point;0.845092;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;255955.09;8900158.14
+35076;703;Point;0.795815;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito coluvial;Sedimento;Bloques, ceniza;264703.48;8900069.51
+35077;704;Point;0.770281;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;252267.01;8899897.6
+35078;705;Point;0.766772;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250166.9;8899668.93
+35079;706;Point;0.782216;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256187.73;8899731.73
+35080;707;Point;0.793707;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;252701.75;8899701.86
+35081;708;Point;0.775522;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;SÃºper Unidad Cahuish;PlutÃ³nica;Granodiorita;252217.07;8899606.2
+35082;709;Point;0.779042;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito aluvial;Sedimento;Arena, limo, grava;272910.67;8899504.51
+35083;710;Point;0.824692;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Secuencia VolcÃ¡nica Cajat;VolcÃ¡nica;Toba de ceniza, andesita, toba vÃ­trea;256612.04;8899367.53
+35084;711;Point;0.76086;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;249781.25;8899254.36
+35085;712;Point;0.78143;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;247728.26;8899139.62
+35086;713;Point;0.764543;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;260802.07;8899049.68
+35087;714;Point;0.759716;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;247344.41;8898833.78
+35088;715;Point;0.803762;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248001.26;8898772.29
+35089;716;Point;0.766644;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248254.95;8898694.97
+35090;717;Point;0.773486;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248768.26;8898649.11
+35091;718;Point;0.773908;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248859.59;8898413.05
+35092;719;Point;0.762305;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;253050.89;8898473.77
+35093;720;Point;0.758819;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250875.73;8898413.08
+35094;721;Point;0.756671;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;249298.97;8898345.35
+35095;722;Point;0.785171;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;253227.78;8898351.39
+35096;723;Point;0.791202;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;253280.4;8898190.16
+35097;724;Point;0.795408;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;248263.15;8898151.8
+35098;725;Point;0.778785;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;251206.52;8897869.17
+35099;726;Point;0.775944;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;SÃºper Unidad Cahuish;PlutÃ³nica;Granodiorita;251418.89;8898005.33
+35100;727;Point;0.764134;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;249749.31;8898060.19
+35101;728;Point;0.771528;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250007.31;8898019.54
+35102;729;Point;0.770391;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito coluvial;Sedimento;Bloques, ceniza;274364.18;8897889.94
+35103;730;Point;0.784409;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;251118.17;8897583.03
+35104;731;Point;0.823837;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;240462.21;8897463.15
+35105;732;Point;0.767054;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249014.54;8897438.84
+35106;733;Point;0.790254;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249136.54;8897253.31
+35107;734;Point;0.778904;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;248949.68;8897128.26
+35108;735;Point;0.792685;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;249572.2;8897165.36
+35109;736;Point;0.76022;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;273017.88;8897328.63
+35110;737;Point;0.760599;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;248664.92;8897054.97
+35111;738;Point;0.776389;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;249390.81;8896997.86
+35112;739;Point;0.755586;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;248446.54;8896929.61
+35113;740;Point;0.761917;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249172.61;8896904.82
+35114;741;Point;0.770611;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;248942.5;8896752.3
+35115;742;Point;0.765867;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249335.31;8896804.89
+35116;743;Point;0.788994;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, lutita, caliza;275074.29;8896978.68
+35117;744;Point;0.756831;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Grupo Chicama - FormaciÃ³n Tinajones;Sedimentaria;Lutita, arenisca cuarzosa, caliza;250054.78;8896630.94
+35118;745;Point;0.776632;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249198.79;8896444.75
+35119;746;Point;0.768441;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar;Sedimento;Bloques;253012.87;8896339.53
+35120;747;Point;0.758496;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;FormaciÃ³n Lloclla - Miembro 2;Sedimentaria;Conglomerado;249052.55;8896218.13
+35121;748;Point;0.774992;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;250060.13;8896161.67
+35122;749;Point;0.775171;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito coluvial;Sedimento;Bloques, ceniza;275257.75;8896255.97
+35123;750;Point;0.814782;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;293982.5;8896084.88
+35124;751;Point;0.774194;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;250959.79;8895421.18
+35125;752;Point;0.811383;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;251209.27;8895404.42
+35126;753;Point;0.786781;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;Sin denominaciÃ³n;Sin denominaciÃ³n; ;251092.91;8895263.39
+35127;754;Point;0.764842;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;251629.12;8895235.27
+35128;755;Point;0.770427;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;SÃºper Unidad Cahuish;PlutÃ³nica;Granito;261450.79;8895052.84
+35129;756;Point;0.799295;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;SÃºper Unidad Cahuish;PlutÃ³nica;Granodiorita;260757.09;8894914.08
+35130;757;Point;0.828226;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;294406.18;8894768.1
+35131;758;Point;0.785456;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, arena, limo;294247.03;8894750.63
+35132;759;Point;0.815122;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;253238.43;8893966.52
+35133;760;Point;0.796623;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone, lutita;278680.37;8893996.2
+35134;761;Point;0.779405;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;FormaciÃ³n Pariatambo;Sedimentaria;Caliza mudstone;279341.01;8893628.38
+35135;762;Point;0.782491;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques, grava;252528.19;8893009.93
+35136;763;Point;0.762407;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;260492.94;8892847.92
+35137;764;Point;0.765278;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Lutita, arenisca, limolita;272616.64;8892923.63
+35138;765;Point;0.755868;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;258619.81;8892834.13
+35139;766;Point;0.76231;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;261731.99;8892748.77
+35140;767;Point;0.757679;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Lutita, arenisca, limolita;272556.21;8892715.2
+35141;768;Point;0.774031;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;276797.75;8892565.64
+35142;769;Point;0.753383;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;258288.4;8892301.81
+35143;770;Point;0.767006;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Lutita, arenisca, limolita;273123.93;8892357.5
+35144;771;Point;0.824953;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Centro VolcÃ¡nico Palta CayÃ¡n - Evento 1c;VolcÃ¡nica;Toba vÃ­trea;260711.18;8892175.48
+35145;772;Point;0.769848;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;Centro VolcÃ¡nico Palta CayÃ¡n - Evento 1c;VolcÃ¡nica;Toba vÃ­trea;260613.36;8891922.37
+35146;773;Point;0.763378;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Lutita, arenisca, limolita;272505.07;8891919.78
+35147;774;Point;0.783667;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;295809.82;8891876.32
+35148;775;Point;0.771804;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;272549.66;8891254.17
+35149;776;Point;0.763232;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256903.92;8890908.53
+35150;777;Point;0.778724;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256756.76;8890722.79
+35151;778;Point;0.773114;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;294848.73;8890809.83
+35152;779;Point;0.763477;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar;Sedimento;Bloques, cantos, grava;295044.56;8890766.94
+35153;780;Point;0.794965;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar;Sedimento;Bloques, cantos, grava;294560.59;8890714.5
+35154;781;Point;0.753351;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar;Sedimento;Bloques, cantos, grava;282769.42;8890317.4
+35155;782;Point;0.762327;Blanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza mudstone;261665.3;8890169.08
+35156;783;Point;0.765144;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar;Sedimento;Bloques, cantos, grava;294826.17;8890199.26
+35157;784;Point;0.764001;Blanca;Cuenca Santa;18;ANCASH;BOLOGNESI;AQUIA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;259064.8;8889834.72
+35158;785;Point;0.763983;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza mudstone;269769.56;8889888.83
+35159;786;Point;0.802699;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;294951.61;8889792.54
+35160;787;Point;0.784125;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;295010.4;8889557.69
+35161;788;Point;0.783498;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256011.69;8889032.91
+35162;789;Point;0.773656;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;270111.89;8888884.21
+35163;790;Point;0.776933;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito aluvial, fluvial;Sedimento;Grava, limo;286988.04;8889004.29
+35164;791;Point;0.762415;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;270270.13;8888629.8
+35165;792;Point;0.785828;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;270113.91;8888567.18
+35166;793;Point;0.792574;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;279920.15;8888348.73
+35167;794;Point;0.772229;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;279636.33;8888425.02
+35168;795;Point;0.780397;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;AQUIA;FormaciÃ³n Pariahuanca;Sedimentaria;Caliza, lutita;269652.41;8888056.02
+35169;796;Point;0.767078;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito aluvial;Sedimento;Grava, arena, limo;248128.66;8887878.57
+35170;797;Point;0.77661;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;256594.7;8887555.85
+35171;798;Point;0.796459;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;296227.86;8887496.23
+35172;799;Point;0.767584;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;255065.9;8887113.09
+35173;800;Point;0.784879;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito glaciar;Sedimento;Bloques, cantos, grava;294043.4;8887111.88
+35174;801;Point;0.769421;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;291337.53;8886965.39
+35175;802;Point;0.76144;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito glaciar, fluvial;Sedimento;Bloques;254872.05;8886649.57
+35176;803;Point;0.769882;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza, limoarcillita;288551.66;8886788.39
+35177;804;Point;0.763912;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;290773.75;8886702.74
+35178;805;Point;0.766379;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita;280457.7;8886586.5
+35179;806;Point;0.793836;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita;280488.95;8886308.42
+35180;807;Point;0.773899;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza, limoarcillita;289031.34;8886145.97
+35181;808;Point;0.772086;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza mudstone;272513.32;8885940.73
+35182;809;Point;0.778415;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;291224.2;8885792.09
+35183;810;Point;0.757368;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;291222.96;8885666.87
+35184;811;Point;0.761513;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;FormaciÃ³n Pariahuanca;Sedimentaria;Caliza, lutita;278240.42;8885346.97
+35185;812;Point;0.797081;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;281752.22;8885167.97
+35186;813;Point;0.798704;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;282225.82;8885162.62
+35187;814;Point;0.765893;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;283288.73;8885053.35
+35188;815;Point;0.765034;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;282518.77;8884803.55
+35189;816;Point;0.784738;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito aluvial;Sedimento;Arena, cantos, limo;299136.07;8884763.03
+35190;817;Point;0.782529;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;DepÃ³sito aluvial;Sedimento;Arena, cantos, limo;298929.88;8884653.56
+35191;818;Point;0.768563;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;284895.46;8884407.12
+35192;819;Point;0.792152;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;292545.25;8884228.62
+35193;820;Point;0.80252;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Arena, limo, grava;279689.64;8883793.31
+35194;821;Point;0.779824;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;292464.22;8883900.83
+35195;822;Point;0.783974;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;284008.83;8883881.03
+35196;823;Point;0.760067;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;290110.85;8883856.68
+35197;824;Point;0.778757;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza, limoarcillita;290304.89;8883776.45
+35198;825;Point;0.765463;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;292505.4;8883592.38
+35199;826;Point;0.756665;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;292235.55;8883426.84
+35200;827;Point;0.80252;Huayhuash;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;294649.85;8883427.52
+35201;828;Point;0.783662;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;292349;8883392.72
+35202;829;Point;0.842624;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Sin denominaciÃ³n;Sin denominaciÃ³n; ;292608.03;8882939.46
+35203;830;Point;0.772514;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;292308.18;8883072.82
+35204;831;Point;0.811745;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;292443.79;8882459.52
+35205;832;Point;0.754415;Huallanca;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza, limoarcillita;292605.83;8882405.42
+35206;833;Point;0.754423;Huayhuash;Intercuenca Alto Marañón V;18;ANCASH;BOLOGNESI;HUALLANCA;FormaciÃ³n OyÃ³n;Sedimentaria;Limolita, arenisca, carbÃ³n;293749.63;8882143.72
+35207;834;Point;0.754116;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;DepÃ³sito glaciar, fluvial;Sedimento;Bloques, cantos, grava, arena;282191.08;8881737.29
+35208;835;Point;0.77049;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;286264.82;8880623.98
+35209;836;Point;0.789158;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;285956.97;8880234.56
+35210;837;Point;0.754481;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;286291.97;8880201.78
+35211;838;Point;0.763509;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;282905.61;8879214.37
+35212;839;Point;0.76228;Blanca;Cuenca Santa;18;ANCASH;RECUAY;CATAC;DepÃ³sito aluvial;Sedimento;Grava, arena, limo;251741.87;8878920.62
+35213;840;Point;0.755903;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n ChimÃº;Sedimentaria;Arenisca cuarzosa, limolita, carbÃ³n;285679.8;8876381.92
+35214;841;Point;0.774584;Huallanca;Cuenca Pativilca;18;ANCASH;BOLOGNESI;HUASTA;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;284031.02;8876308.34
+35215;842;Point;0.766631;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;282430.55;8869961.99
+35216;843;Point;0.787137;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, arenisca;286848.26;8869546.65
+35217;844;Point;0.802409;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;290005.35;8868368.03
+35218;845;Point;0.794897;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito lacustrino;Sedimento;Limo, arena, grava;288282.03;8868153.02
+35219;846;Point;0.783077;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;289170.27;8868094.73
+35220;847;Point;0.768904;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;289552.88;8867485.84
+35221;848;Point;0.79717;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, lutita, cuarzoarenita;288893.66;8866067.41
+35222;849;Point;0.809628;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;289242.61;8866079.02
+35223;850;Point;0.779064;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, lutita, cuarzoarenita;288911.19;8865880.35
+35224;851;Point;0.777539;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, lutita, cuarzoarenita;289090.64;8865773.76
+35225;852;Point;0.782288;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Farrat;Sedimentaria;Arenisca cuarzosa;285525.41;8865523.84
+35226;853;Point;0.766941;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;285631.71;8865221.2
+35227;854;Point;0.762178;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, lutita, cuarzoarenita;285969.92;8864502.75
+35228;855;Point;0.768143;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;288209.26;8864209.87
+35229;856;Point;0.755912;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Carhuaz;Sedimentaria;Limolita, lutita, cuarzoarenita;286851.82;8864070.83
+35230;857;Point;0.807291;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito lacustrino;Sedimento;Limo, arena, grava;286686.25;8863781.62
+35231;858;Point;0.796973;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;281398.56;8862871.19
+35232;859;Point;0.842211;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Grupo Goyllarisquizga - FormaciÃ³n Santa;Sedimentaria;Caliza mudstone;282774.76;8862829.87
+35233;860;Point;0.760585;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;285850.79;8862782.73
+35234;861;Point;0.780352;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;286298.72;8862765.59
+35235;862;Point;0.844468;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;281614.09;8862504.94
+35236;863;Point;0.793308;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;281271.28;8862360.48
+35237;864;Point;0.763832;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Sin denominaciÃ³n;Sin denominaciÃ³n; ;285359.23;8862423.62
+35238;865;Point;0.757592;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;MANGAS;DepÃ³sito glaciar, fluvial;Sedimento;Grava, limo, arena;274510.56;8862254.62
+35239;866;Point;0.850471;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;281795.52;8862144.29
+35240;867;Point;0.792529;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;MANGAS;Secuencia VolcÃ¡nica Cajatambo - Evento 2;VolcÃ¡nica;Toba de ceniza;278732.57;8862022.07
+35241;868;Point;0.787459;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;DepÃ³sito glaciar;Sedimento;Grava, limo;282991.62;8861980.07
+35242;869;Point;0.755018;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;LA PRIMAVERA;DepÃ³sito glaciar, fluvial;Sedimento;Grava, limo, arena;274037.08;8861650.28
+35243;870;Point;0.76401;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Centro VolcÃ¡nico Huayllapa - Evento 1;VolcÃ¡nica;Andesita,  Toba cristalina;285214.83;8861358.7
+35244;871;Point;0.784993;Huayhuash;Cuenca Pativilca;18;ANCASH;BOLOGNESI;PACLLON;Centro VolcÃ¡nico Huayllapa - Evento 1;VolcÃ¡nica;Andesita,  Toba cristalina;284840.93;8860273.81
