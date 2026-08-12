@@ -13,7 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional
 import pandas as pd
-import json, os, glob
+import json, os, glob, unicodedata
 
 app = FastAPI(title="SICAR Áncash API")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=False,
@@ -77,39 +77,145 @@ try:
 except Exception as e:
     print(f"❌ Error índice: {e}"); df = pd.DataFrame()
 
-# Filtrar puntos que caen dentro del área de cuencas
-try:
-    import geopandas as gpd
-    from shapely.geometry import Point
+# ══════════════════════════════════════════════════════════════════════════════
+# RESTRICCIÓN AL DEPARTAMENTO DE ÁNCASH
+# ══════════════════════════════════════════════════════════════════════════════
+# El índice de datos es de alcance nacional y NO trae columna "Departamento".
+# Se aplican dos criterios combinados:
+#   1) Criterio por nombre  — la provincia o el distrito deben figurar en las
+#      listas oficiales INEI de Áncash (tomadas de los propios GeoJSON).
+#   2) Criterio geométrico  — el punto debe caer dentro de limite_ancash.geojson
+#      (requiere shapely; si no está disponible se aplica solo el criterio 1).
+# Nunca se debe caer en un estado donde no se aplique ningún filtro.
+# ══════════════════════════════════════════════════════════════════════════════
 
-    ruta_cuencas = os.path.join(BASE_DIR, "limite_cuencas.geojson")
-    gdf_cuencas = gpd.read_file(ruta_cuencas)
-    if gdf_cuencas.crs and gdf_cuencas.crs.to_epsg() != 4326:
-        gdf_cuencas = gdf_cuencas.to_crs("EPSG:4326")
+def norm_txt(s) -> str:
+    """Normaliza: sin acentos, sin espacios repetidos, mayúsculas."""
+    s = unicodedata.normalize("NFD", str(s)).encode("ascii", "ignore").decode()
+    return " ".join(s.replace("?", "N").split()).upper()
 
-    # Union de todos los polígonos → área total de interés
-    area_total = gdf_cuencas.union_all()
+def _tokens(s):
+    """Separa nombres compuestos tipo 'Aija / Recuay' → ['AIJA','RECUAY']."""
+    return [t.strip() for t in norm_txt(s).split("/") if t.strip()]
 
-    # Filtrar solo filas con coordenadas válidas dentro del área
-    lat_col = next((c for c in ["Latitud","Y"] if c in df.columns), None)
-    lon_col = next((c for c in ["Longitud","X"] if c in df.columns), None)
+def _nombres_geojson(archivo: str, propiedad: str) -> set:
+    try:
+        with open(os.path.join(BASE_DIR, archivo), "r", encoding="utf-8") as fh:
+            g = json.load(fh)
+        return {norm_txt(ft["properties"][propiedad])
+                for ft in g.get("features", [])
+                if ft.get("properties", {}).get(propiedad)}
+    except Exception as e:
+        print(f"⚠  No se pudieron leer nombres de {archivo}: {e}")
+        return set()
 
+PROV_ANCASH   = _nombres_geojson("limite_provincias.geojson", "PROVINCIA")
+DIST_ANCASH   = _nombres_geojson("limite_distritos.geojson",  "DISTRITO")
+CUENCA_ANCASH = _nombres_geojson("limite_cuencas.geojson",    "NOMBRE")
+
+# Variantes de escritura encontradas en las fuentes → nombre oficial INEI
+ALIAS_UBIGEO = {
+    "CARLOS F. FITZCARRALD": "CARLOS FERMIN FITZCARRALD",
+    "CARLOS FERMIN FITZCARRAL": "CARLOS FERMIN FITZCARRALD",
+    "CHIMBOTE": "SANTA",          # Chimbote es capital de la provincia de Santa
+    "MAR": "HUARMEY",             # registros marinos frente a Huarmey
+    "NEPENA": "NEPEÑA",
+}
+
+def _canon(valor, oficiales: set) -> set:
+    """Devuelve el conjunto de nombres oficiales que corresponden al valor."""
+    out = set()
+    for t in _tokens(valor):
+        t = ALIAS_UBIGEO.get(t, t)
+        t = norm_txt(t)
+        if t in oficiales:
+            out.add(t)
+    return out
+
+# Mapas índice_de_fila → conjunto de provincias / distritos oficiales
+PROV_FILA: dict = {}
+DIST_FILA: dict = {}
+
+if not df.empty:
+    antes = len(df)
+
+    # ── Criterio 1: nombres oficiales ─────────────────────────────────────────
+    col_prov = "Provincia" if "Provincia" in df.columns else None
+    col_dist = "Distrito"  if "Distrito"  in df.columns else None
+
+    provs = df[col_prov].map(lambda v: _canon(v, PROV_ANCASH)) if col_prov else pd.Series([set()] * len(df), index=df.index)
+    dists = df[col_dist].map(lambda v: _canon(v, DIST_ANCASH)) if col_dist else pd.Series([set()] * len(df), index=df.index)
+
+    tiene_texto = pd.Series(False, index=df.index)
+    if col_prov: tiene_texto |= df[col_prov].astype(str).str.strip().ne("")
+    if col_dist: tiene_texto |= df[col_dist].astype(str).str.strip().ne("")
+
+    coincide_nombre = provs.map(bool) | dists.map(bool)
+    # Se conserva la fila si sus nombres son de Áncash, o si no trae nombre alguno
+    ok_nombre = coincide_nombre | (~tiene_texto)
+
+    # ── Criterio 2: geometría del departamento ────────────────────────────────
+    lat_col = next((c for c in ["Latitud", "Y"] if c in df.columns), None)
+    lon_col = next((c for c in ["Longitud", "X"] if c in df.columns), None)
     if lat_col and lon_col:
         df[lat_col] = pd.to_numeric(df[lat_col], errors="coerce")
         df[lon_col] = pd.to_numeric(df[lon_col], errors="coerce")
-        df_val = df.dropna(subset=[lat_col, lon_col])
-        gdf_pts = gpd.GeoDataFrame(
-            df_val,
-            geometry=gpd.points_from_xy(df_val[lon_col], df_val[lat_col]),
-            crs="EPSG:4326"
-        )
-        joined = gpd.sjoin(gdf_pts, gdf_cuencas[["geometry"]],
-                           how="inner", predicate="within")
-        antes = len(df)
-        df = df.loc[joined.index.unique()].copy()
-        print(f"✅ Filtro espacial: {antes} → {len(df)} puntos dentro del área de cuencas")
-except Exception as e:
-    print(f"⚠  Filtro espacial no aplicado: {e}")
+
+    ok_geo = pd.Series(True, index=df.index)
+    try:
+        import shapely
+        from shapely.geometry import shape as _shape
+
+        with open(os.path.join(BASE_DIR, "limite_ancash.geojson"), "r", encoding="utf-8") as fh:
+            _g = json.load(fh)
+        GEOM_ANCASH = shapely.union_all([_shape(ft["geometry"]) for ft in _g["features"]])
+        shapely.prepare(GEOM_ANCASH)
+
+        if lat_col and lon_col:
+            validas = df[lat_col].notna() & df[lon_col].notna()
+            sub = df[validas]
+            dentro = shapely.intersects(
+                GEOM_ANCASH,
+                shapely.points(sub[lon_col].values, sub[lat_col].values)
+            )
+            ok_geo = pd.Series(False, index=df.index)
+            ok_geo.loc[sub.index] = dentro
+            print(f"✅ Filtro geométrico Áncash: {int(dentro.sum())} de {len(sub)} puntos con coordenadas")
+    except ImportError:
+        GEOM_ANCASH = None
+        print("⚠  shapely no instalado — se aplica SOLO el filtro por nombres oficiales. "
+              "Instálalo con: pip install shapely")
+    except Exception as e:
+        GEOM_ANCASH = None
+        print(f"⚠  Filtro geométrico no aplicado ({e}) — se aplica SOLO el filtro por nombres.")
+
+    # ── Combinación ───────────────────────────────────────────────────────────
+    df = df[ok_nombre & ok_geo].copy()
+    PROV_FILA = {i: provs[i] for i in df.index}
+    DIST_FILA = {i: dists[i] for i in df.index}
+
+    # Cuencas: restringir a las unidades hidrográficas presentes en Áncash
+    if "Cuenca" in df.columns:
+        cu_norm = df["Cuenca"].map(norm_txt)
+        fuera = sorted({c for c in cu_norm.unique() if c and c not in CUENCA_ANCASH})
+        if fuera:
+            print(f"ℹ  {len(fuera)} unidades hidrográficas ajenas a Áncash quedan sin etiqueta de cuenca")
+            df.loc[~cu_norm.isin(CUENCA_ANCASH), "Cuenca"] = ""
+
+    print(f"✅ Restricción a Áncash: {antes} → {len(df)} registros "
+          f"| {len({p for s in PROV_FILA.values() for p in s})} provincias "
+          f"| {len({d for s in DIST_FILA.values() for d in s})} distritos")
+
+def _mask_lista(indices, seleccion, mapa_filas):
+    """Máscara booleana: la fila coincide si comparte algún nombre con la selección."""
+    sel = set()
+    for s in seleccion:
+        sel |= _canon(s, PROV_ANCASH | DIST_ANCASH) or {norm_txt(s)}
+    return [bool(sel & mapa_filas.get(i, set())) for i in indices]
+
+def _titulo(n: str) -> str:
+    """Nombre oficial en formato de presentación."""
+    return " / ".join(p.strip().title() for p in n.split("/"))
 
 # ── Cache de datasets detalle ──────────────────────────────────────────────────
 _cache: dict = {}
@@ -154,10 +260,20 @@ class DetalleReq(BaseModel):
 def _uniq(col):
     return sorted([x for x in df[col].unique() if x]) if not df.empty and col in df.columns else []
 
+def _uniq_oficial(mapa_filas: dict, indices=None) -> List[str]:
+    """Nombres oficiales de Áncash realmente presentes en las filas indicadas."""
+    idx = df.index if indices is None else indices
+    presentes = set()
+    for i in idx:
+        presentes |= mapa_filas.get(i, set())
+    return sorted(_titulo(n) for n in presentes)
+
 @app.get("/api/filtros")
 def get_filtros():
-    return {"tipos": _uniq("Tipo_Dataset"), "cuencas": _uniq("Cuenca"),
-            "provincias": _uniq("Provincia"), "distritos": _uniq("Distrito")}
+    return {"tipos": _uniq("Tipo_Dataset"),
+            "cuencas": _uniq("Cuenca"),
+            "provincias": _uniq_oficial(PROV_FILA),
+            "distritos": _uniq_oficial(DIST_FILA)}
 
 # ── Configuración de Filtros Secundarios ───────────────────────────────────────
 # Aquí mapeas el Tipo_Dataset con el archivo físico y las columnas que quieres usar
@@ -188,24 +304,30 @@ def get_filtros_secundarios(tipos: List[str]):
                         resultado[col] = sorted(list(set(resultado[col]))) # Eliminar duplicados
     return resultado
 
+def _filtrar_cuenca(dt, seleccion):
+    if not seleccion or "Cuenca" not in dt.columns:
+        return dt
+    sel = {norm_txt(c) for c in seleccion}
+    return dt[dt["Cuenca"].map(norm_txt).isin(sel)]
+
 @app.post("/api/cascada")
 def cascada(f: Filtros):
     dt = df.copy()
-    if f.tipo:     dt = dt[dt["Tipo_Dataset"].str.upper().isin([t.upper() for t in f.tipo])]
-    cu = sorted([x for x in dt["Cuenca"].unique()    if x]) if "Cuenca"    in dt.columns else []
-    if f.cuenca:   dt = dt[dt["Cuenca"].str.upper().isin([c.upper() for c in f.cuenca])]
-    pr = sorted([x for x in dt["Provincia"].unique() if x]) if "Provincia" in dt.columns else []
-    if f.provincia:dt = dt[dt["Provincia"].str.upper().isin([p.upper() for p in f.provincia])]
-    di = sorted([x for x in dt["Distrito"].unique()  if x]) if "Distrito"  in dt.columns else []
+    if f.tipo:      dt = dt[dt["Tipo_Dataset"].str.upper().isin([t.upper() for t in f.tipo])]
+    cu = sorted([x for x in dt["Cuenca"].unique() if x]) if "Cuenca" in dt.columns else []
+    dt = _filtrar_cuenca(dt, f.cuenca)
+    pr = _uniq_oficial(PROV_FILA, dt.index)
+    if f.provincia: dt = dt[_mask_lista(dt.index, f.provincia, PROV_FILA)]
+    di = _uniq_oficial(DIST_FILA, dt.index)
     return {"cuencas": cu, "provincias": pr, "distritos": di}
 
 @app.post("/api/filtrar")
 def filtrar(f: Filtros):
     dff = df.copy()
     if f.tipo:      dff = dff[dff["Tipo_Dataset"].str.upper().isin([t.upper() for t in f.tipo])]
-    if f.cuenca:    dff = dff[dff["Cuenca"].str.upper().isin([c.upper() for c in f.cuenca])]
-    if f.provincia: dff = dff[dff["Provincia"].str.upper().isin([p.upper() for p in f.provincia])]
-    if f.distrito:  dff = dff[dff["Distrito"].str.upper().isin([d.upper() for d in f.distrito])]
+    dff = _filtrar_cuenca(dff, f.cuenca)
+    if f.provincia: dff = dff[_mask_lista(dff.index, f.provincia, PROV_FILA)]
+    if f.distrito:  dff = dff[_mask_lista(dff.index, f.distrito,  DIST_FILA)]
 
     # --- NUEVA LÓGICA DE FILTROS SECUNDARIOS ---
     if f.secundarios:
@@ -315,14 +437,87 @@ def gjson(p):
     except:
         return {"type": "FeatureCollection", "features": []}
 
-@app.get("/api/poligonos/ancash")     
+# ── Recorte de polígonos al departamento de Áncash ─────────────────────────────
+# Las unidades hidrográficas nacionales (cuencas y subcuencas) se extienden
+# mucho más allá del departamento. Se recortan una sola vez al arrancar para que
+# al seleccionarlas en el visor no se dibujen desbordadas hacia otras regiones.
+_geo_cache: dict = {}
+
+def _recortar_a_ancash(archivo: str) -> dict:
+    """Devuelve el GeoJSON con las geometrías intersecadas con Áncash."""
+    if archivo in _geo_cache:
+        return _geo_cache[archivo]
+
+    original = gjson(archivo)
+    if GEOM_ANCASH is None:
+        _geo_cache[archivo] = original
+        return original
+
+    try:
+        import shapely
+        from shapely.geometry import shape as _shape, mapping as _mapping
+
+        feats = []
+        for ft in original.get("features", []):
+            try:
+                gm = _shape(ft["geometry"])
+                if not gm.intersects(GEOM_ANCASH):
+                    continue
+                inter = gm.intersection(GEOM_ANCASH)
+                if inter.is_empty:
+                    continue
+                feats.append({**ft, "geometry": _mapping(inter)})
+            except Exception:
+                feats.append(ft)   # ante cualquier duda se conserva el original
+        recortado = {"type": "FeatureCollection", "features": feats}
+        print(f"✂  {archivo}: {len(original.get('features', []))} → {len(feats)} features recortadas a Áncash")
+        _geo_cache[archivo] = recortado
+        return recortado
+    except Exception as e:
+        print(f"⚠  Recorte de {archivo} no aplicado: {e}")
+        _geo_cache[archivo] = original
+        return original
+
+def _filtrar_features(geo: dict, propiedades: List[str], nombres: str) -> dict:
+    """Filtra un FeatureCollection por nombre (parámetro opcional ?nombres=a,b,c)."""
+    if not nombres.strip():
+        return geo
+    # Se aceptan tanto nombres simples como compuestos ("Aija / Recuay")
+    buscados = set()
+    for n in nombres.split(","):
+        if not n.strip():
+            continue
+        v = norm_txt(n)
+        buscados.add(v)
+        buscados |= {t.strip() for t in v.split("/") if t.strip()}
+    feats = []
+    for ft in geo.get("features", []):
+        props = ft.get("properties", {}) or {}
+        valores = {norm_txt(props.get(p, "")) for p in propiedades if props.get(p)}
+        # También se aceptan nombres compuestos del tipo "Aija / Recuay"
+        for v in list(valores):
+            valores |= {t for t in v.split("/") if t.strip()}
+        if buscados & {v.strip() for v in valores}:
+            feats.append(ft)
+    return {"type": "FeatureCollection", "features": feats}
+
+@app.get("/api/poligonos/ancash")
 def g_ancash():    return gjson("limite_ancash.geojson")
-@app.get("/api/poligonos/cuencas")    
-def g_cuencas():   return gjson("limite_cuencas.geojson")
-@app.get("/api/poligonos/provincias") 
-def g_prov():      return gjson("limite_provincias.geojson")
-@app.get("/api/poligonos/distritos")  
-def g_dist():      return gjson("limite_distritos.geojson")
+
+@app.get("/api/poligonos/cuencas")
+def g_cuencas(nombres: str = ""):
+    return _filtrar_features(_recortar_a_ancash("limite_cuencas.geojson"),
+                             ["NOMBRE", "CUENCA", "Nombre"], nombres)
+
+@app.get("/api/poligonos/provincias")
+def g_prov(nombres: str = ""):
+    return _filtrar_features(gjson("limite_provincias.geojson"),
+                             ["PROVINCIA", "NOM_PROV", "NOMBPROV"], nombres)
+
+@app.get("/api/poligonos/distritos")
+def g_dist(nombres: str = ""):
+    return _filtrar_features(gjson("limite_distritos.geojson"),
+                             ["DISTRITO", "NOM_DIST", "NOMBDIST"], nombres)
 
 @app.get("/api/poligonos/subcuencas")
 def g_subcuencas(cuencas: str = "", nombres: str = "", solo_nombres: int = 0):
@@ -332,70 +527,71 @@ def g_subcuencas(cuencas: str = "", nombres: str = "", solo_nombres: int = 0):
       - ?cuencas=Cuenca+Santa,...                 → GeoJSON de subcuencas que intersectan esas cuencas
       - ?nombres=Alto+Santa,Medio+Casma,...       → GeoJSON de subcuencas con esos nombres exactos
     """
+    COLS_NOMBRE = ["Nombre_UH", "NOMBRE", "Nombre", "nombre"]
+
+    def _nombre_de(ft):
+        props = ft.get("properties", {}) or {}
+        for c in COLS_NOMBRE:
+            v = props.get(c)
+            if v and str(v).strip() and str(v).strip().lower() != "none":
+                return str(v).strip()
+        return ""
+
+    # Subcuencas ya recortadas al departamento (una sola vez, en caché)
+    geo_sub = _recortar_a_ancash("limite_subcuencas.geojson")
+    feats = geo_sub.get("features", [])
+
     try:
-        import geopandas as gpd
-        from shapely.ops import unary_union
-
-        gdf_sub = gpd.read_file(os.path.join(BASE_DIR, "limite_subcuencas.geojson"))
-        if gdf_sub.crs and gdf_sub.crs.to_epsg() != 4326:
-            gdf_sub = gdf_sub.to_crs("EPSG:4326")
-
-        COL_NOMBRE = next(
-            (c for c in ["Nombre_UH", "NOMBRE", "Nombre", "nombre"] if c in gdf_sub.columns),
-            None
-        )
-
-        # ── Modo A: filtrar por cuencas padre (intersección espacial) ──
+        # ── Modo A: subcuencas contenidas en las cuencas seleccionadas ─────────
         if cuencas.strip():
-            nombres_cuenca = [c.strip() for c in cuencas.split(",") if c.strip()]
-            ruta_cuencas = os.path.join(BASE_DIR, "limite_cuencas.geojson")
-            gdf_cuencas = gpd.read_file(ruta_cuencas)
-            if gdf_cuencas.crs and gdf_cuencas.crs.to_epsg() != 4326:
-                gdf_cuencas = gdf_cuencas.to_crs("EPSG:4326")
-
-            col_nombre_cuenca = next(
-                (c for c in ["NOMBRE", "Nombre", "nombre", "CUENCA", "Cuenca"]
-                 if c in gdf_cuencas.columns), None
+            geo_cu = _filtrar_features(
+                _recortar_a_ancash("limite_cuencas.geojson"),
+                ["NOMBRE", "CUENCA", "Nombre"], cuencas
             )
-            if col_nombre_cuenca:
-                mask = gdf_cuencas[col_nombre_cuenca].str.upper().isin(
-                    [n.upper() for n in nombres_cuenca]
-                )
-                seleccionadas = gdf_cuencas[mask]
-            else:
-                seleccionadas = gdf_cuencas
+            padres = geo_cu.get("features", [])
 
-            if not seleccionadas.empty:
-                area_union = unary_union(seleccionadas.geometry)
-                gdf_sub = gdf_sub[gdf_sub.geometry.intersects(area_union)]
+            if padres:
+                try:
+                    import shapely
+                    from shapely.geometry import shape as _shape
 
-            # Modo A + solo_nombres: devolver lista de nombres para el dropdown
+                    area = shapely.union_all([_shape(f["geometry"]) for f in padres])
+                    shapely.prepare(area)
+                    seleccion = []
+                    for ft in feats:
+                        try:
+                            gm = _shape(ft["geometry"])
+                            # Se exige solape real, no un simple contacto de bordes
+                            if gm.intersects(area) and not gm.touches(area):
+                                seleccion.append(ft)
+                        except Exception:
+                            continue
+                    feats = seleccion
+                except ImportError:
+                    print("⚠  shapely no instalado — subcuencas sin recorte por cuenca padre")
+
             if solo_nombres:
-                if COL_NOMBRE:
-                    lista = sorted([
-                        str(v) for v in gdf_sub[COL_NOMBRE].dropna().unique() if str(v).strip()
-                    ])
-                else:
-                    lista = []
-                return {"nombres": lista}
+                return {"nombres": sorted({_nombre_de(f) for f in feats if _nombre_de(f)})}
+            return {"type": "FeatureCollection", "features": feats}
 
-            return json.loads(gdf_sub.to_json())
-
-        # ── Modo B: filtrar por nombres explícitos de subcuencas ──
+        # ── Modo B: subcuencas por nombre exacto ──────────────────────────────
         if nombres.strip():
-            lista_nombres = [n.strip() for n in nombres.split(",") if n.strip()]
-            if COL_NOMBRE:
-                gdf_sub = gdf_sub[
-                    gdf_sub[COL_NOMBRE].str.strip().isin(lista_nombres)
-                ]
-            return json.loads(gdf_sub.to_json())
+            buscados = {norm_txt(n) for n in nombres.split(",") if n.strip()}
+            feats = [f for f in feats if norm_txt(_nombre_de(f)) in buscados]
+            if solo_nombres:
+                return {"nombres": sorted({_nombre_de(f) for f in feats if _nombre_de(f)})}
+            return {"type": "FeatureCollection", "features": feats}
 
-        # Sin parámetros: devolver todas
-        return json.loads(gdf_sub.to_json())
+        # ── Sin parámetros ────────────────────────────────────────────────────
+        if solo_nombres:
+            return {"nombres": sorted({_nombre_de(f) for f in feats if _nombre_de(f)})}
+        return {"type": "FeatureCollection", "features": feats}
 
     except Exception as e:
         print(f"⚠  Subcuencas: {e}")
-        return gjson("limite_subcuencas.geojson")
+        if solo_nombres:
+            return {"nombres": []}
+        return {"type": "FeatureCollection", "features": feats}
 @app.get("/api/acr")
 def g_acr():       return gjson(os.path.join("data","acr.geojson"))
 @app.get("/api/cuencas-sicar")
@@ -457,6 +653,228 @@ def get_iniciativas():
         print(f"❌ Iniciativas: {e}"); return []
 
 # ── Chatbot ────────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# TEMÁTICAS Y PRESETS DE EXPLORACIÓN GUIADA
+# ══════════════════════════════════════════════════════════════════════════════
+# Cada temática agrupa varios Tipo_Dataset y genera "presets": una combinación de
+# filtros lista para aplicar más un dato destacado. TODAS las cifras se calculan
+# sobre el índice real en memoria; no hay valores escritos a mano.
+# ══════════════════════════════════════════════════════════════════════════════
+
+TEMATICAS_CONF = [
+    {
+        "id": "agua", "nombre": "Agua", "icono": "fa-droplet", "color": "#0182c7",
+        "descripcion": "Derechos de uso, monitoreo y fuentes contaminantes",
+        "principal": "DERECHOS DE USO DE AGUA",
+        "tipos": ["DERECHOS DE USO DE AGUA", "FUENTES CONTAMINANTES",
+                  "PUNTOS DE MUESTREO ANA", "RED DE MONITOREO ANA",
+                  "PUNTOS DE MUESTREO OEFA", "PUNTOS DE MUESTREO SENASA"],
+    },
+    {
+        "id": "mineria", "nombre": "Minería", "icono": "fa-helmet-safety", "color": "#a8730f",
+        "descripcion": "Pasivos ambientales, unidades mineras y drenaje ácido",
+        "principal": "PASIVOS AMBIENTALES MINEROS",
+        "tipos": ["PASIVOS AMBIENTALES MINEROS", "GRAN Y MEDIANA MINERIA",
+                  "PEQUENA MINERIA", "REINFOS", "SITIOS CONTAMINADOS CON DAR",
+                  "UNIDADES FISCALIZABLES OEFA"],
+    },
+    {
+        "id": "residuos", "nombre": "Residuos sólidos", "icono": "fa-trash-can", "color": "#2e8b57",
+        "descripcion": "Áreas degradadas e infraestructura de disposición",
+        "principal": "ADRS MUNICIPALES",
+        "tipos": ["ADRS MUNICIPALES", "ADRS NO MUNICIPALES", "INFRAESTRUCTURA DE RRSS"],
+    },
+    {
+        "id": "metales", "nombre": "Metales pesados", "icono": "fa-flask-vial", "color": "#b03060",
+        "descripcion": "Población expuesta, dosajes y puntos de contaminación",
+        "principal": "CENTROS POBLADOS CON MP",
+        "tipos": ["CENTROS POBLADOS CON MP", "DOSAJES METALES CP",
+                  "PUNTOS DE CONTAMINACION AMBIENTAL"],
+    },
+]
+
+_tematicas_cache: Optional[dict] = None
+
+def _conteo_por_provincia(sub) -> List[tuple]:
+    acc: dict = {}
+    for i in sub.index:
+        for p in PROV_FILA.get(i, set()):
+            acc[p] = acc.get(p, 0) + 1
+    return sorted(acc.items(), key=lambda x: -x[1])
+
+def _etiqueta_tipo(clave: str) -> str:
+    """Devuelve el Tipo_Dataset tal como está escrito en el índice."""
+    if df.empty or "Tipo_Dataset" not in df.columns:
+        return clave
+    coincide = df[df["Tipo_Dataset"].str.upper() == clave.upper()]["Tipo_Dataset"]
+    return coincide.iloc[0] if not coincide.empty else clave
+
+def _pct(parte: int, total: int) -> int:
+    return round(parte * 100 / total) if total else 0
+
+def _presets_tema(conf: dict) -> List[dict]:
+    """Construye los presets de una temática a partir de los datos reales."""
+    if df.empty:
+        return []
+
+    up = df["Tipo_Dataset"].str.upper()
+    tipos_presentes = [t for t in conf["tipos"] if (up == t).any()]
+    if not tipos_presentes:
+        return []
+
+    etiquetas = [_etiqueta_tipo(t) for t in tipos_presentes]
+    sub = df[up.isin(tipos_presentes)]
+    total = len(sub)
+    presets: List[dict] = []
+    vacio = {"tipo": [], "cuenca": [], "provincia": [], "distrito": [], "secundarios": {}}
+
+    # ── 1. Panorama general de la temática ────────────────────────────────────
+    prov = _conteo_por_provincia(sub)
+    desglose = sub["Tipo_Dataset"].value_counts()
+    presets.append({
+        "titulo": f"Panorama de {conf['nombre'].lower()} en Áncash",
+        "dato": (f"El visor reúne <b>{total:,}</b> registros de {conf['nombre'].lower()} "
+                 f"en Áncash, provenientes de {len(tipos_presentes)} conjuntos de datos distintos."
+                 .replace(",", " ")),
+        "detalle": " · ".join(f"{k}: {v:,}".replace(",", " ") for k, v in desglose.head(4).items()),
+        "metrica": {"valor": f"{total:,}".replace(",", " "), "unidad": "registros"},
+        "filtros": {**vacio, "tipo": etiquetas},
+    })
+
+    # ── 2. Unidad hidrográfica con mayor concentración ────────────────────────
+    principal = conf["principal"] if conf["principal"] in tipos_presentes else tipos_presentes[0]
+    etiqueta_pri = _etiqueta_tipo(principal)
+    sub_pri = df[up == principal]
+    cu = sub_pri[sub_pri["Cuenca"].astype(str).str.strip() != ""]["Cuenca"].value_counts()
+    if not cu.empty:
+        nombre_cu, n_cu = cu.index[0], int(cu.iloc[0])
+        presets.append({
+            "titulo": f"Unidad hidrográfica con más registros",
+            "dato": (f"La <b>{nombre_cu}</b> concentra <b>{n_cu:,}</b> de los "
+                     f"{len(sub_pri):,} registros de {etiqueta_pri.lower()} del "
+                     f"departamento, es decir el <b>{_pct(n_cu, len(sub_pri))}%</b>."
+                     .replace(",", " ")),
+            "detalle": " · ".join(f"{k}: {v}" for k, v in cu.head(4).items()),
+            "metrica": {"valor": f"{n_cu:,}".replace(",", " "), "unidad": etiqueta_pri.lower()},
+            "filtros": {**vacio, "tipo": [etiqueta_pri], "cuenca": [nombre_cu]},
+        })
+
+    # ── 3. Provincia con mayor concentración ──────────────────────────────────
+    prov_pri = _conteo_por_provincia(sub_pri)
+    if prov_pri:
+        nombre_pr, n_pr = prov_pri[0]
+        presets.append({
+            "titulo": "Provincia con mayor concentración",
+            "dato": (f"<b>{_titulo(nombre_pr)}</b> es la provincia con más registros de "
+                     f"{etiqueta_pri.lower()}: <b>{n_pr:,}</b> del total de {len(sub_pri):,} "
+                     f"en Áncash.".replace(",", " ")),
+            "detalle": " · ".join(f"{_titulo(k)}: {v}" for k, v in prov_pri[:4]),
+            "metrica": {"valor": f"{n_pr:,}".replace(",", " "), "unidad": etiqueta_pri.lower()},
+            "filtros": {**vacio, "tipo": [etiqueta_pri], "provincia": [_titulo(nombre_pr)]},
+        })
+
+    # ── 4. Dato específico por temática ───────────────────────────────────────
+    if conf["id"] == "mineria":
+        ds = get_dataset("minem_pam.csv")
+        if not ds.empty and "RIESGO" in ds.columns:
+            criticos = ["Alto", "Muy alto"]
+            ids = set(ds[ds["RIESGO"].isin(criticos)]["ID_registro"]
+                      .astype(str).str.strip().str.split(".").str[0]) \
+                  if "ID_registro" in ds.columns else set()
+            pam = df[up == "PASIVOS AMBIENTALES MINEROS"]
+            if ids and "ID_registro" in pam.columns:
+                norm_id = pam["ID_registro"].astype(str).str.strip().str.split(".").str[0]
+                n = int(norm_id.isin(ids).sum())
+                if n:
+                    presets.append({
+                        "titulo": "Pasivos de riesgo alto y muy alto",
+                        "dato": (f"De los {len(pam):,} pasivos ambientales mineros registrados "
+                                 f"en Áncash, <b>{n}</b> están clasificados con riesgo "
+                                 f"<b>alto o muy alto</b> ({_pct(n, len(pam))}% del total)."
+                                 .replace(",", " ")),
+                        "detalle": "Clasificación de riesgo según el inventario del MINEM.",
+                        "metrica": {"valor": str(n), "unidad": "pasivos críticos"},
+                        "filtros": {**vacio, "tipo": [_etiqueta_tipo("PASIVOS AMBIENTALES MINEROS")],
+                                    "secundarios": {"RIESGO": criticos}},
+                    })
+
+    if conf["id"] == "residuos":
+        n_deg = int((up == "ADRS MUNICIPALES").sum()) + int((up == "ADRS NO MUNICIPALES").sum())
+        n_for = int((up == "INFRAESTRUCTURA DE RRSS").sum())
+        if n_deg and n_for:
+            presets.append({
+                "titulo": "Brecha entre botaderos e infraestructura formal",
+                "dato": (f"Áncash registra <b>{n_deg}</b> áreas degradadas por residuos sólidos "
+                         f"frente a solo <b>{n_for}</b> instalaciones formales de disposición "
+                         f"y tratamiento: <b>{round(n_deg/n_for, 1)} botaderos por cada "
+                         f"infraestructura formal</b>."),
+                "detalle": "Áreas degradadas municipales y no municipales según el OEFA.",
+                "metrica": {"valor": f"{round(n_deg/n_for, 1)}×", "unidad": "botaderos por instalación"},
+                "filtros": {**vacio, "tipo": [_etiqueta_tipo("ADRS MUNICIPALES"),
+                                              _etiqueta_tipo("ADRS NO MUNICIPALES"),
+                                              _etiqueta_tipo("INFRAESTRUCTURA DE RRSS")]},
+            })
+
+    if conf["id"] == "metales":
+        cp = df[up == "CENTROS POBLADOS CON MP"]
+        if not cp.empty:
+            pr = _conteo_por_provincia(cp)
+            n_prov = len({p for i in cp.index for p in PROV_FILA.get(i, set())})
+            presets.append({
+                "titulo": "Centros poblados con presencia de metales",
+                "dato": (f"Se han identificado <b>{len(cp)}</b> centros poblados con presencia "
+                         f"de metales pesados, distribuidos en <b>{n_prov}</b> provincias "
+                         f"de Áncash."),
+                "detalle": " · ".join(f"{_titulo(k)}: {v}" for k, v in pr[:4]),
+                "metrica": {"valor": str(len(cp)), "unidad": "centros poblados"},
+                "filtros": {**vacio, "tipo": [_etiqueta_tipo("CENTROS POBLADOS CON MP")]},
+            })
+
+    if conf["id"] == "agua":
+        fc = df[up == "FUENTES CONTAMINANTES"]
+        if not fc.empty:
+            cu_fc = fc[fc["Cuenca"].astype(str).str.strip() != ""]["Cuenca"].value_counts()
+            top = cu_fc.index[0] if not cu_fc.empty else None
+            presets.append({
+                "titulo": "Fuentes contaminantes de agua",
+                "dato": (f"La ANA ha inventariado <b>{len(fc)}</b> fuentes contaminantes en cuerpos "
+                         f"de agua de Áncash" +
+                         (f", con la mayor concentración en la <b>{top}</b> "
+                          f"({int(cu_fc.iloc[0])} fuentes)." if top else ".")),
+                "detalle": " · ".join(f"{k}: {v}" for k, v in cu_fc.head(4).items()) if not cu_fc.empty else "",
+                "metrica": {"valor": str(len(fc)), "unidad": "fuentes contaminantes"},
+                "filtros": {**vacio, "tipo": [_etiqueta_tipo("FUENTES CONTAMINANTES")]},
+            })
+
+    for n, p in enumerate(presets, start=1):
+        p["id"] = f"{conf['id']}-{n}"
+        p["tema"] = conf["id"]
+    return presets
+
+@app.get("/api/tematicas")
+def get_tematicas():
+    """Temáticas con sus presets de filtros y datos destacados calculados."""
+    global _tematicas_cache
+    if _tematicas_cache is not None:
+        return _tematicas_cache
+
+    temas = []
+    for conf in TEMATICAS_CONF:
+        presets = _presets_tema(conf)
+        if not presets:
+            continue
+        up = df["Tipo_Dataset"].str.upper() if not df.empty else pd.Series(dtype=str)
+        temas.append({
+            "id": conf["id"], "nombre": conf["nombre"], "icono": conf["icono"],
+            "color": conf["color"], "descripcion": conf["descripcion"],
+            "total": int(up.isin([t for t in conf["tipos"]]).sum()) if not df.empty else 0,
+            "presets": presets,
+        })
+    _tematicas_cache = {"tematicas": temas}
+    print(f"✅ Temáticas: {len(temas)} temas, "
+          f"{sum(len(t['presets']) for t in temas)} presets generados")
+    return _tematicas_cache
+
 @app.get("/api/chat/preguntas")
 def chat_preguntas(tipo:str="",cuenca:str="",provincia:str="",distrito:str=""):
     cols_req = ["Tipo_Dataset","Cuenca","Provincia","Distrito"]

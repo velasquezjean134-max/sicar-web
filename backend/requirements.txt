@@ -1,4 +1,5 @@
 fastapi
 uvicorn[standard]
-pandas
+pandas>=2.2,<3
+shapely>=2.0,<3
 python-multipart

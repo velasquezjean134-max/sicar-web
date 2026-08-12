@@ -32,9 +32,58 @@ var capaDistritos        = L.layerGroup().addTo(mapa);
 var capaSubcuencas       = L.layerGroup().addTo(mapa);
 var capaIniciativas      = L.layerGroup().addTo(mapa);
 var capaCapasExternas    = {};   // id -> L.layerGroup
-var capaPuntosCluster    = L.markerClusterGroup({ chunkedLoading:true, spiderfyOnMaxZoom:false,
-    zoomToBoundsOnClick:true, clusterPane:'panePuntos',
-    polygonOptions:{fillOpacity:0,stroke:false} });
+// ── Agrupación de puntos (clustering) ─────────────────────────────────────────
+// Escalas por volumen: cada rango tiene su tamaño y su color, con un anillo de
+// progreso que indica qué tan denso es el grupo respecto al total agrupado.
+const ESCALAS_CLUSTER = [
+    { max:   9, clase:'cl-xs', d:36 },
+    { max:  49, clase:'cl-sm', d:42 },
+    { max: 199, clase:'cl-md', d:50 },
+    { max: 999, clase:'cl-lg', d:58 },
+    { max: Infinity, clase:'cl-xl', d:66 }
+];
+
+function formatearConteo(n){
+    if(n >= 1000) return (n/1000).toFixed(n >= 10000 ? 0 : 1).replace('.0','') + 'k';
+    return String(n);
+}
+
+function crearIconoCluster(cluster){
+    const n = cluster.getChildCount();
+    const esc = ESCALAS_CLUSTER.find(e => n <= e.max);
+    const d = esc.d, r = (d/2) - 3;
+    const circ = 2 * Math.PI * r;
+    // Proporción logarítmica: evita que un grupo pequeño se vea casi vacío
+    const prop = Math.min(Math.log10(n + 1) / 4, 1);
+
+    const html = `
+        <div class="cluster-sicar ${esc.clase}" style="width:${d}px;height:${d}px;">
+            <svg class="cluster-anillo" width="${d}" height="${d}" viewBox="0 0 ${d} ${d}">
+                <circle cx="${d/2}" cy="${d/2}" r="${r}" class="cluster-pista"/>
+                <circle cx="${d/2}" cy="${d/2}" r="${r}" class="cluster-progreso"
+                        stroke-dasharray="${(circ*prop).toFixed(1)} ${circ.toFixed(1)}"
+                        transform="rotate(-90 ${d/2} ${d/2})"/>
+            </svg>
+            <span class="cluster-num">${formatearConteo(n)}</span>
+        </div>`;
+
+    return L.divIcon({
+        html, className:'cluster-sicar-wrap',
+        iconSize: L.point(d, d), iconAnchor: L.point(d/2, d/2)
+    });
+}
+
+var capaPuntosCluster    = L.markerClusterGroup({
+    chunkedLoading:true,
+    spiderfyOnMaxZoom:true,
+    showCoverageOnHover:false,
+    zoomToBoundsOnClick:true,
+    maxClusterRadius:58,
+    disableClusteringAtZoom:15,
+    clusterPane:'panePuntos',
+    iconCreateFunction: crearIconoCluster,
+    polygonOptions:{fillOpacity:0,stroke:false}
+});
 var capaPuntosIndividual = L.layerGroup();
 
 fetch(API+'/api/poligonos/ancash').then(r=>r.json())
@@ -604,6 +653,56 @@ async function actualizarFiltrosSecundarios(tiposSeleccionados) {
     } catch (e) { console.error('Error cargando filtros secundarios:', e); }
 }
 
+// ── Dibujo de polígonos seleccionados ─────────────────────────────────────────
+// Pide al backend únicamente las geometrías seleccionadas (ya recortadas a
+// Áncash) en lugar de descargar el archivo completo y filtrarlo en el navegador.
+const PROPS_NOMBRE = {
+    distritos : ['DISTRITO','NOM_DIST','NOMBDIST'],
+    provincias: ['PROVINCIA','NOM_PROV','NOMBPROV'],
+    cuencas   : ['NOMBRE','CUENCA','Nombre']
+};
+
+function normaliza(txt){
+    return String(txt||'').normalize('NFD').replace(/[̀-ͯ]/g,'')
+        .replace(/\s+/g,' ').trim().toUpperCase();
+}
+
+function dibujarPoligonos(recurso, seleccion, capa, opciones){
+    if(!seleccion || !seleccion.length) return;
+    const param = encodeURIComponent(seleccion.join(','));
+    const props = PROPS_NOMBRE[recurso] || [];
+    const buscados = seleccion.map(normaliza);
+
+    fetch(`${API}/api/poligonos/${recurso}?nombres=${param}`)
+        .then(r=>r.json())
+        .then(geo=>{
+            // Red de seguridad: si el backend fuese una versión antigua sin
+            // soporte de ?nombres=, se filtra igualmente en el cliente.
+            const total = (geo.features||[]).length;
+            const necesitaFiltro = total > seleccion.length * 3;
+            L.geoJSON(geo, {
+                pane: opciones.pane,
+                interactive: false,
+                filter: f => {
+                    if(!necesitaFiltro) return true;
+                    const p = f.properties || {};
+                    const dep = p.DEPARTAMEN || p.DEPARTAMENTO || p.NOMBDEP || p.NOM_DEP || p.DPTO || '';
+                    if(dep && normaliza(dep) !== 'ANCASH') return false;
+                    for(const clave of props){
+                        const v = p[clave];
+                        if(!v) continue;
+                        const partes = normaliza(v).split('/').map(s=>s.trim());
+                        if(partes.some(x=>buscados.includes(x)) || buscados.includes(normaliza(v)))
+                            return true;
+                    }
+                    return false;
+                },
+                style: { color: opciones.color, weight: 2, fillOpacity: parseFloat(opciones.fillOpacity) }
+            }).addTo(capa);
+        })
+        .catch(e=>console.warn(`Polígonos ${recurso}:`, e));
+}
+
 function aplicarFiltros(){
     const txtRes=document.getElementById('contador-resultados');
     if(!selecciones.tipo.length&&!selecciones.cuenca.length&&!selecciones.provincia.length&&!selecciones.distrito.length){
@@ -639,17 +738,22 @@ function aplicarFiltros(){
             const opD=document.getElementById('slider-distrito')?.value||0.25;
             const opS=document.getElementById('slider-subcuenca')?.value||0.20;
 
+            // ── Polígonos: se piden al backend SOLO los seleccionados y ya
+            //    recortados al departamento de Áncash (parámetro ?nombres=) ──
             if(selecciones.distrito.length){
                 leg+=`<div class="leyenda-item"><div class="leyenda-poly" style="background:#2ca02c;border-color:#2ca02c;"></div>Distritos</div>`;
-                fetch(API+'/api/poligonos/distritos').then(r=>r.json()).then(geo=>L.geoJSON(geo,{pane:'paneDistritos',interactive:false,filter:f=>{const dep=f.properties.DEPARTAMENTO||f.properties.NOMBDEP||f.properties.NOM_DEP||f.properties.DPTO||"";if(dep && String(dep).toUpperCase().trim()!=="ANCASH") return false;const v=f.properties.DISTRITO||f.properties.NOM_DIST||f.properties.NOMBDIST||"";return v && selecciones.distrito.map(d=>d.toUpperCase().trim()).includes(String(v).toUpperCase().trim());},style:{color:"#2ca02c",weight:2,fillOpacity:opD}}).addTo(capaDistritos));
+                dibujarPoligonos('distritos', selecciones.distrito, capaDistritos,
+                    {pane:'paneDistritos', color:"#2ca02c", fillOpacity:opD});
             }
             if(selecciones.provincia.length){
                 leg+=`<div class="leyenda-item"><div class="leyenda-poly" style="background:#ff7f0e;border-color:#ff7f0e;"></div>Provincias</div>`;
-                fetch(API+'/api/poligonos/provincias').then(r=>r.json()).then(geo=>L.geoJSON(geo,{pane:'paneProvincias',interactive:false,filter:f=>{const dep=f.properties.DEPARTAMENTO||f.properties.NOMBDEP||f.properties.NOM_DEP||f.properties.DPTO||"";if(dep && String(dep).toUpperCase().trim()!=="ANCASH") return false;const v=f.properties.PROVINCIA||f.properties.NOM_PROV||f.properties.NOMBPROV||"";return v && selecciones.provincia.map(p=>p.toUpperCase().trim()).includes(String(v).toUpperCase().trim());},style:{color:"#ff7f0e",weight:2,fillOpacity:opP}}).addTo(capaProvincias));
+                dibujarPoligonos('provincias', selecciones.provincia, capaProvincias,
+                    {pane:'paneProvincias', color:"#ff7f0e", fillOpacity:opP});
             }
             if(selecciones.cuenca.length){
                 leg+=`<div class="leyenda-item"><div class="leyenda-poly" style="background:#0068c9;border-color:#0068c9;"></div>Cuencas</div>`;
-                fetch(API+'/api/poligonos/cuencas').then(r=>r.json()).then(geo=>L.geoJSON(geo,{pane:'paneCuencas',interactive:false,filter:f=>{let v=f.properties.NOMBRE||f.properties.CUENCA;return v&&selecciones.cuenca.map(c=>c.toUpperCase()).includes(String(v).toUpperCase());},style:{color:"#0068c9",weight:2,fillOpacity:opC}}).addTo(capaCuencas));
+                dibujarPoligonos('cuencas', selecciones.cuenca, capaCuencas,
+                    {pane:'paneCuencas', color:"#0068c9", fillOpacity:opC});
             } else {
                 capaSubcuencas.clearLayers();
             }

@@ -151,6 +151,12 @@
             <button class="ctrl-btn ctrl-btn-verde" id="ctrl-iniciativas" title="Iniciativas forestales">
                 <i class="fa-solid fa-seedling"></i>
             </button>
+            <button class="ctrl-btn ctrl-btn-tematica" id="ctrl-tematicas" title="Explorar por temática">
+                <i class="fa-solid fa-compass"></i>
+            </button>
+            <button class="ctrl-btn ctrl-btn-ayuda" id="ctrl-ayuda" title="Recorrido guiado del visor">
+                <i class="fa-solid fa-circle-question"></i>
+            </button>
 
             <!-- Menú mapas -->
             <div class="ctrl-menu" id="menu-mapas">
@@ -282,9 +288,100 @@
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+         BIENVENIDA — pregunta de primera visita (fondo difuminado)
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="bienvenida-overlay">
+        <div id="bienvenida-caja">
+            <div class="bv-icono"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="bv-marca">SICAR Áncash</div>
+            <h2 class="bv-titulo">¿Es tu primera vez en el visor?</h2>
+            <p class="bv-texto">
+                Te podemos mostrar en un minuto cómo consultar información ambiental
+                de cualquier cuenca, provincia o distrito de Áncash.
+            </p>
+            <div class="bv-botones">
+                <button id="bv-si" class="bv-btn bv-btn-primario">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Sí, muéstrame el recorrido
+                </button>
+                <button id="bv-no" class="bv-btn bv-btn-secundario">
+                    Ya conozco el visor, entrar directo
+                </button>
+            </div>
+            <p class="bv-pie">
+                Puedes reabrir el recorrido cuando quieras con el botón
+                <i class="fa-solid fa-circle-question"></i> del mapa.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         RECORRIDO GUIADO — foco sobre elementos reales de la interfaz
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="tour-capa">
+        <div id="tour-foco"></div>
+        <div id="tour-globo">
+            <div class="tour-cabecera">
+                <span id="tour-paso-num">1 / 9</span>
+                <button id="tour-cerrar" title="Salir del recorrido"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <h3 id="tour-titulo"></h3>
+            <p id="tour-texto"></p>
+            <div class="tour-pie">
+                <div id="tour-puntos"></div>
+                <div class="tour-nav">
+                    <button id="tour-anterior" class="tour-btn"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="tour-siguiente" class="tour-btn tour-btn-primario">Siguiente <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TEMÁTICAS — selector y explorador de datos destacados
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="tema-selector">
+        <div class="tema-sel-cabecera">
+            <div>
+                <div class="tema-sel-titulo"><i class="fa-solid fa-compass"></i> Explorar por temática</div>
+                <div class="tema-sel-sub">Datos destacados con los filtros ya aplicados</div>
+            </div>
+            <button id="tema-sel-cerrar" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="tema-sel-lista"></div>
+    </div>
+
+    <div id="tema-dato">
+        <div class="td-barra" id="td-barra"></div>
+        <div class="td-cabecera">
+            <div class="td-tema" id="td-tema"><i class="fa-solid fa-compass"></i> <span></span></div>
+            <button id="td-cerrar" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="td-cuerpo">
+            <div class="td-metrica">
+                <span class="td-valor" id="td-valor">—</span>
+                <span class="td-unidad" id="td-unidad"></span>
+            </div>
+            <div class="td-sabias"><i class="fa-solid fa-lightbulb"></i> ¿Sabías que…?</div>
+            <h3 class="td-titulo" id="td-titulo"></h3>
+            <p class="td-dato" id="td-dato"></p>
+            <p class="td-detalle" id="td-detalle"></p>
+        </div>
+        <div class="td-pie">
+            <button id="td-anterior" class="td-nav" title="Dato anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <div id="td-puntos"></div>
+            <button id="td-siguiente" class="td-nav td-nav-primario" title="Siguiente dato"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="td-aviso">
+            <i class="fa-solid fa-circle-info"></i>
+            Cifras calculadas sobre los registros disponibles en el visor, no sobre el universo total.
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="script.js"></script>
+    <script src="onboarding.js"></script>
 
 </body>
 </html>

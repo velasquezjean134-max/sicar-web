@@ -977,3 +977,402 @@ input:checked + .slider-toggle:before { transform: translateX(16px); }
     font-weight: 600;
     font-size: 12px;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AGRUPACIÓN DE PUNTOS (CLUSTERS)
+   Reemplaza el estilo por defecto de Leaflet.markercluster
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Neutraliza los estilos que trae MarkerCluster.Default.css */
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large,
+.marker-cluster { background: none !important; border: none !important; }
+.marker-cluster div { background: none !important; }
+
+.cluster-sicar-wrap { background: none; border: none; }
+
+.cluster-sicar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 2px 10px rgba(11, 42, 74, 0.28),
+                0 0 0 1px rgba(255, 255, 255, 0.9);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+}
+
+.cluster-sicar:hover {
+    transform: scale(1.09);
+    box-shadow: 0 5px 18px rgba(11, 42, 74, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.95);
+}
+
+.cluster-anillo { position: absolute; inset: 0; }
+
+.cluster-pista {
+    fill: none;
+    stroke: rgba(11, 42, 74, 0.10);
+    stroke-width: 3.5;
+}
+
+.cluster-progreso {
+    fill: none;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.cluster-num {
+    position: relative;
+    z-index: 2;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+/* ── Escala por volumen de registros ── */
+.cl-xs .cluster-progreso { stroke: #35b6e0; }
+.cl-xs .cluster-num      { color: #17607a; font-size: 12px; }
+
+.cl-sm .cluster-progreso { stroke: #0182c7; }
+.cl-sm .cluster-num      { color: #0c4a72; font-size: 13px; }
+
+.cl-md .cluster-progreso { stroke: #f0a132; }
+.cl-md .cluster-num      { color: #8a5307; font-size: 14px; }
+
+.cl-lg .cluster-progreso { stroke: #e8743b; }
+.cl-lg .cluster-num      { color: #8c3b16; font-size: 15px; }
+
+.cl-xl .cluster-progreso { stroke: #d64550; }
+.cl-xl .cluster-num      { color: #8a1f28; font-size: 15px; }
+
+/* Los grupos grandes reciben un halo suave para destacar la concentración */
+.cl-lg, .cl-xl {
+    box-shadow: 0 2px 12px rgba(11, 42, 74, 0.3),
+                0 0 0 5px rgba(214, 69, 80, 0.13),
+                0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Animación de aparición al agrupar */
+@keyframes clusterEntra {
+    from { transform: scale(0.6); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+.cluster-sicar { animation: clusterEntra 0.22s ease-out; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BIENVENIDA · RECORRIDO GUIADO · TEMÁTICAS
+   Bloque autónomo — no altera estilos previos
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Botones nuevos de la barra flotante ── */
+.ctrl-btn-tematica.activo,
+.ctrl-btn-tematica:hover { color: #0182c7; }
+.ctrl-btn-ayuda:hover    { color: #7c3aed; }
+
+/* ══════════════ 1. BIENVENIDA ══════════════ */
+#bienvenida-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(8, 26, 40, 0.55);
+    backdrop-filter: blur(9px) saturate(0.9);
+    -webkit-backdrop-filter: blur(9px) saturate(0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#bienvenida-overlay.visible { opacity: 1; }
+
+#bienvenida-caja {
+    width: 100%;
+    max-width: 470px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 34px 34px 24px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(5, 22, 36, 0.4);
+    transform: translateY(16px) scale(0.985);
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#bienvenida-overlay.visible #bienvenida-caja { transform: translateY(0) scale(1); }
+
+.bv-icono {
+    width: 62px; height: 62px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #0182c7 0%, #015b8c 100%);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 8px 20px -6px rgba(1, 130, 199, 0.7);
+}
+.bv-marca {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #0182c7; margin-bottom: 10px;
+}
+.bv-titulo {
+    font-size: 22px; font-weight: 700; color: #12283a;
+    margin: 0 0 10px; line-height: 1.25;
+}
+.bv-texto {
+    font-size: 14px; color: #5a6b7a; line-height: 1.6; margin: 0 0 24px;
+}
+.bv-botones { display: flex; flex-direction: column; gap: 10px; }
+.bv-btn {
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 11px;
+    font-family: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    transition: all 0.2s ease;
+}
+.bv-btn-primario {
+    border: none;
+    background: linear-gradient(135deg, #0182c7 0%, #0166a0 100%);
+    color: #fff;
+    box-shadow: 0 6px 16px -6px rgba(1, 130, 199, 0.8);
+}
+.bv-btn-primario:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -7px rgba(1, 130, 199, 0.9); }
+.bv-btn-secundario {
+    border: 1.5px solid #dbe4ec; background: #fff; color: #5a6b7a;
+}
+.bv-btn-secundario:hover { background: #f4f8fb; border-color: #b9cbdb; color: #12283a; }
+.bv-pie {
+    margin: 18px 0 0; font-size: 11.5px; color: #93a3b1; line-height: 1.5;
+}
+.bv-pie i { color: #7c3aed; }
+
+/* ══════════════ 2. RECORRIDO GUIADO ══════════════ */
+#tour-capa {
+    display: none;
+    position: fixed; inset: 0;
+    z-index: 3900;
+    opacity: 0;
+    transition: opacity 0.26s ease;
+}
+#tour-capa.visible { opacity: 1; }
+
+/* El foco se logra con una sombra enorme que oscurece todo lo de fuera */
+#tour-foco {
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 0 0 9999px rgba(7, 22, 34, 0.74),
+                0 0 0 2px #38bdf8,
+                0 0 22px 3px rgba(56, 189, 248, 0.5);
+    transition: all 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+#tour-globo {
+    position: absolute;
+    width: 336px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px 18px 14px;
+    box-shadow: 0 18px 44px rgba(5, 22, 36, 0.42);
+    transition: top 0.36s cubic-bezier(0.22,1,0.36,1), left 0.36s cubic-bezier(0.22,1,0.36,1);
+}
+.tour-cabecera {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px;
+}
+#tour-paso-num {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em;
+    color: #0182c7; background: #e8f4fb;
+    padding: 3px 9px; border-radius: 20px;
+}
+#tour-cerrar {
+    width: 26px; height: 26px; border: none; border-radius: 50%;
+    background: #f1f5f9; color: #64748b; cursor: pointer; font-size: 12px;
+    transition: all 0.18s ease;
+}
+#tour-cerrar:hover { background: #fee2e2; color: #dc2626; }
+#tour-globo h3 {
+    margin: 0 0 7px; font-size: 15.5px; font-weight: 700; color: #12283a; line-height: 1.3;
+}
+#tour-globo p {
+    margin: 0 0 14px; font-size: 13px; color: #5a6b7a; line-height: 1.58;
+}
+.tour-pie { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#tour-puntos { display: flex; gap: 5px; }
+#tour-puntos button {
+    width: 6px; height: 6px; padding: 0; border: none; border-radius: 50%;
+    background: #cfdae4; cursor: pointer; transition: all 0.25s ease;
+}
+#tour-puntos button.activo { width: 18px; border-radius: 3px; background: #0182c7; }
+.tour-nav { display: flex; gap: 7px; }
+.tour-btn {
+    border: 1.5px solid #dbe4ec; background: #fff; color: #5a6b7a;
+    border-radius: 9px; padding: 7px 11px;
+    font-family: inherit; font-size: 12.5px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 6px;
+    transition: all 0.18s ease;
+}
+.tour-btn:hover { background: #f4f8fb; color: #12283a; }
+.tour-btn-primario {
+    border: none; background: #0182c7; color: #fff;
+    box-shadow: 0 4px 12px -4px rgba(1, 130, 199, 0.8);
+}
+.tour-btn-primario:hover { background: #0166a0; color: #fff; }
+
+/* ══════════════ 3. SELECTOR DE TEMÁTICAS ══════════════ */
+#tema-selector {
+    position: absolute;
+    top: 62px; right: 68px;
+    width: 340px;
+    z-index: 1200;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 16px 40px rgba(5, 22, 36, 0.3);
+    overflow: hidden;
+    opacity: 0; visibility: hidden;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: top right;
+    transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#tema-selector.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+
+.tema-sel-cabecera {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 10px; padding: 14px 15px 12px;
+    background: linear-gradient(135deg, #0d3b57 0%, #0182c7 100%);
+    color: #fff;
+}
+.tema-sel-titulo { font-size: 13.5px; font-weight: 700; display: flex; align-items: center; gap: 7px; }
+.tema-sel-sub { font-size: 11px; opacity: 0.8; margin-top: 3px; }
+#tema-sel-cerrar {
+    width: 24px; height: 24px; min-width: 24px; border: none; border-radius: 50%;
+    background: rgba(255,255,255,0.18); color: #fff; cursor: pointer; font-size: 11px;
+    transition: background 0.18s ease;
+}
+#tema-sel-cerrar:hover { background: rgba(255,255,255,0.35); }
+
+#tema-sel-lista { padding: 9px; display: flex; flex-direction: column; gap: 6px; }
+.tema-card {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 11px 12px;
+    border: 1.5px solid #eef2f6; border-radius: 12px;
+    background: #fff; cursor: pointer; text-align: left;
+    font-family: inherit;
+    transition: all 0.18s ease;
+}
+.tema-card:hover {
+    border-color: var(--c);
+    background: color-mix(in srgb, var(--c) 6%, #fff);
+    transform: translateX(3px);
+}
+.tema-card-icono {
+    width: 38px; height: 38px; min-width: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--c) 14%, #fff);
+    color: var(--c); font-size: 16px;
+}
+.tema-card-texto { flex: 1; min-width: 0; }
+.tema-card-nombre { display: block; font-size: 13.5px; font-weight: 700; color: #12283a; }
+.tema-card-desc {
+    display: block; font-size: 11px; color: #7d8b98; line-height: 1.4; margin-top: 2px;
+}
+.tema-card-cifra {
+    font-size: 12px; font-weight: 700; color: var(--c);
+    background: color-mix(in srgb, var(--c) 11%, #fff);
+    padding: 4px 9px; border-radius: 20px; white-space: nowrap;
+}
+
+/* ══════════════ 4. VENTANA DE DATO DESTACADO ══════════════ */
+#tema-dato {
+    position: absolute;
+    bottom: 22px; left: 50%;
+    width: 430px; max-width: calc(100vw - 32px);
+    z-index: 1250;
+    background: #fff;
+    border-radius: 17px;
+    box-shadow: 0 20px 50px rgba(5, 22, 36, 0.35);
+    overflow: hidden;
+    opacity: 0; visibility: hidden;
+    transform: translateX(-50%) translateY(18px);
+    transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#tema-dato.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+.td-barra { height: 4px; width: 100%; background: #0182c7; }
+.td-cabecera {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 15px 0;
+}
+.td-tema {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--c);
+}
+#td-cerrar {
+    width: 25px; height: 25px; border: none; border-radius: 50%;
+    background: #f1f5f9; color: #64748b; cursor: pointer; font-size: 11px;
+    transition: all 0.18s ease;
+}
+#td-cerrar:hover { background: #fee2e2; color: #dc2626; }
+
+.td-cuerpo { padding: 8px 15px 13px; }
+.td-metrica { display: flex; align-items: baseline; gap: 7px; margin-bottom: 10px; }
+.td-valor {
+    font-size: 34px; font-weight: 800; line-height: 1; color: var(--c);
+    letter-spacing: -0.02em;
+}
+.td-unidad { font-size: 12px; color: #7d8b98; font-weight: 600; }
+.td-sabias {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; color: #b45309;
+    background: #fef3c7; padding: 4px 10px; border-radius: 20px;
+    margin-bottom: 8px;
+}
+.td-titulo { margin: 0 0 6px; font-size: 14.5px; font-weight: 700; color: #12283a; line-height: 1.3; }
+.td-dato { margin: 0; font-size: 13px; color: #46586a; line-height: 1.6; }
+.td-dato b { color: #12283a; font-weight: 700; }
+.td-detalle {
+    margin: 9px 0 0; padding-top: 9px;
+    border-top: 1px dashed #e2e8ef;
+    font-size: 11.5px; color: #8b98a5; line-height: 1.5;
+}
+.td-pie {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 11px 15px; background: #f7fafc;
+    border-top: 1px solid #eef2f6;
+}
+#td-puntos { display: flex; gap: 5px; flex: 1; justify-content: center; }
+#td-puntos button {
+    width: 7px; height: 7px; padding: 0; border: none; border-radius: 50%;
+    background: #cfdae4; cursor: pointer; transition: all 0.25s ease;
+}
+#td-puntos button.activo { width: 20px; border-radius: 4px; background: var(--c); }
+.td-nav {
+    width: 34px; height: 34px; min-width: 34px;
+    border: 1.5px solid #dbe4ec; border-radius: 10px;
+    background: #fff; color: #5a6b7a; cursor: pointer; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.18s ease;
+}
+.td-nav:hover { background: #eef4f9; color: #12283a; }
+.td-nav-primario { border: none; background: var(--c); color: #fff; }
+.td-nav-primario:hover { filter: brightness(0.92); color: #fff; }
+.td-aviso {
+    display: flex; align-items: flex-start; gap: 7px;
+    padding: 8px 15px 10px; font-size: 10.5px; color: #93a3b1; line-height: 1.45;
+    background: #f7fafc;
+}
+
+/* ══════════════ Pantallas pequeñas ══════════════ */
+@media (max-width: 780px) {
+    #tour-globo { width: calc(100vw - 32px); }
+    #tema-selector { right: 12px; left: 12px; width: auto; top: 56px; }
+    #tema-dato { width: calc(100vw - 24px); bottom: 12px; }
+    .td-valor { font-size: 28px; }
+}
