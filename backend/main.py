@@ -712,6 +712,10 @@ def _etiqueta_tipo(clave: str) -> str:
 def _pct(parte: int, total: int) -> int:
     return round(parte * 100 / total) if total else 0
 
+def _num(n) -> str:
+    """Miles separados por espacio fino, sin tocar la puntuación de la frase."""
+    return f"{int(n):,}".replace(",", " ")
+
 def _presets_tema(conf: dict) -> List[dict]:
     """Construye los presets de una temática a partir de los datos reales."""
     if df.empty:
@@ -733,11 +737,10 @@ def _presets_tema(conf: dict) -> List[dict]:
     desglose = sub["Tipo_Dataset"].value_counts()
     presets.append({
         "titulo": f"Panorama de {conf['nombre'].lower()} en Áncash",
-        "dato": (f"El visor reúne <b>{total:,}</b> registros de {conf['nombre'].lower()} "
-                 f"en Áncash, provenientes de {len(tipos_presentes)} conjuntos de datos distintos."
-                 .replace(",", " ")),
-        "detalle": " · ".join(f"{k}: {v:,}".replace(",", " ") for k, v in desglose.head(4).items()),
-        "metrica": {"valor": f"{total:,}".replace(",", " "), "unidad": "registros"},
+        "dato": (f"El visor reúne <b>{_num(total)}</b> registros de {conf['nombre'].lower()} "
+                 f"en Áncash, provenientes de {len(tipos_presentes)} conjuntos de datos distintos."),
+        "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in desglose.head(4).items()),
+        "metrica": {"valor": _num(total), "unidad": "registros"},
         "filtros": {**vacio, "tipo": etiquetas},
     })
 
@@ -749,13 +752,12 @@ def _presets_tema(conf: dict) -> List[dict]:
     if not cu.empty:
         nombre_cu, n_cu = cu.index[0], int(cu.iloc[0])
         presets.append({
-            "titulo": f"Unidad hidrográfica con más registros",
-            "dato": (f"La <b>{nombre_cu}</b> concentra <b>{n_cu:,}</b> de los "
-                     f"{len(sub_pri):,} registros de {etiqueta_pri.lower()} del "
-                     f"departamento, es decir el <b>{_pct(n_cu, len(sub_pri))}%</b>."
-                     .replace(",", " ")),
-            "detalle": " · ".join(f"{k}: {v}" for k, v in cu.head(4).items()),
-            "metrica": {"valor": f"{n_cu:,}".replace(",", " "), "unidad": etiqueta_pri.lower()},
+            "titulo": "Unidad hidrográfica con más registros",
+            "dato": (f"La <b>{nombre_cu}</b> concentra <b>{_num(n_cu)}</b> de los "
+                     f"{_num(len(sub_pri))} registros de «{etiqueta_pri}» del "
+                     f"departamento, es decir el <b>{_pct(n_cu, len(sub_pri))}%</b>."),
+            "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in cu.head(4).items()),
+            "metrica": {"valor": _num(n_cu), "unidad": etiqueta_pri},
             "filtros": {**vacio, "tipo": [etiqueta_pri], "cuenca": [nombre_cu]},
         })
 
@@ -766,10 +768,10 @@ def _presets_tema(conf: dict) -> List[dict]:
         presets.append({
             "titulo": "Provincia con mayor concentración",
             "dato": (f"<b>{_titulo(nombre_pr)}</b> es la provincia con más registros de "
-                     f"{etiqueta_pri.lower()}: <b>{n_pr:,}</b> del total de {len(sub_pri):,} "
-                     f"en Áncash.".replace(",", " ")),
-            "detalle": " · ".join(f"{_titulo(k)}: {v}" for k, v in prov_pri[:4]),
-            "metrica": {"valor": f"{n_pr:,}".replace(",", " "), "unidad": etiqueta_pri.lower()},
+                     f"«{etiqueta_pri}»: <b>{_num(n_pr)}</b> del total de "
+                     f"{_num(len(sub_pri))} en Áncash."),
+            "detalle": " · ".join(f"{_titulo(k)}: {_num(v)}" for k, v in prov_pri[:4]),
+            "metrica": {"valor": _num(n_pr), "unidad": etiqueta_pri},
             "filtros": {**vacio, "tipo": [etiqueta_pri], "provincia": [_titulo(nombre_pr)]},
         })
 
@@ -788,10 +790,9 @@ def _presets_tema(conf: dict) -> List[dict]:
                 if n:
                     presets.append({
                         "titulo": "Pasivos de riesgo alto y muy alto",
-                        "dato": (f"De los {len(pam):,} pasivos ambientales mineros registrados "
+                        "dato": (f"De los {_num(len(pam))} pasivos ambientales mineros registrados "
                                  f"en Áncash, <b>{n}</b> están clasificados con riesgo "
-                                 f"<b>alto o muy alto</b> ({_pct(n, len(pam))}% del total)."
-                                 .replace(",", " ")),
+                                 f"<b>alto o muy alto</b> ({_pct(n, len(pam))}% del total)."),
                         "detalle": "Clasificación de riesgo según el inventario del MINEM.",
                         "metrica": {"valor": str(n), "unidad": "pasivos críticos"},
                         "filtros": {**vacio, "tipo": [_etiqueta_tipo("PASIVOS AMBIENTALES MINEROS")],
