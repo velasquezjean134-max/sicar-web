@@ -95,9 +95,14 @@
                 </div>
 
                 <p><strong id="contador-resultados">Resultados: 0 puntos encontrados.</strong></p>
-                <button id="btn-descargar-csv" style="display: none;">
-                    <i class="fa-solid fa-download"></i> Descargar CSV
-                </button>
+                <div class="grupo-descargas">
+                    <button id="btn-descargar-csv" style="display: none;">
+                        <i class="fa-solid fa-download"></i> Descargar CSV
+                    </button>
+                    <button id="btn-descargar-reporte" style="display: none;">
+                        <i class="fa-solid fa-file-pdf"></i> Descargar reporte
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -378,10 +383,33 @@
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+         REPORTE PDF — selección del ámbito territorial
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="reporte-overlay">
+        <div id="reporte-caja">
+            <div class="rp-cabecera">
+                <div>
+                    <div class="rp-titulo"><i class="fa-solid fa-file-pdf"></i> Descargar reporte</div>
+                    <div class="rp-sub">Elige el ámbito territorial del informe</div>
+                </div>
+                <button id="rp-cerrar" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="rp-opciones"></div>
+            <div class="rp-pie">
+                <i class="fa-solid fa-circle-info"></i>
+                El informe cubre <b>todos</b> los conjuntos de datos disponibles en el ámbito elegido,
+                aunque tengas filtrado un tipo de dato en particular.
+            </div>
+            <div id="rp-estado"></div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="script.js"></script>
     <script src="onboarding.js"></script>
+    <script src="reporte.js"></script>
 
 </body>
 </html>

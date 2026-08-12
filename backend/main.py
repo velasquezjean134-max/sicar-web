@@ -876,6 +876,417 @@ def get_tematicas():
           f"{sum(len(t['presets']) for t in temas)} presets generados")
     return _tematicas_cache
 
+# ══════════════════════════════════════════════════════════════════════════════
+# REPORTE PDF POR ÁMBITO TERRITORIAL
+# ══════════════════════════════════════════════════════════════════════════════
+# Genera un informe ejecutivo del panorama ambiental de un distrito, provincia o
+# unidad hidrográfica. Cubre SIEMPRE todos los datasets disponibles en ese
+# ámbito, con independencia de los filtros de tipo activos en el visor.
+# ══════════════════════════════════════════════════════════════════════════════
+
+ENTIDAD_POR_TIPO = {
+    "DERECHOS DE USO DE AGUA":           "Autoridad Nacional del Agua (ANA)",
+    "FUENTES CONTAMINANTES":             "Autoridad Nacional del Agua (ANA)",
+    "PUNTOS DE MUESTREO ANA":            "Autoridad Nacional del Agua (ANA)",
+    "RED DE MONITOREO ANA":              "Autoridad Nacional del Agua (ANA)",
+    "CENTROS POBLADOS CON MP":           "Dirección Regional de Salud Áncash (DIRESA)",
+    "DOSAJES METALES CP":                "Dirección Regional de Salud Áncash (DIRESA)",
+    "GRAN Y MEDIANA MINERIA":            "Dirección Regional de Energía y Minas (DREM)",
+    "PEQUENA MINERIA":                   "Dirección Regional de Energía y Minas (DREM)",
+    "REINFOS":                           "Dirección Regional de Energía y Minas (DREM)",
+    "SITIOS CONTAMINADOS CON DAR":       "Instituto Nacional de Investigación en Glaciares (INAIGEM)",
+    "PUNTOS DE CONTAMINACION AMBIENTAL": "Instituto Peruano de Fiscalización y Control Ambiental",
+    "PASIVOS AMBIENTALES MINEROS":       "Ministerio de Energía y Minas (MINEM)",
+    "ADRS MUNICIPALES":                  "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
+    "ADRS NO MUNICIPALES":               "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
+    "INFRAESTRUCTURA DE RRSS":           "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
+    "PUNTOS DE MUESTREO OEFA":           "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
+    "UNIDADES FISCALIZABLES OEFA":       "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
+    "PUNTOS DE MUESTREO SENASA":         "Servicio Nacional de Sanidad Agraria (SENASA)",
+}
+
+class ReporteReq(BaseModel):
+    ambito: str            # "distrito" | "provincia" | "cuenca"
+    valor: str
+
+_logo_cache: dict = {}     # logos reescalados, para no incrustar los originales
+
+def _sub_ambito(ambito: str, valor: str):
+    """Subconjunto del índice para el ámbito solicitado."""
+    if df.empty:
+        return df
+    if ambito == "distrito":
+        return df[_mask_lista(df.index, [valor], DIST_FILA)]
+    if ambito == "provincia":
+        return df[_mask_lista(df.index, [valor], PROV_FILA)]
+    if ambito == "cuenca":
+        return df[df["Cuenca"].map(norm_txt) == norm_txt(valor)]
+    return df.iloc[0:0]
+
+@app.get("/api/reporte/ambitos")
+def reporte_ambitos():
+    """Ámbitos disponibles para reportar (uso informativo del frontend)."""
+    return {
+        "distritos":  _uniq_oficial(DIST_FILA),
+        "provincias": _uniq_oficial(PROV_FILA),
+        "cuencas":    _uniq("Cuenca"),
+    }
+
+@app.post("/api/reporte")
+def reporte_pdf(req: ReporteReq):
+    from fastapi.responses import StreamingResponse
+    from fastapi import HTTPException
+    import io, unicodedata as _ud
+    from datetime import datetime
+
+    ambito = (req.ambito or "").strip().lower()
+    valor  = (req.valor or "").strip()
+    if ambito not in ("distrito", "provincia", "cuenca") or not valor:
+        raise HTTPException(status_code=400, detail="Ámbito o valor no válido.")
+
+    sub = _sub_ambito(ambito, valor)
+    if sub.empty:
+        raise HTTPException(status_code=404,
+                            detail=f"No hay registros para {ambito} «{valor}».")
+
+    try:
+        from reportlab.lib.pagesizes import A4
+        from reportlab.lib.units import mm
+        from reportlab.lib import colors
+        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
+        from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
+                                        Spacer, Table, TableStyle, Image, KeepTogether)
+        from reportlab.graphics.shapes import Drawing, String, Rect
+        from reportlab.graphics.charts.barcharts import HorizontalBarChart
+        from reportlab.graphics.charts.piecharts import Pie
+    except ImportError:
+        raise HTTPException(status_code=503,
+                            detail="La generación de reportes requiere reportlab en el servidor.")
+
+    AZUL   = colors.HexColor("#0182c7")
+    OSCURO = colors.HexColor("#12283a")
+    GRIS   = colors.HexColor("#5a6b7a")
+    SUAVE  = colors.HexColor("#f2f7fb")
+    PALETA = [colors.HexColor(c) for c in
+              ["#0182c7", "#2e8b57", "#a8730f", "#b03060", "#7c3aed",
+               "#e8743b", "#1fb6a6", "#4d8ef7", "#d64550", "#6b7280"]]
+
+    ss = getSampleStyleSheet()
+    est_titulo   = ParagraphStyle("t1", parent=ss["Title"], fontSize=19, leading=23,
+                                  textColor=OSCURO, spaceAfter=2)
+    est_subtit   = ParagraphStyle("t2", parent=ss["Normal"], fontSize=10.5, leading=14,
+                                  textColor=GRIS, alignment=TA_CENTER)
+    est_seccion  = ParagraphStyle("h2", parent=ss["Heading2"], fontSize=12.5, leading=16,
+                                  textColor=AZUL, spaceBefore=13, spaceAfter=6)
+    est_texto    = ParagraphStyle("p", parent=ss["Normal"], fontSize=9.6, leading=14,
+                                  textColor=colors.HexColor("#33475b"), alignment=TA_JUSTIFY)
+    est_celda    = ParagraphStyle("td", parent=ss["Normal"], fontSize=8.4, leading=11)
+    est_celda_b  = ParagraphStyle("th", parent=est_celda, textColor=colors.white,
+                                  fontName="Helvetica-Bold")
+    est_nota     = ParagraphStyle("nota", parent=ss["Normal"], fontSize=7.8, leading=10.5,
+                                  textColor=colors.HexColor("#8b98a5"))
+
+    etiqueta_ambito = {"distrito": "Distrito", "provincia": "Provincia",
+                       "cuenca": "Unidad hidrográfica"}[ambito]
+    hoy = datetime.now().strftime("%d/%m/%Y")
+
+    # ── Datos base ────────────────────────────────────────────────────────────
+    total = len(sub)
+    por_tipo = sub["Tipo_Dataset"].value_counts()
+    entidades = sorted({ENTIDAD_POR_TIPO.get(norm_txt(t), "Otras fuentes")
+                        for t in por_tipo.index})
+
+    up_sub = sub["Tipo_Dataset"].str.upper()
+    resumen_tema = []
+    for conf in TEMATICAS_CONF:
+        n = int(up_sub.isin(conf["tipos"]).sum())
+        if n:
+            resumen_tema.append((conf["nombre"], n, conf["color"]))
+    resumen_tema.sort(key=lambda x: -x[1])
+
+    # Desagregación territorial según el ámbito
+    if ambito == "provincia":
+        titulo_desg, desg = "Distribución por distrito", {}
+        for i in sub.index:
+            for d in DIST_FILA.get(i, set()):
+                desg[_titulo(d)] = desg.get(_titulo(d), 0) + 1
+    elif ambito == "cuenca":
+        titulo_desg, desg = "Distribución por provincia", {}
+        for i in sub.index:
+            for p in PROV_FILA.get(i, set()):
+                desg[_titulo(p)] = desg.get(_titulo(p), 0) + 1
+    else:
+        titulo_desg = "Distribución por unidad hidrográfica"
+        desg = {k: int(v) for k, v in
+                sub[sub["Cuenca"].astype(str).str.strip() != ""]["Cuenca"]
+                .value_counts().items()}
+    desg = dict(sorted(desg.items(), key=lambda x: -x[1])[:8])
+
+    # Riesgo de pasivos mineros, si aplica
+    riesgo_pam = {}
+    pam_sub = sub[up_sub == "PASIVOS AMBIENTALES MINEROS"]
+    if not pam_sub.empty:
+        ds = get_dataset("minem_pam.csv")
+        if not ds.empty and "RIESGO" in ds.columns and "ID_registro" in ds.columns:
+            ids = pam_sub["ID_registro"].astype(str).str.strip().str.split(".").str[0]
+            dsn = ds.copy()
+            dsn["_id"] = dsn["ID_registro"].astype(str).str.strip().str.split(".").str[0]
+            sel = dsn[dsn["_id"].isin(set(ids))]
+            if not sel.empty:
+                riesgo_pam = {k: int(v) for k, v in sel["RIESGO"].value_counts().items()}
+
+    # ── Utilidades de dibujo ──────────────────────────────────────────────────
+    def barras(datos: dict, ancho=170*mm, alto_barra=13):
+        """Gráfico de barras horizontales con etiqueta y valor."""
+        items = list(datos.items())
+        n = len(items)
+        alto = max(38, n * alto_barra + 26)
+        d = Drawing(ancho, alto)
+        maxv = max(datos.values()) if datos else 1
+        etiqueta_ancho = 62*mm
+        barra_max = ancho - etiqueta_ancho - 22*mm
+        for k, (nombre, val) in enumerate(items):
+            y = alto - 18 - k * alto_barra
+            corto = nombre if len(nombre) <= 34 else nombre[:32] + "…"
+            d.add(String(0, y, corto, fontName="Helvetica", fontSize=7.6,
+                         fillColor=colors.HexColor("#33475b")))
+            w = max(1.5, (val / maxv) * barra_max)
+            d.add(Rect(etiqueta_ancho, y - 2.4, w, 8.4,
+                       fillColor=PALETA[k % len(PALETA)], strokeColor=None))
+            d.add(String(etiqueta_ancho + w + 4, y, f"{val:,}".replace(",", " "),
+                         fontName="Helvetica-Bold", fontSize=7.6, fillColor=OSCURO))
+        return d
+
+    def dona(datos: dict, ancho=85*mm, alto=52*mm):
+        d = Drawing(ancho, alto)
+        p = Pie()
+        p.x, p.y = 6, 4
+        p.width = p.height = 44*mm
+        p.data = list(datos.values())
+        p.labels = None
+        p.innerRadiusFraction = 0.55
+        p.slices.strokeColor = colors.white
+        p.slices.strokeWidth = 1.4
+        for i in range(len(datos)):
+            p.slices[i].fillColor = PALETA[i % len(PALETA)]
+        d.add(p)
+        tot = sum(datos.values()) or 1
+        for i, (k, v) in enumerate(datos.items()):
+            y = alto - 12 - i * 9.5
+            d.add(Rect(50*mm, y, 6, 6, fillColor=PALETA[i % len(PALETA)], strokeColor=None))
+            txt = k if len(k) <= 20 else k[:18] + "…"
+            d.add(String(50*mm + 9, y + 0.6, f"{txt}  {round(v*100/tot)}%",
+                         fontName="Helvetica", fontSize=7.3,
+                         fillColor=colors.HexColor("#33475b")))
+        return d
+
+    def tarjetas(valores):
+        """Fila de datos fuerza."""
+        celdas, estilos = [], [
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("TOPPADDING", (0, 0), (-1, -1), 9),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 9),
+        ]
+        for i, (val, txt) in enumerate(valores):
+            celdas.append(Paragraph(
+                f'<para align="center"><font size="17" color="#0182c7"><b>{val}</b></font><br/>'
+                f'<font size="7.6" color="#5a6b7a">{txt.upper()}</font></para>', est_texto))
+            estilos += [("BACKGROUND", (i, 0), (i, 0), SUAVE),
+                        ("LINEBELOW", (i, 0), (i, 0), 2.2, AZUL)]
+        t = Table([celdas], colWidths=[170*mm/len(valores)] * len(valores))
+        t.setStyle(TableStyle(estilos))
+        return t
+
+    def tabla(cabeceras, filas, anchos):
+        data = [[Paragraph(f"<b>{c}</b>", est_celda_b) for c in cabeceras]]
+        for f in filas:
+            data.append([Paragraph(str(c), est_celda) for c in f])
+        t = Table(data, colWidths=anchos, repeatRows=1)
+        t.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, 0), AZUL),
+            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, SUAVE]),
+            ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#dbe4ec")),
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("TOPPADDING", (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING", (0, 0), (-1, -1), 5),
+        ]))
+        return t
+
+    # ── Membrete y pie ────────────────────────────────────────────────────────
+    dir_front = os.path.normpath(os.path.join(BASE_DIR, "..", "frontend"))
+
+    def logo(nombre, alto_mm):
+        """Inserta el logo reescalado: los originales pesan varios MB."""
+        ruta = os.path.join(dir_front, nombre)
+        if not os.path.exists(ruta):
+            return ""
+        try:
+            if nombre not in _logo_cache:
+                from PIL import Image as PILImage
+                im = PILImage.open(ruta).convert("RGBA")
+                im.thumbnail((520, 150), PILImage.LANCZOS)
+                fondo = PILImage.new("RGB", im.size, (255, 255, 255))
+                fondo.paste(im, mask=im.split()[3])
+                buf = io.BytesIO()
+                fondo.save(buf, "PNG", optimize=True)
+                _logo_cache[nombre] = buf.getvalue()
+            datos = io.BytesIO(_logo_cache[nombre])
+            img = Image(datos)
+            escala = (alto_mm*mm) / img.imageHeight
+            img.drawHeight = alto_mm*mm
+            img.drawWidth = img.imageWidth * escala
+            return img
+        except Exception as e:
+            print(f"⚠  Logo {nombre} no incrustado: {e}")
+            return ""
+
+    def decorar(canvas, doc):
+        canvas.saveState()
+        # Franja superior
+        canvas.setFillColor(AZUL)
+        canvas.rect(0, A4[1] - 6*mm, A4[0], 6*mm, stroke=0, fill=1)
+        # Pie
+        canvas.setFillColor(colors.HexColor("#8b98a5"))
+        canvas.setFont("Helvetica", 7.2)
+        canvas.drawString(20*mm, 11*mm,
+                          "SICAR Áncash · Gerencia Regional de Recursos Naturales y Gestión del Medio Ambiente")
+        canvas.drawRightString(A4[0] - 20*mm, 11*mm, f"Página {doc.page}")
+        canvas.setStrokeColor(colors.HexColor("#dbe4ec"))
+        canvas.setLineWidth(0.4)
+        canvas.line(20*mm, 14.5*mm, A4[0] - 20*mm, 14.5*mm)
+        canvas.restoreState()
+
+    buffer = io.BytesIO()
+    doc = BaseDocTemplate(buffer, pagesize=A4,
+                          leftMargin=20*mm, rightMargin=20*mm,
+                          topMargin=15*mm, bottomMargin=20*mm,
+                          title=f"Reporte ambiental — {valor}",
+                          author="GRRNGMA · Gobierno Regional de Áncash")
+    marco = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id="cuerpo")
+    doc.addPageTemplates([PageTemplate(id="base", frames=[marco], onPage=decorar)])
+
+    E = []   # elementos del documento
+
+    # ── Encabezado institucional ──────────────────────────────────────────────
+    izq, der = logo("logo_izquierdo.png", 14), logo("logo_derecho.png", 14)
+    if izq or der:
+        cab = Table([[izq, "", der]], colWidths=[55*mm, 60*mm, 55*mm])
+        cab.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                                 ("ALIGN", (2, 0), (2, 0), "RIGHT")]))
+        E += [cab, Spacer(1, 6)]
+
+    E += [
+        Paragraph("REPORTE AMBIENTAL TERRITORIAL", est_subtit),
+        Spacer(1, 4),
+        Paragraph(f"{etiqueta_ambito} de {valor}"
+                  if ambito != "cuenca" else str(valor), est_titulo),
+        Paragraph(f"Departamento de Áncash · Emitido el {hoy}", est_subtit),
+        Spacer(1, 12),
+    ]
+
+    # ── Datos fuerza ──────────────────────────────────────────────────────────
+    fuerza = [(_num(total), "registros ambientales"),
+              (str(len(por_tipo)), "conjuntos de datos"),
+              (str(len(entidades)), "entidades fuente")]
+    if resumen_tema:
+        fuerza.append((_num(resumen_tema[0][1]), f"de {resumen_tema[0][0].lower()}"))
+    E += [tarjetas(fuerza), Spacer(1, 10)]
+
+    # ── Resumen narrativo ─────────────────────────────────────────────────────
+    frase_tema = ", ".join(f"{n.lower()} ({_num(v)})" for n, v, _ in resumen_tema[:4])
+    referencia = {"distrito": f"el distrito de <b>{valor}</b>",
+                  "provincia": f"la provincia de <b>{valor}</b>",
+                  "cuenca": f"la unidad hidrográfica <b>{valor}</b>"}[ambito]
+    E += [
+        Paragraph("1. Resumen", est_seccion),
+        Paragraph(
+            f"El presente reporte consolida la información ambiental disponible en el visor SICAR "
+            f"para {referencia}. Se han identificado <b>{_num(total)}</b> "
+            f"registros georreferenciados, distribuidos en <b>{len(por_tipo)}</b> conjuntos de datos "
+            f"generados por <b>{len(entidades)}</b> entidades del Estado. "
+            + (f"Las temáticas con mayor presencia son: {frase_tema}." if frase_tema else ""),
+            est_texto),
+        Spacer(1, 3),
+        Paragraph(
+            "Este documento reúne el panorama ambiental completo del ámbito consultado. Para obtener "
+            "el detalle registro por registro, utilice la descarga en formato CSV del visor.", est_nota),
+        Spacer(1, 4),
+    ]
+
+    # ── Composición por dataset ───────────────────────────────────────────────
+    datos_barras = {k: int(v) for k, v in por_tipo.head(10).items()}
+    E += [
+        Paragraph("2. Composición de la información disponible", est_seccion),
+        Paragraph("Cantidad de registros por conjunto de datos, ordenados de mayor a menor.",
+                  est_texto),
+        Spacer(1, 5),
+        barras(datos_barras),
+        Spacer(1, 8),
+    ]
+
+    filas = [(t, _num(int(v)), ENTIDAD_POR_TIPO.get(norm_txt(t), "—"),
+              f"{_pct(int(v), total)}%") for t, v in por_tipo.items()]
+    E += [tabla(["Conjunto de datos", "Registros", "Entidad responsable", "%"],
+                filas, [58*mm, 20*mm, 76*mm, 16*mm])]
+
+    # ── Distribución territorial ──────────────────────────────────────────────
+    if desg:
+        E += [
+            Paragraph(f"3. {titulo_desg}", est_seccion),
+            barras(desg),
+        ]
+
+    # ── Perfil temático ───────────────────────────────────────────────────────
+    if len(resumen_tema) > 1:
+        E += [
+            Paragraph("4. Perfil temático", est_seccion),
+            Paragraph("Distribución de los registros según las cuatro temáticas ambientales "
+                      "que organiza el visor.", est_texto),
+            Spacer(1, 4),
+            dona({n: v for n, v, _ in resumen_tema}),
+        ]
+
+    # ── Pasivos mineros por riesgo ────────────────────────────────────────────
+    if riesgo_pam:
+        criticos = riesgo_pam.get("Alto", 0) + riesgo_pam.get("Muy alto", 0)
+        total_pam = sum(riesgo_pam.values())
+        E += [
+            Paragraph("5. Pasivos ambientales mineros por nivel de riesgo", est_seccion),
+            Paragraph(
+                f"De los <b>{_num(total_pam)}</b> pasivos ambientales mineros inventariados por el "
+                f"MINEM en este ámbito, <b>{_num(criticos)}</b> presentan riesgo alto o muy alto, "
+                f"equivalente al <b>{_pct(criticos, total_pam)}%</b>.", est_texto),
+            Spacer(1, 5),
+            barras({k: v for k, v in sorted(riesgo_pam.items(), key=lambda x: -x[1])}),
+        ]
+
+    # ── Fuentes y nota metodológica ───────────────────────────────────────────
+    E += [
+        Paragraph("Fuentes de la información", est_seccion),
+        tabla(["Entidad generadora"], [(e,) for e in entidades], [170*mm]),
+        Spacer(1, 8),
+        Paragraph(
+            "<b>Nota metodológica.</b> Las cifras corresponden a los registros cargados en el visor "
+            "SICAR Áncash al momento de la emisión y no representan necesariamente el universo total "
+            "de cada temática. La información procede de fuentes oficiales de las entidades citadas; "
+            "el Gobierno Regional de Áncash la integra y publica sin alterar el dato de origen. "
+            "La periodicidad de actualización depende de cada entidad generadora. "
+            "Este reporte cubre todos los conjuntos de datos disponibles en el ámbito consultado, "
+            "con independencia de los filtros que estuvieran activos en el visor.", est_nota),
+    ]
+
+    doc.build(E)
+    buffer.seek(0)
+
+    limpio = _ud.normalize("NFD", valor).encode("ascii", "ignore").decode()
+    limpio = "_".join(limpio.split())
+    nombre = f"Reporte_SICAR_{ambito}_{limpio}.pdf"
+    return StreamingResponse(
+        buffer, media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="{nombre}"'})
+
 @app.get("/api/chat/preguntas")
 def chat_preguntas(tipo:str="",cuenca:str="",provincia:str="",distrito:str=""):
     cols_req = ["Tipo_Dataset","Cuenca","Provincia","Distrito"]

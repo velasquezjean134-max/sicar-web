@@ -1,5 +1,6 @@
 fastapi
 uvicorn[standard]
 pandas>=2.2,<3
+reportlab>=4.0,<5
 shapely>=2.0,<3
 python-multipart

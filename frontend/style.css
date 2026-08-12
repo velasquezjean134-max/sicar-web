@@ -1376,3 +1376,134 @@ input:checked + .slider-toggle:before { transform: translateX(16px); }
     #tema-dato { width: calc(100vw - 24px); bottom: 12px; }
     .td-valor { font-size: 28px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DESCARGA DE REPORTE PDF
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.grupo-descargas { display: flex; flex-direction: column; gap: 7px; }
+
+#btn-descargar-reporte {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #c0392b;
+    border-radius: 7px;
+    background: #fff;
+    color: #c0392b;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+#btn-descargar-reporte:hover { background: #c0392b; color: #fff; }
+
+#reporte-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(8, 26, 40, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+#reporte-overlay.visible { opacity: 1; visibility: visible; }
+
+#reporte-caja {
+    width: 100%;
+    max-width: 430px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(5, 22, 36, 0.4);
+    transform: translateY(14px) scale(0.985);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#reporte-overlay.visible #reporte-caja { transform: translateY(0) scale(1); }
+
+.rp-cabecera {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 17px 13px;
+    background: linear-gradient(135deg, #0d3b57 0%, #0182c7 100%);
+    color: #fff;
+}
+.rp-titulo { font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.rp-sub { font-size: 11.5px; opacity: 0.82; margin-top: 3px; }
+#rp-cerrar {
+    width: 26px; height: 26px; min-width: 26px; border: none; border-radius: 50%;
+    background: rgba(255,255,255,0.18); color: #fff; cursor: pointer; font-size: 12px;
+    transition: background 0.18s ease;
+}
+#rp-cerrar:hover { background: rgba(255,255,255,0.34); }
+
+#rp-opciones { padding: 12px 12px 4px; display: flex; flex-direction: column; gap: 8px; }
+
+.rp-opcion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 13px;
+    border: 1.5px solid #e6ecf2;
+    border-radius: 11px;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: all 0.18s ease;
+}
+.rp-opcion:hover {
+    border-color: var(--c);
+    background: color-mix(in srgb, var(--c) 6%, #fff);
+    transform: translateX(3px);
+}
+.rp-opcion.cargando { opacity: 0.75; pointer-events: none; }
+
+.rp-op-icono {
+    width: 36px; height: 36px; min-width: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--c) 14%, #fff);
+    color: var(--c); font-size: 15px;
+}
+.rp-op-texto { flex: 1; min-width: 0; }
+.rp-op-ambito {
+    display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: #8b98a5;
+}
+.rp-op-valor {
+    display: block; font-size: 13.5px; font-weight: 700; color: #12283a; margin-top: 1px;
+}
+.rp-op-flecha { color: var(--c); font-size: 13px; }
+
+.rp-vacio {
+    margin: 4px 4px 10px; font-size: 12.5px; color: #7d8b98; line-height: 1.55; text-align: center;
+}
+
+.rp-pie {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 10px 15px 12px; margin-top: 6px;
+    background: #f7fafc; border-top: 1px solid #eef2f6;
+    font-size: 11px; color: #7d8b98; line-height: 1.5;
+}
+.rp-pie i { color: #0182c7; margin-top: 2px; }
+.rp-pie b { color: #46586a; }
+
+#rp-estado:not(:empty) {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 15px; font-size: 12px; font-weight: 600;
+}
+#rp-estado.rp-ok    { background: #e8f8ee; color: #1e7d43; }
+#rp-estado.rp-error { background: #fdecea; color: #b3261e; }
