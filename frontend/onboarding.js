@@ -9,33 +9,30 @@
 (function () {
     'use strict';
 
-    const CLAVE_VISITA = 'sicar_visita_v1';
     const $ = id => document.getElementById(id);
 
     /* ══════════════════════════════════════════════════════════════════════
-       1. BIENVENIDA — pregunta de primera visita
+       1. BIENVENIDA
+       ──────────────────────────────────────────────────────────────────────
+       Se muestra en CADA carga de la página: al entrar, al refrescar y al
+       volver a abrir el visor. Así ningún visitante nuevo se queda sin la
+       invitación al recorrido.
        ══════════════════════════════════════════════════════════════════════ */
     const overlay = $('bienvenida-overlay');
 
-    function yaVisito() {
-        try { return localStorage.getItem(CLAVE_VISITA) === '1'; }
-        catch (e) { return false; }   // navegación privada o storage bloqueado
-    }
-    function marcarVisita() {
-        try { localStorage.setItem(CLAVE_VISITA, '1'); } catch (e) {}
-    }
     function cerrarBienvenida() {
         overlay.classList.remove('visible');
         setTimeout(() => { overlay.style.display = 'none'; }, 300);
-        marcarVisita();
     }
 
-    if (!yaVisito()) {
-        overlay.style.display = 'flex';
-        requestAnimationFrame(() => overlay.classList.add('visible'));
-    } else {
-        overlay.style.display = 'none';
-    }
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => overlay.classList.add('visible'));
+
+    // Cerrar con Esc o pulsando fuera del cuadro
+    overlay.addEventListener('click', e => { if (e.target === overlay) cerrarBienvenida(); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && overlay.classList.contains('visible')) cerrarBienvenida();
+    });
 
     $('bv-si').addEventListener('click', () => { cerrarBienvenida(); setTimeout(iniciarTour, 380); });
     $('bv-no').addEventListener('click', cerrarBienvenida);
