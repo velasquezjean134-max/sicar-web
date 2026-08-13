@@ -35,6 +35,14 @@
                 <button id="btn-cerrar-panel">✖</button>
             </div>
             <div class="panel-contenido">
+                <div id="chip-perfil">
+                    <span class="chip-icono"><i class="fa-solid fa-user"></i></span>
+                    <span class="chip-texto">
+                        <span class="chip-label">Estás navegando como</span>
+                        <span class="chip-nombre" id="chip-perfil-nombre">—</span>
+                    </span>
+                    <button id="chip-cambiar" title="Cambiar de perfil"><i class="fa-solid fa-repeat"></i></button>
+                </div>
                 <label class="titulo-filtro" style="margin-top: 5px;">1. Tipo de información:</label>
                 <div class="dropdown-check-list" id="dd-tipo">
                     <span class="anchor">Cargando...</span>
@@ -103,6 +111,9 @@
                         <i class="fa-solid fa-file-pdf"></i> Descargar reporte
                     </button>
                 </div>
+                <button id="btn-modo-avanzado">
+                    <i class="fa-solid fa-sliders"></i> <span>Ver herramientas avanzadas</span>
+                </button>
             </div>
         </aside>
 
@@ -294,6 +305,25 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════
+         PERFIL DE USUARIO — primera pantalla del visor
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="perfil-overlay">
+        <div id="perfil-caja">
+            <div class="pf-marca">SICAR Áncash</div>
+            <h2 class="pf-titulo">¿Desde dónde nos visitas?</h2>
+            <p class="pf-texto">
+                Adaptamos el visor a lo que necesitas encontrar. Puedes cambiar de perfil
+                en cualquier momento.
+            </p>
+            <div id="pf-opciones"></div>
+            <p class="pf-pie">
+                Toda la información ambiental está disponible para cualquier perfil;
+                lo que cambia es cómo te la presentamos.
+            </p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
          BIENVENIDA — pregunta de primera visita (fondo difuminado)
          ═══════════════════════════════════════════════════════════════════ -->
     <div id="bienvenida-overlay">
@@ -410,6 +440,7 @@
     <script src="script.js"></script>
     <script src="onboarding.js"></script>
     <script src="reporte.js"></script>
+    <script src="perfiles.js"></script>
 
 </body>
 </html>

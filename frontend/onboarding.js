@@ -25,8 +25,12 @@
         setTimeout(() => { overlay.style.display = 'none'; }, 300);
     }
 
-    overlay.style.display = 'flex';
-    requestAnimationFrame(() => overlay.classList.add('visible'));
+    // La bienvenida ya no se muestra sola: la dispara perfiles.js una vez que
+    // el usuario ha elegido desde qué perfil navega.
+    function mostrarBienvenida() {
+        overlay.style.display = 'flex';
+        requestAnimationFrame(() => overlay.classList.add('visible'));
+    }
 
     // Cerrar con Esc o pulsando fuera del cuadro
     overlay.addEventListener('click', e => { if (e.target === overlay) cerrarBienvenida(); });
@@ -44,41 +48,49 @@
     const foco      = $('tour-foco');
     const globo     = $('tour-globo');
 
+    /* Cada paso declara en qué perfiles aplica. Los pasos cuyo elemento esté
+       oculto para el perfil activo se descartan solos, pero además se ajusta
+       el texto según a quién se le explica. */
+    const TODOS = ['ciudadania', 'autoridad', 'tecnico', 'privado'];
+
     const PASOS = [
-        { sel: '#panel-filtros', pos: 'derecha',
+        { sel: '#panel-filtros', pos: 'derecha', perfiles: TODOS,
           titulo: 'Panel de consulta',
-          texto: 'Todo empieza aquí. Los filtros se combinan entre sí y el mapa se actualiza al instante. Puedes cerrar el panel con la X y volver a abrirlo con el botón del borde izquierdo.',
+          texto: 'Todo empieza aquí. Elige qué buscar y dónde, y el mapa se actualiza al instante. Puedes cerrar el panel con la X y volver a abrirlo con el botón del borde izquierdo.',
           antes: abrirPanelFiltros },
-        { sel: '#dd-tipo', pos: 'derecha',
+        { sel: '#dd-tipo', pos: 'derecha', perfiles: ['autoridad', 'tecnico', 'privado'],
           titulo: '1. ¿Qué información buscas?',
           texto: 'Elige uno o varios tipos de dato: pasivos ambientales mineros, derechos de uso de agua, puntos de monitoreo, residuos sólidos y más. Algunos tipos abren filtros extra, como el nivel de riesgo de los pasivos mineros.' },
-        { sel: '#dd-cuenca', pos: 'derecha',
+        { sel: '#dd-cuenca', pos: 'derecha', perfiles: ['tecnico', 'privado', 'autoridad'],
           titulo: '2. ¿En qué unidad hidrográfica?',
-          texto: 'Filtra por cuenca. Al seleccionar una, aparece un filtro adicional de subcuencas para acercarte todavía más al territorio que te interesa.' },
-        { sel: '#dd-provincia', pos: 'derecha',
-          titulo: '3. Provincia y distrito',
-          texto: 'Acota por división política. Solo se ofrecen las 20 provincias y los distritos de Áncash, y las opciones se van reduciendo según lo que ya elegiste.' },
-        { sel: '#slider-cuenca', pos: 'derecha',
+          texto: 'Filtra por cuenca. Al seleccionar una aparece un filtro adicional de subcuencas, para acercarte todavía más al territorio que te interesa.' },
+        { sel: '#dd-provincia', pos: 'derecha', perfiles: TODOS,
+          titulo: '¿De qué lugar quieres saber?',
+          texto: 'Elige tu provincia y tu distrito. Solo aparecen las 20 provincias y los distritos de Áncash, y las opciones se van reduciendo según lo que ya elegiste.' },
+        { sel: '#slider-cuenca', pos: 'derecha', perfiles: ['tecnico', 'privado'],
           titulo: 'Transparencia de cada capa',
           texto: 'Cada límite dibujado tiene su propio control de transparencia. Súbelo para resaltar el polígono o bájalo para ver mejor el mapa de fondo.' },
-        { sel: '#toggle-cluster', pos: 'derecha',
+        { sel: '#toggle-cluster', pos: 'derecha', perfiles: ['tecnico', 'privado', 'autoridad'],
           titulo: 'Agrupar puntos',
-          texto: 'Cuando hay muchos registros, se agrupan en círculos que muestran cuántos puntos contiene cada zona. Haz clic en un grupo para acercarte, o desactiva la casilla para ver los puntos uno a uno.' },
-        { sel: '#contador-resultados', pos: 'derecha',
-          titulo: 'Resultados y descarga',
-          texto: 'Aquí ves cuántos registros cumplen tus filtros. El botón de descarga te entrega exactamente esos datos en formato CSV, listos para Excel.' },
-        { sel: '#ctrl-tematicas', pos: 'izquierda',
+          texto: 'Cuando hay muchos registros se agrupan en círculos que indican cuántos puntos contiene cada zona. Haz clic en un grupo para acercarte, o desactiva la casilla para verlos uno a uno.' },
+        { sel: '#contador-resultados', pos: 'derecha', perfiles: TODOS,
+          titulo: 'Resultados y descargas',
+          texto: 'Aquí ves cuántos registros cumplen tu búsqueda. Puedes llevarte los datos en Excel o descargar un informe en PDF del distrito, la provincia o la cuenca que tengas seleccionada.' },
+        { sel: '#ctrl-tematicas', pos: 'izquierda', perfiles: TODOS,
           titulo: 'Explorar por temática',
           texto: 'Si no sabes por dónde empezar, este botón te propone recorridos ya armados sobre agua, minería, residuos sólidos y metales pesados, con un dato destacado en cada paso.' },
-        { sel: '#controles-flotantes', pos: 'izquierda',
+        { sel: '#controles-flotantes', pos: 'izquierda', perfiles: ['tecnico', 'privado', 'autoridad'],
           titulo: 'Mapa base, capas e iniciativas',
           texto: 'Cambia el fondo del mapa entre calles, satélite, relieve u oscuro; activa capas como la red hídrica o el Área de Conservación Regional; y consulta las iniciativas forestales de la región.' },
-        { sel: '#mapa', pos: 'centro',
+        { sel: '#mapa', pos: 'centro', perfiles: TODOS,
           titulo: 'El mapa es interactivo',
-          texto: 'Haz clic en cualquier punto para abrir su ficha completa: entidad responsable, ubicación y todos los atributos del registro original.' },
-        { sel: '#chatbot-container', pos: 'arriba',
+          texto: 'Haz clic en cualquier punto del mapa para ver su ficha completa: qué entidad lo registró, dónde está y todos sus datos.' },
+        { sel: '#chatbot-container', pos: 'arriba', perfiles: TODOS,
           titulo: 'Asistente de consulta',
-          texto: 'Puedes preguntarle en lenguaje simple cuántos registros hay por provincia o por tipo de dato, sin tocar los filtros.' }
+          texto: 'Puedes preguntarle en lenguaje simple cuántos registros hay en tu provincia o de un tipo de dato, sin tocar los filtros.' },
+        { sel: '#btn-modo-avanzado', pos: 'derecha', perfiles: ['ciudadania', 'autoridad'],
+          titulo: 'Herramientas avanzadas',
+          texto: 'Simplificamos el panel para tu perfil, pero nada está bloqueado: con este botón se muestran todos los filtros técnicos del visor.' }
     ];
 
     let pasoActual = 0;
@@ -101,8 +113,11 @@
 
     function iniciarTour() {
         if (typeof abrirPanelFiltros === 'function') abrirPanelFiltros();
-        // Se descartan los pasos cuyo elemento no exista o esté oculto
+        const perfil = window.SICAR_PERFIL || 'tecnico';
+        // Se descartan los pasos que no aplican al perfil o cuyo elemento
+        // no exista, no esté visible o esté oculto para este perfil
         pasosVigentes = PASOS.filter(p => {
+            if (p.perfiles && p.perfiles.indexOf(perfil) === -1) return false;
             if (p.antes) p.antes();
             return visible(document.querySelector(p.sel));
         });
@@ -316,6 +331,15 @@
         if (e.key === 'ArrowLeft')  mostrarPreset(presetIdx - 1);
         if (e.key === 'Escape')     ventana.classList.remove('visible');
     });
+
+    /* Interfaz pública del módulo, usada por perfiles.js */
+    window.SICAR_UI = {
+        mostrarBienvenida: mostrarBienvenida,
+        iniciarTour: iniciarTour,
+        abrirTematicas: function () {
+            if (!selector.classList.contains('visible')) toggleSelector();
+        }
+    };
 
     /* ── Aplicación de un preset sobre los filtros existentes ─────────────── */
     function valoresDisponibles(idLista) {
