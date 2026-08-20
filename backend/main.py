@@ -668,7 +668,8 @@ TEMATICAS_CONF = [
         "principal": "DERECHOS DE USO DE AGUA",
         "tipos": ["DERECHOS DE USO DE AGUA", "FUENTES CONTAMINANTES",
                   "PUNTOS DE MUESTREO ANA", "RED DE MONITOREO ANA",
-                  "PUNTOS DE MUESTREO OEFA", "PUNTOS DE MUESTREO SENASA"],
+                  "PUNTOS DE MUESTREO OEFA", "PUNTOS DE MUESTREO SENASA",
+                  "PUNTOS CRÍTICOS"],
     },
     {
         "id": "mineria", "nombre": "Minería", "icono": "fa-helmet-safety", "color": "#a8730f",
@@ -712,14 +713,380 @@ def _etiqueta_tipo(clave: str) -> str:
 def _pct(parte: int, total: int) -> int:
     return round(parte * 100 / total) if total else 0
 
+def _pct_fino(parte, total) -> str:
+    """Porcentaje con un decimal cuando el valor es menor a 1, para no mostrar 0%."""
+    if not total:
+        return "0"
+    v = parte * 100 / total
+    if v < 1:
+        return f"{v:.1f}".replace(".", ",")
+    return str(round(v))
+
 def _num(n) -> str:
     """Miles separados por espacio fino, sin tocar la puntuación de la frase."""
     return f"{int(n):,}".replace(",", " ")
+
+def _millones(n) -> str:
+    """Cifras muy grandes expresadas en una unidad legible."""
+    n = float(n)
+    if n >= 1_000_000_000:
+        return f"{n/1_000_000_000:.2f}".replace(".", ",") + " mil millones"
+    if n >= 1_000_000:
+        return _num(round(n / 1_000_000)) + " millones"
+    return _num(round(n))
+
+# ââ Trazabilidad: fuente oficial y vigencia de cada conjunto de datos ââââââââââ
+# El campo de fecha permite calcular el periodo real que cubre el archivo. Si un
+# dataset no declara fecha, se dice explicitamente: es informacion que la
+# Gerencia debe solicitar a la entidad generadora, no algo que se pueda suponer.
+FUENTE_DATASET = {
+    "DERECHOS DE USO DE AGUA": {
+        "fuente": "ANA · Registro Administrativo de Derechos de Uso de Agua",
+        "archivo": "ana_du_agua.csv", "campo_fecha": "Fecha Resolución"},
+    "FUENTES CONTAMINANTES": {
+        "fuente": "ANA · Inventario de Fuentes Contaminantes en cuerpos de agua",
+        "archivo": "ana_fuentescontamin.csv", "campo_fecha": "Fecha Inicio de Identificación"},
+    "PUNTOS DE MUESTREO ANA": {
+        "fuente": "ANA · Puntos de muestreo de calidad de agua",
+        "archivo": "ana_ptosmuestreo.csv", "campo_fecha": None},
+    "RED DE MONITOREO ANA": {
+        "fuente": "ANA · Red de monitoreo de calidad de los recursos hídricos",
+        "archivo": "ana_redmonitoreo.csv", "campo_fecha": None},
+    "PUNTOS DE MUESTREO OEFA": {
+        "fuente": "OEFA · Puntos de muestreo de fiscalización ambiental",
+        "archivo": "oefa_ptosmuestreo.csv", "campo_fecha": None},
+    "PUNTOS DE MUESTREO SENASA": {
+        "fuente": "SENASA · Puntos de muestreo",
+        "archivo": "senasa_ptosmuestreo.csv", "campo_fecha": None},
+    "PUNTOS CRITICOS": {
+        "fuente": "ANA · Puntos críticos por inundación, huaicos y erosión fluvial "
+                  "(Plataforma Nacional de Datos Abiertos)",
+        "archivo": "ana_puntoscriticos.csv", "campo_fecha": "Año de identificación"},
+    "PASIVOS AMBIENTALES MINEROS": {
+        "fuente": "MINEM · Inventario de Pasivos Ambientales Mineros",
+        "archivo": "minem_pam.csv", "campo_fecha": None},
+    "SITIOS CONTAMINADOS CON DAR": {
+        "fuente": "INAIGEM · Sitios con Drenaje Ácido de Roca",
+        "archivo": "inaigem_sitiosdar.csv", "campo_fecha": None},
+    "REINFOS": {
+        "fuente": "DREM Áncash · Registro Integral de Formalización Minera",
+        "archivo": "drem_reinfos.csv", "campo_fecha": None},
+    "UNIDADES FISCALIZABLES OEFA": {
+        "fuente": "OEFA · Unidades fiscalizables",
+        "archivo": "oefa_unidadfiscal.csv", "campo_fecha": None},
+    "ADRS MUNICIPALES": {
+        "fuente": "OEFA · Áreas degradadas por residuos sólidos municipales",
+        "archivo": "oefa_adrs_municipal.csv", "campo_fecha": None},
+    "ADRS NO MUNICIPALES": {
+        "fuente": "OEFA · Áreas degradadas por residuos sólidos no municipales",
+        "archivo": "oefa_adrs_nomunicipal.csv", "campo_fecha": None},
+    "INFRAESTRUCTURA DE RRSS": {
+        "fuente": "OEFA · Infraestructura de residuos sólidos",
+        "archivo": "oefa_infraestructura_rrss.csv", "campo_fecha": None},
+    "CENTROS POBLADOS CON MP": {
+        "fuente": "DIRESA Áncash · Centros poblados con presencia de metales pesados",
+        "archivo": "diresa_cp_mp.csv", "campo_fecha": None},
+    "DOSAJES METALES CP": {
+        "fuente": "DIRESA Áncash · Dosajes de metales pesados",
+        "archivo": "Dosajes_CP.csv", "campo_fecha": None},
+}
+
+SIN_FECHA = "año no declarado en el archivo de origen"
+_periodo_cache: dict = {}
+
+def _periodo(tipo: str) -> str:
+    """Rango de anios que cubre el dataset, calculado del propio archivo."""
+    clave = norm_txt(tipo)
+    if clave in _periodo_cache:
+        return _periodo_cache[clave]
+    conf = FUENTE_DATASET.get(clave)
+    res = SIN_FECHA
+    if conf and conf.get("campo_fecha") and conf.get("archivo"):
+        try:
+            ds = get_dataset(conf["archivo"])
+            if not ds.empty and conf["campo_fecha"] in ds.columns:
+                fechas = pd.to_datetime(ds[conf["campo_fecha"]], errors="coerce", dayfirst=True).dropna()
+                if not fechas.empty:
+                    a, b = int(fechas.min().year), int(fechas.max().year)
+                    res = str(a) if a == b else f"{a}–{b}"
+        except Exception:
+            pass
+    _periodo_cache[clave] = res
+    return res
+
+def _fuente(tipo: str) -> str:
+    conf = FUENTE_DATASET.get(norm_txt(tipo))
+    return conf["fuente"] if conf else "Fuente oficial no especificada"
+
+def _detalle_de(tipo: str) -> pd.DataFrame:
+    """Filas del dataset de detalle correspondientes a registros de Ancash."""
+    conf = FUENTE_DATASET.get(norm_txt(tipo))
+    if not conf or not conf.get("archivo") or df.empty:
+        return pd.DataFrame()
+    ds = get_dataset(conf["archivo"])
+    if ds.empty or "ID_registro" not in ds.columns:
+        return pd.DataFrame()
+    idx = df[df["Tipo_Dataset"].map(norm_txt) == norm_txt(tipo)]
+    if idx.empty:
+        return pd.DataFrame()
+    ids = set(idx["ID_registro"].astype(str).str.strip())
+    return ds[ds["ID_registro"].astype(str).str.strip().isin(ids)]
+
+def _presets_agua(conf: dict) -> List[dict]:
+    """
+    Recorrido narrativo del agua en Ancash: parte del panorama general de las
+    unidades hidrograficas, pasa por el uso real del recurso y termina en las
+    presiones identificadas y en las brechas de informacion.
+    Todas las cifras salen de los archivos de la ANA cargados en el sistema.
+    """
+    if df.empty:
+        return []
+
+    up = df["Tipo_Dataset"].str.upper()
+    vacio = {"tipo": [], "cuenca": [], "provincia": [], "distrito": [], "secundarios": {}}
+    ps: List[dict] = []
+
+    et_du = _etiqueta_tipo("DERECHOS DE USO DE AGUA")
+    et_fc = _etiqueta_tipo("FUENTES CONTAMINANTES")
+    et_rm = _etiqueta_tipo("RED DE MONITOREO ANA")
+    et_pm = _etiqueta_tipo("PUNTOS DE MUESTREO ANA")
+    tipos_agua = [_etiqueta_tipo(t) for t in conf["tipos"] if (up == t).any()]
+
+    # ── 1. Panorama hidrografico ──────────────────────────────────────────────
+    try:
+        n_cuencas = len(gjson("limite_cuencas.geojson").get("features", []))
+        n_subcuencas = len(_recortar_a_ancash("limite_subcuencas.geojson").get("features", []))
+    except Exception:
+        n_cuencas, n_subcuencas = 0, 0
+
+    sub_agua = df[up.isin(conf["tipos"])]
+    cu_con_datos = sub_agua[sub_agua["Cuenca"].astype(str).str.strip() != ""]["Cuenca"].nunique()
+
+    ps.append({
+        "titulo": "El mapa hidrográfico de Áncash",
+        "dato": (f"El departamento se organiza en <b>{n_cuencas}</b> unidades hidrográficas "
+                 f"y <b>{n_subcuencas}</b> subcuencas. El visor tiene información de agua "
+                 f"cargada en <b>{cu_con_datos}</b> de ellas."),
+        "detalle": ("Las unidades hidrográficas siguen la codificación Pfafstetter que emplea "
+                    "la Autoridad Nacional del Agua para todo el país."),
+        "metrica": {"valor": str(n_cuencas), "unidad": "unidades hidrográficas"},
+        "fuente": "ANA · Delimitación de unidades hidrográficas del Perú (método Pfafstetter)",
+        "periodo": SIN_FECHA,
+        "filtros": {**vacio, "tipo": tipos_agua},
+    })
+
+    # ── 2 y 3. Derechos de uso: cantidad frente a volumen ─────────────────────
+    du = _detalle_de("DERECHOS DE USO DE AGUA")
+    if not du.empty and "Tipo Uso" in du.columns:
+        conteo = du["Tipo Uso"].value_counts()
+        top_uso, n_top = conteo.index[0], int(conteo.iloc[0])
+        ps.append({
+            "titulo": "En qué se usa el agua de Áncash",
+            "dato": (f"De los <b>{_num(len(du))}</b> derechos de uso de agua otorgados en el "
+                     f"departamento, <b>{_num(n_top)}</b> son de uso <b>{top_uso.lower()}</b>, "
+                     f"es decir el <b>{_pct(n_top, len(du))}%</b> del total."),
+            "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in conteo.head(5).items()),
+            "metrica": {"valor": f"{_pct(n_top, len(du))}%", "unidad": f"de uso {top_uso.lower()}"},
+            "fuente": _fuente("DERECHOS DE USO DE AGUA"),
+            "periodo": _periodo("DERECHOS DE USO DE AGUA"),
+            "filtros": {**vacio, "tipo": [et_du]},
+        })
+
+        if "Volúmen Derecho (m³)" in du.columns:
+            vol = pd.to_numeric(du["Volúmen Derecho (m³)"], errors="coerce")
+            total_vol = float(vol.sum())
+            por_uso = du.assign(_v=vol).groupby("Tipo Uso")["_v"].sum().sort_values(ascending=False)
+            if total_vol > 0 and not por_uso.empty:
+                uso_vol, v_vol = por_uso.index[0], float(por_uso.iloc[0])
+                n_der = int((du["Tipo Uso"] == uso_vol).sum())
+                ps.append({
+                    "titulo": "El volumen cuenta otra historia",
+                    "dato": (f"Solo <b>{_num(n_der)}</b> derechos de uso <b>{uso_vol.lower()}</b> "
+                             f"({_pct_fino(n_der, len(du))}% del total) concentran el "
+                             f"<b>{_pct(v_vol, total_vol)}%</b> del volumen de agua otorgado en "
+                             f"Áncash: <b>{_millones(v_vol)}</b> de metros cúbicos al año."),
+                    "detalle": " · ".join(f"{k}: {_millones(v)} m³"
+                                              for k, v in por_uso.head(4).items()),
+                    "metrica": {"valor": f"{_pct(v_vol, total_vol)}%", "unidad": "del volumen otorgado"},
+                    "fuente": _fuente("DERECHOS DE USO DE AGUA"),
+                    "periodo": _periodo("DERECHOS DE USO DE AGUA"),
+                    "filtros": {**vacio, "tipo": [et_du]},
+                })
+
+    # ── 4. Red de monitoreo de calidad ────────────────────────────────────────
+    rm = _detalle_de("RED DE MONITOREO ANA")
+    col_tipo = next((c for c in ["TIPO DEL RECURSO HÍDRICO", "TIPO_RH"] if not rm.empty and c in rm.columns), None)
+    if not rm.empty and col_tipo:
+        cuerpos = rm[col_tipo].value_counts()
+        ps.append({
+            "titulo": "Dónde se vigila la calidad del agua",
+            "dato": (f"La ANA mantiene <b>{_num(len(rm))}</b> puntos de monitoreo de calidad "
+                     f"en Áncash, distribuidos principalmente en <b>{cuerpos.index[0].lower()}s</b> "
+                     f"({_num(int(cuerpos.iloc[0]))} puntos)."),
+            "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in cuerpos.head(4).items()),
+            "metrica": {"valor": _num(len(rm)), "unidad": "puntos de monitoreo"},
+            "fuente": _fuente("RED DE MONITOREO ANA"),
+            "periodo": _periodo("RED DE MONITOREO ANA"),
+            "filtros": {**vacio, "tipo": [et_rm]},
+        })
+
+    # ── 5. Categorias ECA de los cuerpos de agua ──────────────────────────────
+    pm = _detalle_de("PUNTOS DE MUESTREO ANA")
+    col_cat = next((c for c in ["CLASIFICAC", "CLASIFICACÍON DE CUERPOS DE AGUA"]
+                    if not pm.empty and c in pm.columns), None)
+    if not pm.empty and col_cat:
+        cats = pm[col_cat].value_counts()
+        ps.append({
+            "titulo": "Para qué está clasificada cada agua",
+            "dato": (f"De los <b>{_num(len(pm))}</b> puntos de muestreo, <b>{_num(int(cats.iloc[0]))}</b> "
+                     f"corresponden a cuerpos de agua de <b>{cats.index[0]}</b>. La categoría define "
+                     f"qué estándar de calidad le resulta exigible a ese cuerpo de agua."),
+            "detalle": ("Categoría 1: agua para consumo humano · Categoría 3: riego y bebida de "
+                        "animales · Categoría 4: conservación del ambiente acuático."),
+            "metrica": {"valor": _num(int(cats.iloc[0])), "unidad": str(cats.index[0]).lower()},
+            "fuente": _fuente("PUNTOS DE MUESTREO ANA"),
+            "periodo": _periodo("PUNTOS DE MUESTREO ANA"),
+            "filtros": {**vacio, "tipo": [et_pm]},
+        })
+
+    # ââ 6. Mediciones de metales conservadas ââââââââââââââââââââââââââââââââââ
+    # DELIBERADAMENTE NO se calculan excedencias del ECA. El archivo de origen no
+    # declara fecha de muestreo, subcategoria ECA, ni si el metal es total o
+    # disuelto, y 20 registros traen 0,00 en los cuatro metales a la vez, lo que
+    # indica ausencia de medicion y no concentracion nula. Afirmar cumplimiento o
+    # incumplimiento con esos vacios podria contradecir los informes oficiales de
+    # la ANA. Se declara lo que hay y lo que falta.
+    METALES = [("As", "arsénico"), ("Cd", "cadmio"), ("Pb", "plomo"), ("Hg", "mercurio")]
+    if not pm.empty:
+        cols_met = [(c, n) for c, n in METALES if f"{c}_ppm" in pm.columns]
+        if cols_met:
+            medidos = pd.Series(False, index=pm.index)
+            for c, _ in cols_met:
+                medidos |= pd.to_numeric(pm[f"{c}_ppm"], errors="coerce").fillna(0) > 0
+            n_med = int(medidos.sum())
+            if n_med:
+                ps.append({
+                    "titulo": "Mediciones de metales disponibles",
+                    "dato": (f"El visor conserva las concentraciones medidas de "
+                             f"<b>{', '.join(n for _, n in cols_met[:-1])} y {cols_met[-1][1]}</b> "
+                             f"en <b>{_num(n_med)}</b> de los {_num(len(pm))} puntos de muestreo "
+                             f"de la ANA en Áncash."),
+                    "detalle": ("Los valores se muestran tal como figuran en el archivo de origen. "
+                                "Su comparación con los Estándares de Calidad Ambiental requiere "
+                                "conocer la subcategoría aplicable y la fecha de muestreo, datos que "
+                                "el archivo no declara y que corresponde solicitar a la entidad "
+                                "generadora."),
+                    "metrica": {"valor": _num(n_med), "unidad": "puntos con mediciones"},
+                    "fuente": _fuente("PUNTOS DE MUESTREO ANA"),
+                    "periodo": _periodo("PUNTOS DE MUESTREO ANA"),
+                    "filtros": {**vacio, "tipo": [et_pm]},
+                })
+
+    # ââ 6. Fuentes contaminantes identificadas ââââââââââââââââââââââââââââââââ
+    fc = _detalle_de("FUENTES CONTAMINANTES")
+    if not fc.empty:
+        n_fc = len(fc)
+        det, metrica, extra = [], None, ""
+        if "Naturaleza FC" in fc.columns:
+            nat = fc["Naturaleza FC"].value_counts()
+            n_res = int(nat.get("Aguas Residuales", 0))
+            if n_res:
+                extra = (f" De ellas, <b>{_num(n_res)}</b> corresponden a vertimientos de "
+                         f"<b>aguas residuales</b> a cuerpos de agua.")
+                metrica = {"valor": _num(n_res), "unidad": "vertimientos de aguas residuales"}
+        if "Tipo Fuente Contaminante" in fc.columns:
+            det = [f"{k}: {_num(v)}" for k, v in fc["Tipo Fuente Contaminante"].value_counts().items()]
+        cau = pd.to_numeric(fc.get("Caudal (l/s)", pd.Series(dtype=str)), errors="coerce")
+        cau_txt = ""
+        if cau.notna().any() and float(cau.sum()) > 0:
+            cau_txt = (f" El caudal vertido registrado suma "
+                       f"<b>{float(cau.sum()):.1f}</b>".replace(".", ",") + " litros por segundo.")
+        ps.append({
+            "titulo": "Presiones sobre el agua",
+            "dato": (f"La ANA ha identificado <b>{_num(n_fc)}</b> fuentes contaminantes en cuerpos "
+                     f"de agua de Áncash.{extra}{cau_txt}"),
+            "detalle": " · ".join(det),
+            "metrica": metrica or {"valor": _num(n_fc), "unidad": "fuentes contaminantes"},
+            "fuente": _fuente("FUENTES CONTAMINANTES"),
+            "periodo": _periodo("FUENTES CONTAMINANTES"),
+            "filtros": {**vacio, "tipo": [et_fc]},
+        })
+
+        # ── 7. Brecha de informacion ──────────────────────────────────────────
+        col_uh = next((c for c in ["Unidad Hidrográfica", "NombreUH"] if c in fc.columns), None)
+        if col_uh and n_cuencas:
+            inventariadas = sorted({str(x).strip() for x in fc[col_uh] if str(x).strip()})
+            if 0 < len(inventariadas) < n_cuencas:
+                ps.append({
+                    "titulo": "Lo que todavía no se ha inventariado",
+                    "dato": (f"El inventario de fuentes contaminantes cubre <b>{len(inventariadas)}</b> "
+                             f"de las <b>{n_cuencas}</b> unidades hidrográficas del departamento. "
+                             f"Las demás no cuentan con un inventario cargado en el sistema, "
+                             f"lo que no significa que estén libres de presiones."),
+                    "detalle": "Unidades con inventario: " + " · ".join(inventariadas),
+                    "metrica": {"valor": f"{len(inventariadas)}/{n_cuencas}",
+                                "unidad": "unidades con inventario"},
+                    "fuente": _fuente("FUENTES CONTAMINANTES"),
+                    "periodo": _periodo("FUENTES CONTAMINANTES"),
+                    "filtros": {**vacio, "tipo": [et_fc]},
+                })
+
+    # ââ Puntos criticos por peligro hidrico âââââââââââââââââââââââââââââââââââ
+    # Se reportan conteos y distribucion temporal. NO se suman presupuestos ni
+    # familias declaradas: el archivo de origen no define si esos campos son
+    # poblacion expuesta o beneficiaria, ni si los anios son acumulativos.
+    pc = _detalle_de("PUNTOS CRÍTICOS")
+    if not pc.empty:
+        col_anio = "Año de identificación"
+        anios = pc[col_anio].astype(str).str.strip() if col_anio in pc.columns else pd.Series(dtype=str)
+        anios = anios[anios != ""]
+        rango, det = "", ""
+        if not anios.empty:
+            rango = (f" entre {anios.min()} y {anios.max()}"
+                     if anios.min() != anios.max() else f" en {anios.min()}")
+            det = "Puntos identificados por año — " + " · ".join(
+                f"{k}: {_num(v)}" for k, v in anios.value_counts().sort_index().items())
+        ps.append({
+            "titulo": "Puntos críticos por peligro hídrico",
+            "dato": (f"La ANA ha identificado <b>{_num(len(pc))}</b> puntos críticos en ríos y "
+                     f"quebradas de Áncash{rango}: tramos con alta probabilidad de afectación a "
+                     f"la población o a actividades económicas por inundación, activación de "
+                     f"quebradas o erosión fluvial."),
+            "detalle": det,
+            "metrica": {"valor": _num(len(pc)), "unidad": "puntos críticos"},
+            "fuente": _fuente("PUNTOS CRÍTICOS"),
+            "periodo": _periodo("PUNTOS CRÍTICOS"),
+            "filtros": {**vacio, "tipo": [_etiqueta_tipo("PUNTOS CRÍTICOS")]},
+        })
+
+    # ── 8. Provincia con mayor concentracion ──────────────────────────────────
+    sub_du = df[up == "DERECHOS DE USO DE AGUA"]
+    prov = _conteo_por_provincia(sub_du)
+    if prov:
+        nombre_pr, n_pr = prov[0]
+        ps.append({
+            "titulo": "Provincia con más derechos otorgados",
+            "dato": (f"<b>{_titulo(nombre_pr)}</b> concentra <b>{_num(n_pr)}</b> de los "
+                     f"{_num(len(sub_du))} derechos de uso de agua registrados en Áncash."),
+            "detalle": " · ".join(f"{_titulo(k)}: {_num(v)}" for k, v in prov[:4]),
+            "metrica": {"valor": _num(n_pr), "unidad": "derechos de uso"},
+            "fuente": _fuente("DERECHOS DE USO DE AGUA"),
+            "periodo": _periodo("DERECHOS DE USO DE AGUA"),
+            "filtros": {**vacio, "tipo": [et_du], "provincia": [_titulo(nombre_pr)]},
+        })
+
+    for n, p in enumerate(ps, start=1):
+        p["id"] = f"agua-{n}"
+        p["tema"] = "agua"
+    return ps
 
 def _presets_tema(conf: dict) -> List[dict]:
     """Construye los presets de una temática a partir de los datos reales."""
     if df.empty:
         return []
+
+    if conf["id"] == "agua":
+        return _presets_agua(conf)
 
     up = df["Tipo_Dataset"].str.upper()
     tipos_presentes = [t for t in conf["tipos"] if (up == t).any()]
@@ -727,6 +1094,7 @@ def _presets_tema(conf: dict) -> List[dict]:
         return []
 
     etiquetas = [_etiqueta_tipo(t) for t in tipos_presentes]
+    principal_conf = conf["principal"] if conf["principal"] in tipos_presentes else tipos_presentes[0]
     sub = df[up.isin(tipos_presentes)]
     total = len(sub)
     presets: List[dict] = []
@@ -741,6 +1109,7 @@ def _presets_tema(conf: dict) -> List[dict]:
                  f"en Áncash, provenientes de {len(tipos_presentes)} conjuntos de datos distintos."),
         "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in desglose.head(4).items()),
         "metrica": {"valor": _num(total), "unidad": "registros"},
+        "fuente": _fuente(principal_conf), "periodo": _periodo(principal_conf),
         "filtros": {**vacio, "tipo": etiquetas},
     })
 
@@ -758,6 +1127,7 @@ def _presets_tema(conf: dict) -> List[dict]:
                      f"departamento, es decir el <b>{_pct(n_cu, len(sub_pri))}%</b>."),
             "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in cu.head(4).items()),
             "metrica": {"valor": _num(n_cu), "unidad": etiqueta_pri},
+            "fuente": _fuente(principal), "periodo": _periodo(principal),
             "filtros": {**vacio, "tipo": [etiqueta_pri], "cuenca": [nombre_cu]},
         })
 
@@ -772,6 +1142,7 @@ def _presets_tema(conf: dict) -> List[dict]:
                      f"{_num(len(sub_pri))} en Áncash."),
             "detalle": " · ".join(f"{_titulo(k)}: {_num(v)}" for k, v in prov_pri[:4]),
             "metrica": {"valor": _num(n_pr), "unidad": etiqueta_pri},
+            "fuente": _fuente(principal), "periodo": _periodo(principal),
             "filtros": {**vacio, "tipo": [etiqueta_pri], "provincia": [_titulo(nombre_pr)]},
         })
 
@@ -795,6 +1166,8 @@ def _presets_tema(conf: dict) -> List[dict]:
                                  f"<b>alto o muy alto</b> ({_pct(n, len(pam))}% del total)."),
                         "detalle": "Clasificación de riesgo según el inventario del MINEM.",
                         "metrica": {"valor": str(n), "unidad": "pasivos críticos"},
+                        "fuente": _fuente("PASIVOS AMBIENTALES MINEROS"),
+                        "periodo": _periodo("PASIVOS AMBIENTALES MINEROS"),
                         "filtros": {**vacio, "tipo": [_etiqueta_tipo("PASIVOS AMBIENTALES MINEROS")],
                                     "secundarios": {"RIESGO": criticos}},
                     })
@@ -811,6 +1184,7 @@ def _presets_tema(conf: dict) -> List[dict]:
                          f"infraestructura formal</b>."),
                 "detalle": "Áreas degradadas municipales y no municipales según el OEFA.",
                 "metrica": {"valor": f"{round(n_deg/n_for, 1)}×", "unidad": "botaderos por instalación"},
+                "fuente": _fuente("ADRS MUNICIPALES"), "periodo": _periodo("ADRS MUNICIPALES"),
                 "filtros": {**vacio, "tipo": [_etiqueta_tipo("ADRS MUNICIPALES"),
                                               _etiqueta_tipo("ADRS NO MUNICIPALES"),
                                               _etiqueta_tipo("INFRAESTRUCTURA DE RRSS")]},
@@ -828,28 +1202,15 @@ def _presets_tema(conf: dict) -> List[dict]:
                          f"de Áncash."),
                 "detalle": " · ".join(f"{_titulo(k)}: {v}" for k, v in pr[:4]),
                 "metrica": {"valor": str(len(cp)), "unidad": "centros poblados"},
+                "fuente": _fuente("CENTROS POBLADOS CON MP"), "periodo": _periodo("CENTROS POBLADOS CON MP"),
                 "filtros": {**vacio, "tipo": [_etiqueta_tipo("CENTROS POBLADOS CON MP")]},
-            })
-
-    if conf["id"] == "agua":
-        fc = df[up == "FUENTES CONTAMINANTES"]
-        if not fc.empty:
-            cu_fc = fc[fc["Cuenca"].astype(str).str.strip() != ""]["Cuenca"].value_counts()
-            top = cu_fc.index[0] if not cu_fc.empty else None
-            presets.append({
-                "titulo": "Fuentes contaminantes de agua",
-                "dato": (f"La ANA ha inventariado <b>{len(fc)}</b> fuentes contaminantes en cuerpos "
-                         f"de agua de Áncash" +
-                         (f", con la mayor concentración en la <b>{top}</b> "
-                          f"({int(cu_fc.iloc[0])} fuentes)." if top else ".")),
-                "detalle": " · ".join(f"{k}: {v}" for k, v in cu_fc.head(4).items()) if not cu_fc.empty else "",
-                "metrica": {"valor": str(len(fc)), "unidad": "fuentes contaminantes"},
-                "filtros": {**vacio, "tipo": [_etiqueta_tipo("FUENTES CONTAMINANTES")]},
             })
 
     for n, p in enumerate(presets, start=1):
         p["id"] = f"{conf['id']}-{n}"
         p["tema"] = conf["id"]
+        p.setdefault("fuente", _fuente(principal_conf))
+        p.setdefault("periodo", _periodo(principal_conf))
     return presets
 
 @app.get("/api/tematicas")
@@ -903,6 +1264,7 @@ ENTIDAD_POR_TIPO = {
     "PUNTOS DE MUESTREO OEFA":           "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
     "UNIDADES FISCALIZABLES OEFA":       "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
     "PUNTOS DE MUESTREO SENASA":         "Servicio Nacional de Sanidad Agraria (SENASA)",
+    "PUNTOS CRITICOS":                   "Autoridad Nacional del Agua (ANA)",
 }
 
 class ReporteReq(BaseModel):

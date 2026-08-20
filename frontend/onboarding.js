@@ -316,6 +316,12 @@
         det.textContent = p.detalle || '';
         det.style.display = p.detalle ? 'block' : 'none';
 
+        // Trazabilidad: de dónde sale el dato y a qué año corresponde
+        const fte = $('td-fuente');
+        if (fte) fte.textContent = p.fuente || 'Fuente oficial no especificada';
+        const per = $('td-periodo');
+        if (per) per.textContent = p.periodo || 'no declarado';
+
         Array.from($('td-puntos').children)
              .forEach((b, k) => b.classList.toggle('activo', k === presetIdx));
 

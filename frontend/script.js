@@ -405,6 +405,7 @@ const mapeoEntidades = {
     "UNIDADES FISCALIZABLES OEFA":      {logo:"logo_oefa.png",    nombreCompleto:"Organismo de Evaluación y Fiscalización Ambiental"},
     "PUNTOS DE MUESTREO SENASA":        {logo:"logo_senasa.png",  nombreCompleto:"Servicio Nacional de Sanidad Agraria"},
     "DOSAJES METALES CP":              {logo:"logo_diresa.png",    nombreCompleto:"Dirección Regional de Salud Áncash"},
+    "PUNTOS CRÍTICOS":                 {logo:"logo_ana.png",       nombreCompleto:"Autoridad Nacional del Agua"},
 };
 
 const configSimbologia = {
@@ -426,6 +427,7 @@ const configSimbologia = {
     "UNIDADES FISCALIZABLES OEFA":      {icono:"fa-building",             color:"#d35400"},
     "PUNTOS DE MUESTREO SENASA":        {icono:"fa-seedling",             color:"#229954"},
     "DOSAJES METALES CP":               {icono:"fa-vial-virus",           color:"#c0392b"},
+    "PUNTOS CRÍTICOS":                  {icono:"fa-house-flood-water",    color:"#0e7490"},
 };
 
 // ── 7. DETALLE DE PUNTO — carga CSV del dataset ───────────────────────────────
