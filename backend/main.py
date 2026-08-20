@@ -519,6 +519,55 @@ def g_dist(nombres: str = ""):
     return _filtrar_features(gjson("limite_distritos.geojson"),
                              ["DISTRITO", "NOM_DIST", "NOMBDIST"], nombres)
 
+# ââ Capas de contexto territorial âââââââââââââââââââââââââââââââââââââââââââââ
+# Limites simplificados para usarlos como mapa de referencia detras de los datos.
+# La simplificacion (~110 m) reduce el peso a cerca del 12 % del archivo original
+# sin perder legibilidad a escala departamental.
+NIVELES_CONTEXTO = {
+    "provincias":  ("limite_provincias.geojson", "PROVINCIA", False),
+    "distritos":   ("limite_distritos.geojson",  "DISTRITO",  False),
+    "cuencas":     ("limite_cuencas.geojson",    "NOMBRE",    True),
+    "subcuencas":  ("limite_subcuencas.geojson", "Nombre_UH", True),
+}
+_contexto_cache: dict = {}
+
+@app.get("/api/poligonos/contexto")
+def g_contexto(nivel: str = "provincias"):
+    """Limites simplificados de un nivel territorial, solo con su nombre."""
+    nivel = (nivel or "").strip().lower()
+    if nivel not in NIVELES_CONTEXTO:
+        return {"type": "FeatureCollection", "features": []}
+    if nivel in _contexto_cache:
+        return _contexto_cache[nivel]
+
+    archivo, prop, recortar = NIVELES_CONTEXTO[nivel]
+    base = _recortar_a_ancash(archivo) if recortar else gjson(archivo)
+
+    try:
+        from shapely.geometry import shape as _shape, mapping as _mapping
+        feats = []
+        for ft in base.get("features", []):
+            props = ft.get("properties", {}) or {}
+            nombre = str(props.get(prop, "") or "").strip()
+            if not nombre or nombre.lower() == "none":
+                continue
+            try:
+                gm = _shape(ft["geometry"]).simplify(0.001, preserve_topology=True)
+                if gm.is_empty:
+                    continue
+                feats.append({"type": "Feature",
+                              "properties": {"nombre": nombre},
+                              "geometry": _mapping(gm)})
+            except Exception:
+                continue
+        res = {"type": "FeatureCollection", "features": feats}
+        print(f"🗺  Contexto {nivel}: {len(feats)} limites simplificados")
+    except ImportError:
+        res = base   # sin shapely se sirve el archivo tal cual
+
+    _contexto_cache[nivel] = res
+    return res
+
 @app.get("/api/poligonos/subcuencas")
 def g_subcuencas(cuencas: str = "", nombres: str = "", solo_nombres: int = 0):
     """
@@ -877,6 +926,7 @@ def _presets_agua(conf: dict) -> List[dict]:
         "detalle": ("Las unidades hidrográficas siguen la codificación Pfafstetter que emplea "
                     "la Autoridad Nacional del Agua para todo el país."),
         "metrica": {"valor": str(n_cuencas), "unidad": "unidades hidrográficas"},
+        "contexto": {"capa": "cuencas", "resaltar": [], "zoom": False},
         "fuente": "ANA · Delimitación de unidades hidrográficas del Perú (método Pfafstetter)",
         "periodo": SIN_FECHA,
         "filtros": {**vacio, "tipo": tipos_agua},
@@ -932,6 +982,7 @@ def _presets_agua(conf: dict) -> List[dict]:
                      f"({_num(int(cuerpos.iloc[0]))} puntos)."),
             "detalle": " · ".join(f"{k}: {_num(v)}" for k, v in cuerpos.head(4).items()),
             "metrica": {"valor": _num(len(rm)), "unidad": "puntos de monitoreo"},
+            "contexto": {"capa": "cuencas", "resaltar": [], "zoom": False},
             "fuente": _fuente("RED DE MONITOREO ANA"),
             "periodo": _periodo("RED DE MONITOREO ANA"),
             "filtros": {**vacio, "tipo": [et_rm]},
@@ -951,6 +1002,7 @@ def _presets_agua(conf: dict) -> List[dict]:
             "detalle": ("Categoría 1: agua para consumo humano · Categoría 3: riego y bebida de "
                         "animales · Categoría 4: conservación del ambiente acuático."),
             "metrica": {"valor": _num(int(cats.iloc[0])), "unidad": str(cats.index[0]).lower()},
+            "contexto": {"capa": "cuencas", "resaltar": [], "zoom": False},
             "fuente": _fuente("PUNTOS DE MUESTREO ANA"),
             "periodo": _periodo("PUNTOS DE MUESTREO ANA"),
             "filtros": {**vacio, "tipo": [et_pm]},
@@ -984,6 +1036,7 @@ def _presets_agua(conf: dict) -> List[dict]:
                                 "el archivo no declara y que corresponde solicitar a la entidad "
                                 "generadora."),
                     "metrica": {"valor": _num(n_med), "unidad": "puntos con mediciones"},
+                    "contexto": {"capa": "cuencas", "resaltar": [], "zoom": False},
                     "fuente": _fuente("PUNTOS DE MUESTREO ANA"),
                     "periodo": _periodo("PUNTOS DE MUESTREO ANA"),
                     "filtros": {**vacio, "tipo": [et_pm]},
@@ -1014,6 +1067,7 @@ def _presets_agua(conf: dict) -> List[dict]:
                      f"de agua de Áncash.{extra}{cau_txt}"),
             "detalle": " · ".join(det),
             "metrica": metrica or {"valor": _num(n_fc), "unidad": "fuentes contaminantes"},
+            "contexto": {"capa": "cuencas", "resaltar": [], "zoom": False},
             "fuente": _fuente("FUENTES CONTAMINANTES"),
             "periodo": _periodo("FUENTES CONTAMINANTES"),
             "filtros": {**vacio, "tipo": [et_fc]},
@@ -1033,6 +1087,7 @@ def _presets_agua(conf: dict) -> List[dict]:
                     "detalle": "Unidades con inventario: " + " · ".join(inventariadas),
                     "metrica": {"valor": f"{len(inventariadas)}/{n_cuencas}",
                                 "unidad": "unidades con inventario"},
+                    "contexto": {"capa": "cuencas", "resaltar": inventariadas, "zoom": False},
                     "fuente": _fuente("FUENTES CONTAMINANTES"),
                     "periodo": _periodo("FUENTES CONTAMINANTES"),
                     "filtros": {**vacio, "tipo": [et_fc]},
@@ -1126,6 +1181,7 @@ def _presets_agua(conf: dict) -> List[dict]:
                                 "unidades geológicas: señala dónde el fenómeno es más probable, "
                                 "no constituye una medición de contaminación."),
                     "metrica": {"valor": _num(n_mejor), "unidad": "sitios con alta probabilidad"},
+                    "contexto": {"capa": "subcuencas", "resaltar": [mejor], "zoom": True},
                     "fuente": _fuente("SITIOS CONTAMINADOS CON DAR"),
                     "periodo": _periodo("SITIOS CONTAMINADOS CON DAR"),
                     "filtros": {**vacio, "tipo": [_etiqueta_tipo("SITIOS CONTAMINADOS CON DAR")]},
@@ -1289,6 +1345,24 @@ def _presets_tema(conf: dict) -> List[dict]:
         p.setdefault("periodo", _periodo(principal_conf))
     return presets
 
+def _contexto_preset(p: dict) -> dict:
+    """
+    Decide que limites territoriales debe dibujar el mapa para cada dato.
+    Regla: se usa el nivel mas especifico que el preset filtre. Si el dato habla
+    del departamento en conjunto, se usan las provincias como referencia.
+    Un preset puede traer su propio "contexto" y entonces se respeta.
+    """
+    if p.get("contexto"):
+        return p["contexto"]
+    f = p.get("filtros", {}) or {}
+    if f.get("distrito"):
+        return {"capa": "distritos", "resaltar": list(f["distrito"]), "zoom": True}
+    if f.get("provincia"):
+        return {"capa": "provincias", "resaltar": list(f["provincia"]), "zoom": True}
+    if f.get("cuenca"):
+        return {"capa": "cuencas", "resaltar": list(f["cuenca"]), "zoom": True}
+    return {"capa": "provincias", "resaltar": [], "zoom": False}
+
 @app.get("/api/tematicas")
 def get_tematicas():
     """Temáticas con sus presets de filtros y datos destacados calculados."""
@@ -1302,6 +1376,8 @@ def get_tematicas():
         if not presets:
             continue
         up = df["Tipo_Dataset"].str.upper() if not df.empty else pd.Series(dtype=str)
+        for _p in presets:
+            _p["contexto"] = _contexto_preset(_p)
         temas.append({
             "id": conf["id"], "nombre": conf["nombre"], "icono": conf["icono"],
             "color": conf["color"], "descripcion": conf["descripcion"],

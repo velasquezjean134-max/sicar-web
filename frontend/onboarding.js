@@ -274,11 +274,22 @@
         selector.classList.remove('visible');
         $('ctrl-tematicas').classList.remove('activo');
     });
-    $('td-cerrar').addEventListener('click', () => ventana.classList.remove('visible'));
+    function cerrarVentanaDato() {
+        ventana.classList.remove('visible');
+        limpiarContexto();
+        if (encuadreOriginal) {
+            mapa.flyTo(encuadreOriginal.centro, encuadreOriginal.zoom, { duration: 0.8 });
+            encuadreOriginal = null;
+        }
+    }
+    $('td-cerrar').addEventListener('click', cerrarVentanaDato);
 
     function abrirTema(id) {
         temaActivo = TEMAS.find(t => t.id === id);
         if (!temaActivo || !temaActivo.presets.length) return;
+        // Se guarda la vista actual para poder volver a ella al cerrar
+        if (!encuadreOriginal)
+            encuadreOriginal = { centro: mapa.getCenter(), zoom: mapa.getZoom() };
         selector.classList.remove('visible');
         $('ctrl-tematicas').classList.remove('activo');
         presetIdx = 0;
@@ -326,6 +337,7 @@
              .forEach((b, k) => b.classList.toggle('activo', k === presetIdx));
 
         aplicarPreset(p.filtros);
+        aplicarContexto(p.contexto);
     }
 
     $('td-siguiente').addEventListener('click', () => mostrarPreset(presetIdx + 1));
@@ -335,8 +347,107 @@
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
         if (e.key === 'ArrowRight') mostrarPreset(presetIdx + 1);
         if (e.key === 'ArrowLeft')  mostrarPreset(presetIdx - 1);
-        if (e.key === 'Escape')     ventana.classList.remove('visible');
+        if (e.key === 'Escape')     cerrarVentanaDato();
     });
+
+    /* ══════════════════════════════════════════════════════════════════════
+       CAPA DE CONTEXTO TERRITORIAL
+       ──────────────────────────────────────────────────────────────────────
+       Dibuja únicamente los límites (provincias, distritos, cuencas o
+       subcuencas) como telón de fondo del dato que se está presentando, y
+       encuadra el mapa sobre lo que la tarjeta menciona. Es independiente de
+       las capas que dibuja el panel de filtros: no las toca ni las borra.
+       ══════════════════════════════════════════════════════════════════════ */
+    let capaContexto = null;
+    const cacheContexto = {};          // nivel -> GeoJSON ya descargado
+    let encuadreOriginal = null;       // vista previa a entrar en temáticas
+
+    const ETIQUETA_CAPA = {
+        provincias: 'Provincias',
+        distritos:  'Distritos',
+        cuencas:    'Unidades hidrográficas',
+        subcuencas: 'Subcuencas'
+    };
+
+    function normalizaNombre(t) {
+        return String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .replace(/\s+/g, ' ').trim().toUpperCase();
+    }
+
+    function capaDeContexto() {
+        if (!capaContexto) {
+            if (!mapa.getPane('paneContexto')) {
+                mapa.createPane('paneContexto');
+                mapa.getPane('paneContexto').style.zIndex = 385;   // debajo de todo lo demás
+            }
+            capaContexto = L.layerGroup().addTo(mapa);
+        }
+        return capaContexto;
+    }
+
+    function limpiarContexto() {
+        if (capaContexto) capaContexto.clearLayers();
+        const ind = $('mapa-contexto-nota');
+        if (ind) ind.style.display = 'none';
+    }
+
+    async function aplicarContexto(cx) {
+        if (!cx || !cx.capa) { limpiarContexto(); return; }
+        const capa = capaDeContexto();
+
+        try {
+            if (!cacheContexto[cx.capa]) {
+                const r = await fetch(`${API}/api/poligonos/contexto?nivel=${cx.capa}`);
+                cacheContexto[cx.capa] = await r.json();
+            }
+            const geo = cacheContexto[cx.capa];
+            capa.clearLayers();
+
+            const resaltados = (cx.resaltar || []).map(normalizaNombre);
+            const bounds = [];
+
+            const gl = L.geoJSON(geo, {
+                pane: 'paneContexto',
+                interactive: false,
+                style: f => {
+                    const esResaltado = resaltados.length &&
+                        resaltados.includes(normalizaNombre(f.properties && f.properties.nombre));
+                    return esResaltado
+                        ? { color: '#0f766e', weight: 2.6, opacity: 0.95,
+                            fillColor: '#14b8a6', fillOpacity: 0.16 }
+                        : { color: '#64748b', weight: 0.9,
+                            opacity: resaltados.length ? 0.35 : 0.6,
+                            fillColor: '#94a3b8',
+                            fillOpacity: resaltados.length ? 0.03 : 0.06 };
+                },
+                onEachFeature: (f, layer) => {
+                    const nom = f.properties && f.properties.nombre;
+                    if (nom && resaltados.includes(normalizaNombre(nom)))
+                        bounds.push(layer.getBounds());
+                }
+            }).addTo(capa);
+
+            // Etiqueta discreta indicando qué límites se están mostrando
+            const ind = $('mapa-contexto-nota');
+            if (ind) {
+                ind.innerHTML = `<i class="fa-solid fa-draw-polygon"></i> Límites: <b>${ETIQUETA_CAPA[cx.capa] || cx.capa}</b>`
+                    + (cx.resaltar && cx.resaltar.length
+                        ? ` · destacando <b>${cx.resaltar.join(', ')}</b>` : '');
+                ind.style.display = 'flex';
+            }
+
+            // Encuadre: sobre lo destacado, o sobre todo Áncash
+            if (cx.zoom && bounds.length) {
+                let total = bounds[0];
+                bounds.slice(1).forEach(b => { total = total.extend(b); });
+                mapa.flyToBounds(total, { padding: [70, 70], maxZoom: 11, duration: 0.9 });
+            } else if (encuadreOriginal) {
+                mapa.flyTo(encuadreOriginal.centro, encuadreOriginal.zoom, { duration: 0.9 });
+            }
+        } catch (e) {
+            console.warn('Contexto territorial:', e);
+        }
+    }
 
     /* Interfaz pública del módulo, usada por perfiles.js */
     window.SICAR_UI = {
