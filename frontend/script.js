@@ -16,8 +16,24 @@ var baseMaps = {
     "Google Maps": L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{attribution:'&copy; Google',maxNativeZoom:18,maxZoom:22}),
     "Satélite":    L.tileLayer('https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{attribution:'&copy; Google',maxNativeZoom:18,maxZoom:22}),
     "Oscuro":      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; CartoDB',maxZoom:20}),
+    // Fondos claros: pensados para que resalten los límites y los puntos
+    "Minimalista": L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; CartoDB',maxZoom:20}),
+    "Casi blanco": L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{attribution:'&copy; CartoDB',maxZoom:20}),
 };
 baseMaps["Claro"].addTo(mapa);
+
+// ── Atenuación del mapa base ──────────────────────────────────────────────────
+// Permite bajar la intensidad del fondo para que los límites territoriales y
+// los puntos se lean con claridad, sin perder la referencia geográfica.
+var baseActual = baseMaps["Claro"];
+var opacidadBase = 1;
+
+function aplicarOpacidadBase(v) {
+    opacidadBase = parseFloat(v);
+    if (baseActual && baseActual.setOpacity) baseActual.setOpacity(opacidadBase);
+    const et = document.getElementById('valor-opacidad-base');
+    if (et) et.textContent = Math.round(opacidadBase * 100) + '%';
+}
 
 // Control de capas base — colapsable por defecto
 //L.control.layers(baseMaps, {}, { position: 'topright', collapsed: true }).addTo(mapa);
@@ -143,8 +159,17 @@ document.getElementById('ctrl-capas')?.addEventListener('click', () => toggleCtr
 document.querySelectorAll('input[name="mapaBase"]').forEach(r => {
     r.addEventListener('change', () => {
         Object.values(baseMaps).forEach(l => mapa.removeLayer(l));
-        baseMaps[r.value]?.addTo(mapa);
+        baseActual = baseMaps[r.value];
+        if (baseActual) {
+            baseActual.addTo(mapa);
+            aplicarOpacidadBase(opacidadBase);   // se conserva la atenuación elegida
+        }
     });
+});
+
+// Control de atenuación del fondo
+document.getElementById('slider-opacidad-base')?.addEventListener('input', e => {
+    aplicarOpacidadBase(e.target.value);
 });
 
 // Cerrar al click fuera

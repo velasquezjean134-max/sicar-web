@@ -188,6 +188,20 @@
                 <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Google Maps"> Google Maps</label>
                 <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Satélite"> Satélite</label>
                 <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Oscuro"> Oscuro</label>
+                <div class="ctrl-separador"></div>
+                <div class="ctrl-menu-titulo ctrl-titulo-sec">Fondos claros</div>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Minimalista"> Minimalista</label>
+                <label class="ctrl-opcion"><input type="radio" name="mapaBase" value="Casi blanco"> Casi blanco (sin rótulos)</label>
+                <div class="ctrl-separador"></div>
+                <div class="ctrl-opacidad">
+                    <div class="ctrl-opacidad-fila">
+                        <span>Intensidad del fondo</span>
+                        <b id="valor-opacidad-base">100%</b>
+                    </div>
+                    <input type="range" id="slider-opacidad-base" min="0.1" max="1" step="0.05" value="1"
+                           title="Atenuar el mapa base para resaltar límites y puntos">
+                    <div class="ctrl-opacidad-ayuda">Bájalo para que resalten los límites territoriales</div>
+                </div>
             </div>
 
             <!-- Menú capas -->
@@ -394,7 +408,10 @@
     <div id="tema-dato">
         <div class="td-barra" id="td-barra"></div>
         <div class="td-cabecera">
-            <div class="td-tema" id="td-tema"><i class="fa-solid fa-compass"></i> <span></span></div>
+            <div class="td-tema" id="td-tema">
+                <span class="td-asa" title="Arrastra para mover esta ventana"><i class="fa-solid fa-grip-vertical"></i></span>
+                <i class="fa-solid fa-compass"></i> <span></span>
+            </div>
             <button id="td-cerrar" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="td-cuerpo">

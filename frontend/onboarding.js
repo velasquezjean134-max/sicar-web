@@ -340,6 +340,63 @@
         aplicarContexto(p.contexto);
     }
 
+    /* ── La ventana de datos se puede mover libremente ────────────────────── */
+    (function ventanaArrastrable() {
+        const asa = ventana.querySelector('.td-cabecera');
+        if (!asa) return;
+        let arrastrando = false, dx = 0, dy = 0, movida = false;
+
+        asa.style.cursor = 'grab';
+
+        function iniciar(e) {
+            if (e.target.closest('button')) return;      // no interferir con cerrar
+            const p = e.touches ? e.touches[0] : e;
+            const r = ventana.getBoundingClientRect();
+            // Al mover por primera vez se fija la posición y se anula el centrado
+            ventana.style.position = 'fixed';
+            ventana.style.transform = 'none';
+            ventana.style.bottom = 'auto';
+            ventana.style.left = r.left + 'px';
+            ventana.style.top = r.top + 'px';
+            ventana.style.width = r.width + 'px';
+            dx = p.clientX - r.left;
+            dy = p.clientY - r.top;
+            arrastrando = true; movida = true;
+            asa.style.cursor = 'grabbing';
+            ventana.classList.add('td-movida');
+            e.preventDefault();
+        }
+
+        function mover(e) {
+            if (!arrastrando) return;
+            const p = e.touches ? e.touches[0] : e;
+            const w = ventana.offsetWidth, h = ventana.offsetHeight;
+            let x = Math.max(6, Math.min(p.clientX - dx, window.innerWidth  - w - 6));
+            let y = Math.max(6, Math.min(p.clientY - dy, window.innerHeight - h - 6));
+            ventana.style.left = x + 'px';
+            ventana.style.top  = y + 'px';
+        }
+
+        function soltar() { arrastrando = false; asa.style.cursor = 'grab'; }
+
+        asa.addEventListener('mousedown', iniciar);
+        asa.addEventListener('touchstart', iniciar, { passive: false });
+        document.addEventListener('mousemove', mover);
+        document.addEventListener('touchmove', mover, { passive: false });
+        document.addEventListener('mouseup', soltar);
+        document.addEventListener('touchend', soltar);
+
+        // Si la ventana quedara fuera al cambiar el tamaño del navegador
+        window.addEventListener('resize', () => {
+            if (!movida) return;
+            const w = ventana.offsetWidth, h = ventana.offsetHeight;
+            ventana.style.left = Math.min(parseFloat(ventana.style.left) || 0,
+                                          window.innerWidth - w - 6) + 'px';
+            ventana.style.top  = Math.min(parseFloat(ventana.style.top) || 0,
+                                          window.innerHeight - h - 6) + 'px';
+        });
+    })();
+
     $('td-siguiente').addEventListener('click', () => mostrarPreset(presetIdx + 1));
     $('td-anterior').addEventListener('click', () => mostrarPreset(presetIdx - 1));
     document.addEventListener('keydown', e => {
@@ -413,12 +470,12 @@
                     const esResaltado = resaltados.length &&
                         resaltados.includes(normalizaNombre(f.properties && f.properties.nombre));
                     return esResaltado
-                        ? { color: '#0f766e', weight: 2.6, opacity: 0.95,
-                            fillColor: '#14b8a6', fillOpacity: 0.16 }
-                        : { color: '#64748b', weight: 0.9,
-                            opacity: resaltados.length ? 0.35 : 0.6,
+                        ? { color: '#0f766e', weight: 3, opacity: 1,
+                            fillColor: '#14b8a6', fillOpacity: 0.18 }
+                        : { color: '#334155', weight: 1.3,
+                            opacity: resaltados.length ? 0.45 : 0.8,
                             fillColor: '#94a3b8',
-                            fillOpacity: resaltados.length ? 0.03 : 0.06 };
+                            fillOpacity: resaltados.length ? 0.03 : 0.05 };
                 },
                 onEachFeature: (f, layer) => {
                     const nom = f.properties && f.properties.nombre;

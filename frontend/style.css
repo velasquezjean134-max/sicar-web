@@ -1721,3 +1721,56 @@ body.perfil-autoridad  #btn-descargar-reporte {
 @media (max-width: 780px) {
     #mapa-contexto-nota { max-width: 88vw; font-size: 10.5px; top: 8px; }
 }
+
+/* ── Ventana de datos: movible por el usuario ── */
+.td-cabecera { user-select: none; -webkit-user-select: none; }
+
+.td-asa {
+    display: inline-flex;
+    align-items: center;
+    color: #b8c6d3;
+    font-size: 11px;
+    margin-right: 2px;
+    transition: color 0.18s ease;
+}
+.td-cabecera:hover .td-asa { color: var(--c, #0182c7); }
+
+#tema-dato.td-movida {
+    box-shadow: 0 24px 60px rgba(5, 22, 36, 0.45);
+}
+#tema-dato.td-movida .td-barra { cursor: grab; }
+
+/* ── Controles de mapa base: separador, subtítulo y atenuación ── */
+.ctrl-separador {
+    height: 1px;
+    margin: 8px 0;
+    background: #e6ecf2;
+}
+.ctrl-titulo-sec {
+    font-size: 10px !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8b98a5 !important;
+    margin-bottom: 4px !important;
+}
+.ctrl-opacidad { padding: 2px 2px 4px; }
+.ctrl-opacidad-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: #5a6b7a;
+    margin-bottom: 6px;
+}
+.ctrl-opacidad-fila b { color: #0182c7; font-size: 11.5px; }
+#slider-opacidad-base {
+    width: 100%;
+    accent-color: #0182c7;
+    cursor: pointer;
+}
+.ctrl-opacidad-ayuda {
+    margin-top: 5px;
+    font-size: 10px;
+    color: #93a3b1;
+    line-height: 1.35;
+}
