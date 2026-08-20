@@ -669,7 +669,8 @@ TEMATICAS_CONF = [
         "tipos": ["DERECHOS DE USO DE AGUA", "FUENTES CONTAMINANTES",
                   "PUNTOS DE MUESTREO ANA", "RED DE MONITOREO ANA",
                   "PUNTOS DE MUESTREO OEFA", "PUNTOS DE MUESTREO SENASA",
-                  "PUNTOS CRÍTICOS"],
+                  "PUNTOS CRÍTICOS", "ACREDITACIÓN DE DISPONIBILIDAD HÍDRICA",
+                  "FORMALIZACIÓN DE DERECHOS DE USO"],
     },
     {
         "id": "mineria", "nombre": "Minería", "icono": "fa-helmet-safety", "color": "#a8730f",
@@ -758,6 +759,12 @@ FUENTE_DATASET = {
     "PUNTOS DE MUESTREO SENASA": {
         "fuente": "SENASA · Puntos de muestreo",
         "archivo": "senasa_ptosmuestreo.csv", "campo_fecha": None},
+    "ACREDITACION DE DISPONIBILIDAD HIDRICA": {
+        "fuente": "ANA · Acreditaciones de disponibilidad hídrica (Visor de Cuencas)",
+        "archivo": "ana_acreditacion_hidrica.csv", "campo_fecha": "Fecha de resolución"},
+    "FORMALIZACION DE DERECHOS DE USO": {
+        "fuente": "ANA · Formalización de derechos de uso de agua (Visor de Cuencas)",
+        "archivo": "ana_formalizacion.csv", "campo_fecha": "Fecha de resolución"},
     "PUNTOS CRITICOS": {
         "fuente": "ANA · Puntos críticos por inundación, huaicos y erosión fluvial "
                   "(Plataforma Nacional de Datos Abiertos)",
@@ -1059,6 +1066,75 @@ def _presets_agua(conf: dict) -> List[dict]:
             "filtros": {**vacio, "tipo": [_etiqueta_tipo("PUNTOS CRÍTICOS")]},
         })
 
+    # ââ Drenaje acido de roca: donde es mas probable y cuanto se vigila âââââââ
+    # IMPORTANTE: el dataset del INAIGEM es un MODELO DE PROBABILIDAD basado en
+    # litologia y unidades geologicas (Prob_DAR entre 0,75 y 0,86), no una
+    # medicion de contaminacion. El texto lo dice de forma explicita y no
+    # atribuye contaminacion a ningun cuerpo de agua. El cruce que si es
+    # defendible es de COBERTURA DE MONITOREO, no de niveles medidos.
+    dar_idx = df[up_todos == "SITIOS CONTAMINADOS CON DAR"] if "up_todos" in dir() else df[df["Tipo_Dataset"].str.upper() == "SITIOS CONTAMINADOS CON DAR"]
+    if not dar_idx.empty:
+        try:
+            import shapely
+            from shapely.geometry import shape as _shape
+
+            subs = _recortar_a_ancash("limite_subcuencas.geojson").get("features", [])
+            def _nom_sub(ft):
+                for c in ("Nombre_UH", "NOMBRE", "Nombre"):
+                    v = (ft.get("properties") or {}).get(c)
+                    if v and str(v).strip().lower() != "none":
+                        return str(v).strip()
+                return ""
+
+            pts_dar = shapely.points(dar_idx["Longitud"].values, dar_idx["Latitud"].values)
+            mejor, n_mejor, geom_mejor = "", 0, None
+            for ft in subs:
+                nb = _nom_sub(ft)
+                if not nb or nb.lower().startswith("unidad hidrografica"):
+                    continue
+                gm = _shape(ft["geometry"])
+                shapely.prepare(gm)
+                n = int(shapely.intersects(gm, pts_dar).sum())
+                if n > n_mejor:
+                    mejor, n_mejor, geom_mejor = nb, n, gm
+
+            if mejor and n_mejor:
+                def _en(tipo):
+                    ss = df[df["Tipo_Dataset"].str.upper() == tipo]
+                    if ss.empty:
+                        return 0
+                    return int(shapely.intersects(
+                        geom_mejor, shapely.points(ss["Longitud"].values, ss["Latitud"].values)).sum())
+                n_mon = _en("RED DE MONITOREO ANA")
+                n_pam = _en("PASIVOS AMBIENTALES MINEROS")
+                extra = ""
+                if n_mon:
+                    extra = (f" En esa misma subcuenca la ANA mantiene <b>{_num(n_mon)}</b> puntos "
+                             f"de la red de monitoreo de calidad del agua")
+                    if n_pam:
+                        extra += f" y el MINEM registra <b>{_num(n_pam)}</b> pasivos ambientales mineros"
+                    extra += "."
+                ps.append({
+                    "titulo": "Dónde el drenaje ácido de roca es más probable",
+                    "dato": (f"La subcuenca <b>{mejor}</b> concentra <b>{_num(n_mejor)}</b> de los "
+                             f"{_num(len(dar_idx))} sitios que el INAIGEM identifica con alta "
+                             f"probabilidad de generar drenaje ácido de roca en Áncash "
+                             f"({_pct(n_mejor, len(dar_idx))}% del total).{extra}"),
+                    "detalle": ("El drenaje ácido de roca es un proceso natural que la actividad minera "
+                                "puede acelerar, y libera metales al agua. La capa del INAIGEM es un "
+                                "modelo de probabilidad construido a partir de la litología y las "
+                                "unidades geológicas: señala dónde el fenómeno es más probable, "
+                                "no constituye una medición de contaminación."),
+                    "metrica": {"valor": _num(n_mejor), "unidad": "sitios con alta probabilidad"},
+                    "fuente": _fuente("SITIOS CONTAMINADOS CON DAR"),
+                    "periodo": _periodo("SITIOS CONTAMINADOS CON DAR"),
+                    "filtros": {**vacio, "tipo": [_etiqueta_tipo("SITIOS CONTAMINADOS CON DAR")]},
+                })
+        except ImportError:
+            pass
+        except Exception as e:
+            print(f"⚠  Preset DAR no generado: {e}")
+
     # ── 8. Provincia con mayor concentracion ──────────────────────────────────
     sub_du = df[up == "DERECHOS DE USO DE AGUA"]
     prov = _conteo_por_provincia(sub_du)
@@ -1265,6 +1341,8 @@ ENTIDAD_POR_TIPO = {
     "UNIDADES FISCALIZABLES OEFA":       "Organismo de Evaluación y Fiscalización Ambiental (OEFA)",
     "PUNTOS DE MUESTREO SENASA":         "Servicio Nacional de Sanidad Agraria (SENASA)",
     "PUNTOS CRITICOS":                   "Autoridad Nacional del Agua (ANA)",
+    "ACREDITACION DE DISPONIBILIDAD HIDRICA": "Autoridad Nacional del Agua (ANA)",
+    "FORMALIZACION DE DERECHOS DE USO":   "Autoridad Nacional del Agua (ANA)",
 }
 
 class ReporteReq(BaseModel):

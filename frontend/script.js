@@ -406,6 +406,8 @@ const mapeoEntidades = {
     "PUNTOS DE MUESTREO SENASA":        {logo:"logo_senasa.png",  nombreCompleto:"Servicio Nacional de Sanidad Agraria"},
     "DOSAJES METALES CP":              {logo:"logo_diresa.png",    nombreCompleto:"Dirección Regional de Salud Áncash"},
     "PUNTOS CRÍTICOS":                 {logo:"logo_ana.png",       nombreCompleto:"Autoridad Nacional del Agua"},
+    "ACREDITACIÓN DE DISPONIBILIDAD HÍDRICA":{logo:"logo_ana.png",  nombreCompleto:"Autoridad Nacional del Agua"},
+    "FORMALIZACIÓN DE DERECHOS DE USO":{logo:"logo_ana.png",       nombreCompleto:"Autoridad Nacional del Agua"},
 };
 
 const configSimbologia = {
@@ -428,6 +430,8 @@ const configSimbologia = {
     "PUNTOS DE MUESTREO SENASA":        {icono:"fa-seedling",             color:"#229954"},
     "DOSAJES METALES CP":               {icono:"fa-vial-virus",           color:"#c0392b"},
     "PUNTOS CRÍTICOS":                  {icono:"fa-house-flood-water",    color:"#0e7490"},
+    "ACREDITACIÓN DE DISPONIBILIDAD HÍDRICA":{icono:"fa-file-circle-check", color:"#0891b2"},
+    "FORMALIZACIÓN DE DERECHOS DE USO": {icono:"fa-stamp",                color:"#0369a1"},
 };
 
 // ── 7. DETALLE DE PUNTO — carga CSV del dataset ───────────────────────────────
