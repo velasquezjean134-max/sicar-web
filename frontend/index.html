@@ -13,6 +13,45 @@
 </head>
 <body>
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PANTALLA DE CARGA
+         Cubre el visor hasta que los datos estén listos. Evita que alguien
+         interactúe con una interfaz a medio cargar y explica la espera cuando
+         el servidor se está reactivando tras un periodo de inactividad.
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div id="carga-overlay">
+        <div class="carga-caja">
+            <div class="carga-logos">
+                <img src="logo_izquierdo.png" alt="" onerror="this.style.display='none'">
+                <img src="logo_derecho.png" alt="" onerror="this.style.display='none'">
+            </div>
+
+            <div class="carga-anillo">
+                <svg viewBox="0 0 64 64">
+                    <circle class="pista" cx="32" cy="32" r="27"></circle>
+                    <circle class="avance" cx="32" cy="32" r="27"></circle>
+                </svg>
+                <span class="carga-icono">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/>
+                        <circle cx="12" cy="10" r="2.6"/>
+                    </svg>
+                </span>
+            </div>
+
+            <div class="carga-marca">SICAR Áncash</div>
+            <h2 class="carga-titulo">Sistema de Información Ambiental Regional</h2>
+            <p class="carga-mensaje" id="carga-mensaje">Preparando el visor…</p>
+
+            <div class="carga-barra"><span id="carga-progreso"></span></div>
+
+            <p class="carga-nota" id="carga-nota"></p>
+
+            <button id="carga-reintentar" type="button">Reintentar</button>
+        </div>
+    </div>
+
     <header id="encabezado">
         <div class="logo-box">
             <img src="logo_izquierdo.png" alt="Logo 1" onerror="this.style.display='none'; this.parentNode.innerHTML='Logo Izquierdo';">
@@ -473,6 +512,7 @@
     <script src="onboarding.js"></script>
     <script src="reporte.js"></script>
     <script src="perfiles.js"></script>
+    <script src="carga.js"></script>
 
 </body>
 </html>

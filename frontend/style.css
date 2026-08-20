@@ -1774,3 +1774,143 @@ body.perfil-autoridad  #btn-descargar-reporte {
     color: #93a3b1;
     line-height: 1.35;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PANTALLA DE CARGA
+   ══════════════════════════════════════════════════════════════════════════ */
+body.cargando { overflow: hidden; }
+
+#carga-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: linear-gradient(160deg, #0b2237 0%, #06121e 100%);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+#carga-overlay.oculto { opacity: 0; pointer-events: none; }
+
+.carga-caja {
+    width: 100%;
+    max-width: 430px;
+    text-align: center;
+    color: #fff;
+}
+
+.carga-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    opacity: 0.92;
+}
+.carga-logos img { height: 46px; width: auto; object-fit: contain; }
+
+/* ── Anillo giratorio ── */
+.carga-anillo {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 24px;
+}
+.carga-anillo svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+}
+.carga-anillo circle { fill: none; stroke-width: 3; }
+.carga-anillo .pista  { stroke: rgba(255,255,255,0.10); }
+.carga-anillo .avance {
+    stroke: #35b6e0;
+    stroke-linecap: round;
+    stroke-dasharray: 42 128;
+    transform-origin: 50% 50%;
+    animation: giro 1.25s linear infinite;
+}
+@keyframes giro { to { transform: rotate(360deg); } }
+
+.carga-icono {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7fd4f0;
+}
+.carga-icono svg { width: 30px; height: 30px; }
+
+.carga-marca {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #58c4e8;
+    margin-bottom: 8px;
+}
+.carga-titulo {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+    margin: 0 0 22px;
+}
+.carga-mensaje {
+    font-size: 14px;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 16px;
+    min-height: 20px;
+    transition: opacity 0.3s ease;
+}
+
+/* ── Barra de avance ── */
+.carga-barra {
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.10);
+    overflow: hidden;
+}
+.carga-barra span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #0182c7, #35b6e0);
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carga-nota {
+    margin: 18px auto 0;
+    max-width: 360px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#carga-reintentar {
+    display: none;
+    margin: 22px auto 0;
+    padding: 9px 22px;
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 30px;
+    background: transparent;
+    color: #fff;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+#carga-reintentar.visible { display: block; }
+#carga-reintentar:hover { background: rgba(255,255,255,0.12); }
+
+@media (max-width: 600px) {
+    .carga-logos img { height: 36px; }
+    .carga-titulo { font-size: 14.5px; }
+}
